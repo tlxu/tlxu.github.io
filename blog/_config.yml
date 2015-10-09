@@ -14,5 +14,5 @@ github_username:  jekyll
 markdown: kramdown
 
 # my settings
-baseurl: /blog/
-encoding: utf-8
+#baseurl: /
+#encoding: utf-8
