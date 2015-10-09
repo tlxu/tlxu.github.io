@@ -16,3 +16,4 @@ markdown: kramdown
 # my settings
 #baseurl: /
 #encoding: utf-8
+source: /blog
