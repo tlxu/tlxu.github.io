@@ -1,5 +1,0 @@
-#+STARTUP: showall
-#+TITLE: Emacs tips
-
-1. How to upgrade the org-mode comes with Emcas to a newer version?
-   http://sachachua.com/blog/2014/05/update-org-7-comes-emacs-org-8-configuration-better-exports/
