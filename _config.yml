@@ -4,7 +4,7 @@ email: tianli.xu@gmail.com
 description: learn something new everyday
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://tianlixu.github.io" # the base hostname & protocol for your site
-twitter_username: tianlixu123
+twitter_username: tianlixu
 github_username:  tianlixu
 
 # Build settings
@@ -12,3 +12,4 @@ markdown: kramdown
 
 auto: false
 server: true
+regeneration: true
