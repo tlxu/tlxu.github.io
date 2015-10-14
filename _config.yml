@@ -9,3 +9,6 @@ github_username:  tianlixu
 
 # Build settings
 markdown: kramdown
+
+auto: false
+server: true
