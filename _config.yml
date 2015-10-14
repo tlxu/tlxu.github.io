@@ -12,4 +12,4 @@ markdown: kramdown
 
 auto: false
 server: true
-regeneration: true
+regeneration: false
