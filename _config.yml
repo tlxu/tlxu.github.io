@@ -1,7 +1,7 @@
 # Site settings
-title: "living a brand new life"
+title: living a brand new life
 email: tianli.xu@gmail.com
-description: "learn something new everyday"
+description: learn something new everyday
 
 # the subpath of your site, e.g. /blog/
 baseurl: ""
