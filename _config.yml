@@ -10,4 +10,5 @@ github_username:  tianlixu
 # Build settings
 markdown: kramdown
 
-auto: true
+#auto: true
+Regeneration: true
