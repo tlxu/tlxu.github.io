@@ -18,7 +18,6 @@ To start from simple yet achievalbe things:
 3. Photography: taking one photo per day
 
 4. Reading: Chapter 2,3 and 4 of "Born to Run"
-5. 
 
 5. Read and reply all the unread emails: eliminate the RED badge number of Gmail app in my cell phone.
 
