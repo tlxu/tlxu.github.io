@@ -4,7 +4,7 @@ title:  "Real Change - Weekly Todo List"
 date:   2015-10-23
 categories: todo
 ---
-I always want to do this and that. Sometimes I do have a plan or todo list, but unfortunatelly I failed most of them and lways come up with soundable reasons. Now it's time to change, a "Real Change".  Are you familiar with this - Real Change - what the new Prime Minister promisses to Canadians:)
+I always want to do this and that. Sometimes I do have a plan or todo list, but unfortunatelly I failed most of them and always come up with convincible execuses. Now it's time to change, a "Real Change".  Are you familiar with this - Real Change - what the new Prime Minister promisses to Canadians:)
 
 
 To start from simple yet achievalbe things:
