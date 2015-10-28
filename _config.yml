@@ -24,3 +24,6 @@ Regeneration: true
 # Oct 28, 2015, adding page number
 paginate: 10
 paginate_path: "blog/page:num"
+
+# Oct 28, 2015, Post preview, default with the 1st paragraph
+excerpt_separator: <!--more-->
