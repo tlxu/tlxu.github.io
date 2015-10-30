@@ -1,0 +1,18 @@
+#+STARTUP: showall
+#+TITLE: Emacs tips
+
+* Commands
+- M-l
+Convert following word to lower case (downcase-word).
+
+- M-u
+Convert following word to upper case (upcase-word). e.g. create abc -> CREATE abc
+
+- M-c
+Capitalize the following word (capitalize-word). e.g. create abc -> Create abc
+
+- C-x C-l
+Convert region to lower case (downcase-region).
+
+- C-x C-u
+Convert region to upper case (upcase-region).
