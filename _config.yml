@@ -8,11 +8,6 @@ baseurl: ""
 # the base hostname & protocol for your site
 url: "http://tianlixu.github.io"
 
-# the subpath of your site, e.g. /blog/
-baseurl: ""
-# the base hostname & protocol for your site
-url: "http://tianlixu.github.io"
-
 twitter_username: tianlixu
 github_username:  tianlixu
 
