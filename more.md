@@ -1,7 +1,7 @@
 ---
 layout: more
 title: More
-permalink: /more/
+permalink: /more/html/
 ---
 
 this is More
