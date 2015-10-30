@@ -2,6 +2,7 @@
 #+TITLE: Emacs tips
 
 * Commands
+** Case  
 - M-l
 Convert following word to lower case (downcase-word).
 
@@ -16,3 +17,15 @@ Convert region to lower case (downcase-region).
 
 - C-x C-u
 Convert region to upper case (upcase-region).
+
+
+** Query replace
+- M-% string RET newstring RET
+Replace some occurrences of string with newstring.
+
+C-M-% regexp RET newstring RET
+Replace some matches for regexp with newstring.
+
+** Rectangles
+- C-x r ?
+
