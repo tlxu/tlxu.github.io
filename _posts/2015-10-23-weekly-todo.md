@@ -23,3 +23,9 @@ To start from simple yet achievalbe things:
 
 Will review this Todo List on next Friday(Oct 30, 2015) night. Look and see.
 
+Review @ November 01, 2015:
+1. This seems one mission impossible for me:( Will try it again this week.
+2. Almost done.
+3. Yes. I did it. Sometimes with my iPhone and sometimes with my Cannon 550D.
+4. Done. Yeah!!
+5. :( doing it now.
