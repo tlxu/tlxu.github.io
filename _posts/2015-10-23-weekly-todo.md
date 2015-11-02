@@ -22,3 +22,4 @@ To start from simple yet achievalbe things:
 5. Read and reply all the unread emails: eliminate the RED badge number of Gmail app in my cell phone.
 
 Will review this Todo List on next Friday(Oct 30, 2015) night. Look and see.
+
