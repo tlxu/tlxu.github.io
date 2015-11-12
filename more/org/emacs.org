@@ -29,3 +29,5 @@ Replace some matches for regexp with newstring.
 ** Rectangles
 - C-x r ?
 
+** Insert sth to the begining of each line in a selected rectangle
+   M-x string-insert-rectangle
