@@ -42,20 +42,23 @@ hello zombie demo.
 Enter parent(8246)...
 Enter child(8247)...
 
-
 Don't hurry to press enter. Run the following fommands to check the zombie:
-
 
 $ top |grep zombie
 Tasks: 512 total,   1 running, 509 sleeping,   1 stopped,   1 zombie
-
 
 $ ps aux |grep Z
 USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 fos        8247  0.0  0.0      0     0 pts/27   Z+   15:33   0:00 [zomdemo] <defunct>
 
-
 $ pstree -ps 8247 |more
-
 init(1)---lightdm(1533)---lightdm(1743)---init(2091)---screen(2828)---bash(2866)---zomdemo(8246)---zomdemo(8247)
+
+
+A zombie is already dead, so you cannot kill it either by 'kill' or 'kill -9'. To cleanup a zombie, it must be waited on by its parent, so killing the parent should work to eliminate the zombie. After the parent dies, the zombie will be inherited by init, which will wait on it and clear its entry in the process table. If your program is spawning children that become zombies, you have a bug. Your program should notice when its children die and wait on them to determine their exit status.
+
+$ kill -9 $(ps -A -ostat,ppid | awk '/[zZ]/{print $2}')
+
+You can also get the ppid of process with:
+$ ps -xal |grep 8247 |awk '{print $4}' |head -1
 

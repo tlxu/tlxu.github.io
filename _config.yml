@@ -18,6 +18,7 @@ markdown: kramdown
 kramdown:
     input: GFM
 #    hard_wrap: false
+# Disable it: two returns makes a new line
 
 Regeneration: true
 
