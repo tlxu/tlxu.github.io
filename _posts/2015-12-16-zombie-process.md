@@ -55,6 +55,30 @@ init(1)---lightdm(1533)---lightdm(1743)---init(2091)---screen(2828)---bash(2866)
 
 
 
+1first
+second
 
 
+2first
 
+second
+
+
+3first\
+second
+
+
+4first|
+second
+
+
+5first\n
+second
+
+
+6first_
+second
+
+
+7first<br>
+second
