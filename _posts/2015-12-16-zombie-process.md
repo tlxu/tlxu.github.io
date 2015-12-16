@@ -46,15 +46,16 @@ Enter child(8247)...
 Don't hurry to press enter. Run the following fommands to check the zombie:
 
 
-- $ top |grep zombie
+$ top |grep zombie
 Tasks: 512 total,   1 running, 509 sleeping,   1 stopped,   1 zombie
 
 
-- $ ps aux |grep Z
+$ ps aux |grep Z
 USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 fos        8247  0.0  0.0      0     0 pts/27   Z+   15:33   0:00 [zomdemo] <defunct>
 
 
-- $ pstree -ps 8247 |more
+$ pstree -ps 8247 |more
+
 init(1)---lightdm(1533)---lightdm(1743)---init(2091)---screen(2828)---bash(2866)---zomdemo(8246)---zomdemo(8247)
 
