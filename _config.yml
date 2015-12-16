@@ -15,7 +15,9 @@ github_username:  tianlixu
 
 # Build settings
 markdown: kramdown
+kramdown:
     input: GFM
+    hard_wrap: false
 
 Regeneration: true
 
