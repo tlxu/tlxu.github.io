@@ -55,38 +55,33 @@ init(1)---lightdm(1533)---lightdm(1743)---init(2091)---screen(2828)---bash(2866)
 
 
 
-1first
-second
+
+body: |
+  This is a multi-line string.
+    "special" metacharacters may
+      appear here. The extent of this string is
+        indicated by indentation.
 
 
-2first
 
-second
+item1:
+  overview: |
+      overview text
+      more overview text
+  available_to: 2012-01-01
+  foo: |
+    foo text
+    more foo text
 
-
-3first \
-second
-
-"3first \
-second"
-
-
-4first|
-second
-
-
-5first\n
-second
-
-
-6first_
-second
-
-
-7first<br>
-second
-
-
-testbody: |
-   3first
-second
+catalog:
+  - id: item 1
+      overview: |
+            overview text
+                  more overview text
+                      available_to: 2012-01-01
+                          foo: |
+                                foo text
+                                      more foo text
+                                          ...
+                                            - id: item2
+                                                overview: <similar to above>
