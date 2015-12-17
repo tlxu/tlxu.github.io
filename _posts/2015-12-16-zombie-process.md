@@ -169,3 +169,5 @@ pid=11942, ppid=2091
 
 fos@ubuntu:~/dev$ pstree -ps 2866 |more
 init(1)---lightdm(1533)---lightdm(1743)---init(2091)---screen(2828)---bash(2866)
+
+Note: you can uncomment sleep(5) in the above example and rerun this program to see the difference of the ppid of the 2nd child.
