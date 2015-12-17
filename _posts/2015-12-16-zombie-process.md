@@ -4,7 +4,7 @@ title:  "Zombie Process in Linux"
 date:   2015-12-16
 categories: Linux
 ---
-" In UNIX System terminology, a process that has terminated, but whose parent has not yet waited for it, is called a zombie." -- From APUE
+"In UNIX System terminology, a process that has terminated, but whose parent has not yet waited for it, is called a zombie." -- From APUE
 
 Example:
 
@@ -36,7 +36,6 @@ int main()
 
 After compiling this program(gcc -o zomdemo) and running it(./zomdemo):
 
-
 $ ./zomdemo
 hello zombie demo.
 Enter parent(8246)...
@@ -57,7 +56,7 @@ A zombie is already dead, so you cannot kill it either by 'kill' or 'kill -9'. T
 $ kill -9 $(ps -A -ostat,ppid | awk '/[zZ]/{print $2}')
 
 
-You can also get the ppid of process with:
+You can also get the ppid of a process with:
 
 $ ps -xal |grep 8247 |awk '{print $4}' |head -1
 8246
