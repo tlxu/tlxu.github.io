@@ -65,5 +65,107 @@ $ pstree -ps 8247 |more
 init(1)---lightdm(1533)---lightdm(1743)---init(2091)---screen(2828)---bash(2866)---zomdemo(8246)---zomdemo(8247)
 
 
-* test
-** test
+*Avoid zombie processes by calling fork twice*
+A process whose parent has terminated will be inherited by init. The /init/ calls one of the/ wait/ functions to fetch the termination status. By doing this, init prevents the system form being clogged by zombies.
+
+Example:
+{% highlight c %}
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+
+void do_something()
+{
+    int timeout = 10;
+    while (timeout >0) {
+        printf("pid=%d, ppid=%d\n", getpid(), getppid());
+
+        sleep(1);
+        timeout --;
+    }
+}
+
+
+int safe_fork()
+{
+    pid_t pid;
+    if ((pid = fork()) < 0) {
+        printf("1st fork error\n");
+        return -1;
+    } else if (pid == 0) { /* first child */
+        printf("Enter 1st child: pid=%d, ppid=%d\n", getpid(), getppid());
+
+        if ((pid = fork()) < 0) {
+            printf("2nd fork error\n");
+            return -1;
+        } else if (pid > 0) {
+            /*sleep(5);*/
+            printf("1st child exits: pid=%d, ppid=%d\n", getpid(), getppid());
+            exit(0); /* parent from second fork == first child */
+        }
+
+        /*
+         * We're the second child; our parent becomes init as soon
+         * as our real parent calls exit() in the statement above.
+         * Here's where we'd continue executing, knowing that when
+         * we're done, init will reap our status.
+         */
+        printf("Enter 2nd child: pid=%d, ppid=%d\n", getpid(), getppid());
+
+        do_something();
+
+        printf("2nd child exits: pid=%d, ppid=%d\n", getppid(), getppid());        
+        exit(0);
+    }
+    if (waitpid(pid, NULL, 0) != pid) { /* wait for first child */
+        printf("waitpid for the 1st child error\n");
+        return -1;
+    }
+
+    return 0;
+}
+
+int main()
+{
+    printf("hello double fork.\n");
+
+    printf("Enter parent:pid=%d, ppid=%d\n", getpid(), getppid());
+
+    int ret = safe_fork();
+
+    /*
+     * We're the parent (the original process); we continue executing,
+     * knowing that we're not the parent of the second child.
+     */
+    printf("parent exits: ret=%d, pid=%d, ppid=%d\n", ret, getpid(), getppid());
+    
+    return 0;
+}
+
+{% endhighlight %}
+
+
+fos@ubuntu:~/dev$ ./doublefork
+hello double fork.
+Enter parent:pid=11940, ppid=2866
+Enter 1st child: pid=11941, ppid=11940
+1st child exits: pid=11941, ppid=11940
+Enter 2nd child: pid=11942, ppid=2091
+pid=11942, ppid=2091
+parent exits: ret=0, pid=11940, ppid=2866
+fos@ubuntu:~/dev$ pid=11942, ppid=2091
+pid=11942, ppid=2091
+pid=11942, ppid=2091
+pid=11942, ppid=2091
+pid=11942, ppid=2091
+pid=11942, ppid=2091
+pid=11942, ppid=2091
+pid=11942, ppid=2091
+pid=11942, ppid=2091
+2nd child exits: pid=2091, ppid=2091
+
+fos@ubuntu:~/dev$ pstree -ps 2866 |more
+init(1)---lightdm(1533)---lightdm(1743)---init(2091)---screen(2828)---bash(2866)
