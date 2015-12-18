@@ -65,8 +65,8 @@ $ pstree -ps 8247 |more
 init(1)---lightdm(1533)---lightdm(1743)---init(2091)---screen(2828)---bash(2866)---zomdemo(8246)---zomdemo(8247)
 
 
-*Avoid zombie processes by calling fork twice*
-A process whose parent has terminated will be inherited by init. The /init/ calls one of the/ wait/ functions to fetch the termination status. By doing this, init prevents the system form being clogged by zombies.
+*Avoid zombie processes by calling fork twice.*
+A process whose parent terminates is called an orphan and is inherited by the init process. The /init/ calls one of the/ wait/ functions to fetch the termination status. By doing this, init prevents the system form being clogged by zombies.
 
 Example:
 {% highlight c %}
