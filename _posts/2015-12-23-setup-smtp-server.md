@@ -46,7 +46,7 @@ msg['Subject'] = 'Our family reunion'
 # me == the sender's email address
 # family = the list of all recipients' email addresses
 me = 'tianli.xu@gmail.com'
-tolist = 'tianli.xu@emc.com'
+tolist = 'tianli.xu@yahoo.com'
 
 msg['From'] = me
 #msg['To'] = COMMASPACE.join(tolist)
