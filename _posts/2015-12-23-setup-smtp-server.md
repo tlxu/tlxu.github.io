@@ -70,4 +70,6 @@ s.quit()
 
 {% endhighlight %}
 
-[Refer to][https://docs.python.org/3/library/email-examples.html] for more details.
+Refer to [Python3 docs][python3-doc] for more details.
+
+[python3-doc]:    https://docs.python.org/3/library/email-examples.html
