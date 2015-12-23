@@ -13,7 +13,7 @@ If you need to make changes, edit
   /etc/postfix/main.cf (and others) as needed.
 I added the following two parameters:
   myhostname=ubuntu-xu
-  mail_name=tianli.xu@gmail.com
+  mail_name=first.last@gmail.com
 
 To view Postfix configuration values, see postconf(1).
 After modifying main.cf, be sure to run '/etc/init.d/postfix reload'.
@@ -22,7 +22,7 @@ To start/restart postfix service with:
 $sudo service postfix restart
 
 An example to send an email(tianli.xu@yahoo.com) with an attachement:
-$ echo "This is the body of the email" | mail -a 'From:"Tianli Xu"<tianli.xu@gmail.com>' -s "This is the subject line" -A ./demo.txt tianli.xu@yahoo.com
+$ echo "This is the body of the email" | mail -a 'From:"Tianli Xu"<first.last@gmail.com>' -s "This is the subject line" -A ./demo.txt tianli.xu@yahoo.com
 
 
 Once the SMTP is done, the following Python code can send all the .txt files in a directory as an email message:
@@ -45,7 +45,7 @@ msg = MIMEMultipart()
 msg['Subject'] = 'Our family reunion'
 # me == the sender's email address
 # family = the list of all recipients' email addresses
-me = 'tianli.xu@gmail.com'
+me = 'first.last@gmail.com'
 tolist = 'tianli.xu@yahoo.com'
 
 msg['From'] = me
