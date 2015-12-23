@@ -21,8 +21,8 @@ After modifying main.cf, be sure to run '/etc/init.d/postfix reload'.
 To start/restart postfix service with:
 $sudo service postfix restart
 
-An example to send an email(tianli.xu@yahoo.com) with an attachement:
-$ echo "This is the body of the email" | mail -a 'From:"Tianli Xu"<first.last@gmail.com>' -s "This is the subject line" -A ./demo.txt tianli.xu@yahoo.com
+An example to send an email(first.last@yahoo.com) with an attachement:
+$ echo "This is the body of the email" | mail -a 'From:"First Last"<first.last@gmail.com>' -s "This is the subject line" -A ./demo.txt first.last@yahoo.com
 
 
 Once the SMTP is done, the following Python code can send all the .txt files in a directory as an email message:
@@ -46,7 +46,7 @@ msg['Subject'] = 'Our family reunion'
 # me == the sender's email address
 # family = the list of all recipients' email addresses
 me = 'first.last@gmail.com'
-tolist = 'tianli.xu@yahoo.com'
+tolist = 'first.last@yahoo.com'
 
 msg['From'] = me
 #msg['To'] = COMMASPACE.join(tolist)
