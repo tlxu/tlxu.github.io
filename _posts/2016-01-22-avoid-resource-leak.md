@@ -6,7 +6,7 @@ categories: Linux
 ---
 Just keep one single rule in mind: the one who creates a resource is responsible to destroy the resource.
 
-A user of a resource use it and should NEVER destroy it.
+A user of a resource should only use it and will NEVER destroy it.
 
 In C/C++ programming, you can create a resource with new/malloc/open/fopen/dup...
 
