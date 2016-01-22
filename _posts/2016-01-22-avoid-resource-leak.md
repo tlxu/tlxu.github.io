@@ -6,7 +6,9 @@ categories: Linux
 ---
 Just keep one single rule in mind: the one who creates a resource is responsible to destroy the resource.
 
+A user of a resource use it and should NEVER destroy it.
+
 In C/C++ programming, you can create a resource with new/malloc/open/fopen/dup...
 
-With open/fopen/dup you create a new resource, but fdopen does NOT.
+The open/fopen/dup creates a new resource, but fdopen does NOT.
 
