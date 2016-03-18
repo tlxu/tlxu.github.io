@@ -4,6 +4,7 @@ title:  "Get owner for a file"
 date:   2016-03-18
 categories: Linux, C
 ---
+
 {% highlight python %}
 #include <stdio.h>
 #include <pwd.h>
@@ -23,5 +24,6 @@ int main(int argc, char *argv[])
     return 0;
 }
 {% endhighlight %}
+
         
 
