@@ -4,8 +4,9 @@ title:  "Get owner for a file"
 date:   2016-03-18
 categories: Linux, C
 ---
+Example:
 
-{% highlight C %}
+{% highlight c %}
 #include <stdio.h>
 #include <pwd.h>
 #include <sys/stat.h>
