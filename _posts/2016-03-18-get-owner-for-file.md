@@ -5,7 +5,7 @@ date:   2016-03-18
 categories: Linux, C
 ---
 
-{% highlight python %}
+{% highlight C %}
 #include <stdio.h>
 #include <pwd.h>
 #include <sys/stat.h>
