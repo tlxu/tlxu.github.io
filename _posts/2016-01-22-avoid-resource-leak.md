@@ -4,7 +4,7 @@ title:  "How to avoid resource leak?"
 date:   2016-01-22
 categories: Linux
 ---
-Just keep one single rule in mind: the one who creates a resource is responsible to destroy the resource.
+Just keep one single rule in mind: the one who creates a resource is responsible for destroying it.
 
 A user of a resource should only use it and will NEVER destroy it.
 
