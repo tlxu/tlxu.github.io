@@ -3,8 +3,11 @@
 #+OPTIONS: creator:comment d:(not LOGBOOK) date:t e:t email:t f:t inline:t
 
 * General
-[[file:emacs.org][Emacs]]    
+[[file:emacs.org][Emacs]]
+
+* AI
+[[file:machine_learning.org][Machine Learning]]
+
+* Algorithms
+
 * Misc
-
-
-
