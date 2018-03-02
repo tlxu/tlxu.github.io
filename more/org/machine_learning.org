@@ -9,3 +9,4 @@
 ** [[https://ai.google/education][Learn with Google AI]]   
 
 * Projects
+** hand writing digits recognition
