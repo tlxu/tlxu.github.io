@@ -6,7 +6,8 @@
 ** [[https://www.coursera.org/learn/neural-networks][Neural Networks for Machine Learning by Geoffrey Hinton]]
 ** [[http://neuralnetworksanddeeplearning.com][Neural Networks and Deep Learning by Michael Nielsen]]
 ** [[https://developers.google.cn/machine-learning/crash-course][Machine Learning Crash Course by Google]]
-** [[https://ai.google/education][Learn with Google AI]]   
+** [[https://ai.google/education][Learn with Google AI]]
+** [[http://www.deeplearningbook.org/][Deep Learning by Ian Goodfellow, Yoshua Bengio, and Aaron Courville]]
 
 * Projects
 ** hand writing digits recognition
