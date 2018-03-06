@@ -11,3 +11,6 @@
 
 * Projects
 ** hand writing digits recognition
+
+* Tools
+[[file:pandas.org][Pandas]] [[file:numpy.org][Numpy]] 
