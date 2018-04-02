@@ -13,5 +13,5 @@
 ** hand writing digits recognition
 
 * Tools
-[[file:pandas.org][Pandas]] [[file:numpy.org][Numpy]] 
+[[file:pandas.org][Pandas]] [[file:doc/jn/PandasDemo.ipynb][Numpy]]
 
