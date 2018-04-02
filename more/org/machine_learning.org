@@ -13,5 +13,5 @@
 ** hand writing digits recognition
 
 * Tools
-[[file:pandas.org][Pandas]] [[file:doc/jn/PandasDemo.ipynb][Numpy]]
+[[file:pandas.org][Pandas]] [[https://github.com/tianlixu/ai/blob/master/ml-ng/ex1-linear-regression/ex1/ex1-linear-regression.ipynb][Numpy]]
 
