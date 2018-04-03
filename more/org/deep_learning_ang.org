@@ -24,11 +24,8 @@
   3. algorithms: sigmoid -> RELU function
 
 - Notation:
-  (x, y) is an training example( x: Rn, y: {0, 1} )  
-  m: the # of training examples( (x1, y1), (x2, y2), ..., (xm, ym) ) 
-     Note xm is x superscript m
-  m^1
-  m_2
+  (x, y) is an training example( x: R_{n}, y: {0, 1} )  
+  m: the # of training examples( (x^{1}, y^{1}), (x^{2}, y^{2}), ..., (x_{m}, y_{m}) ) 
   n: the dimention of the input feature vecton
 
 
