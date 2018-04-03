@@ -1,0 +1,38 @@
+#+STARTUP: showall
+#+TITLE: Notes for Neural Networks and Deep Learning
+
+* Courses
+1. Neural Networks and Deep Learning (4 weeks)
+2. Improving Deep Neural Networks: Hyperameter tuning, Regularization and Optimization (3 weeks)
+3. Structuring your Machine Learning project (2 weeks)
+4. Convolutional Neural Networks(CNN)
+5. Natural Language Processing(NLP): Builing Sequence Models
+
+* NN and DL
+- RELU function: Rectified Linear Unit
+- A single neuron network: y = wx + b, wich is linear regression
+- Supervised learning
+- Structured data vs unstructured data
+- Drivers behind the rise of Deep Learning
+  Scale drives deep learning process, to hit a very high performance you need two things: 
+  1. bigger NN to take advantage of huge amount of data
+  2. more data
+
+  Scale of:
+  1. data
+  2. computation: CPU GPU
+  3. algorithms: sigmoid -> RELU function
+
+- Notation:
+  (x, y) is an training example( x: Rn, y: {0, 1} )  
+  m: the # of training examples( (x1, y1), (x2, y2), ..., (xm, ym) ) 
+     Note xm is x superscript m
+  m^1
+  m_2
+  n: the dimention of the input feature vecton
+
+
+
+
+
+
