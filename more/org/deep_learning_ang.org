@@ -62,3 +62,19 @@ either $$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \].
   \alpha     & \beta^{*}\\ 
   \gamma^{*} & \delta 
 \end{bmatrix}
+
+
+$X =
+\begin{array}{cc}
+x & y \\
+z & w \\
+\end{array}$
+
+
+$M = \left( \begin{smallmatrix} a&b\\ c&d \end{smallmatrix} \right)$
+
+- matrix: unbracketed matrix
+- pmatrix: matrix surrounded by parentheses
+- bmatrix: matrix surrounded by square brackets
+- vmatrix: matrix surrounded by single vertical lines
+- Vmatrix: matrix surrounded by double vertical lines
