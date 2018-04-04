@@ -1,0 +1,43 @@
+#+STARTUP: showall
+#+TITLE: Notes for org-mode
+
+
+* shortcuts
+  - C-c C-x \ : runs the command org-toggle-pretty-entities
+
+* Math/Latex
+  -
+  If $a^2=b$ and \( b=2 \), then the solution must be
+  either $$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \].
+
+  - Matix
+\begin{matrix}
+ a & b \\
+ c & d \\
+\end{matrix}
+
+\begin{pmatrix} 
+  \alpha     & \beta^{*}\\ 
+  \gamma^{*} & \delta 
+\end{pmatrix}
+
+\begin{bmatrix} 
+  \alpha     & \beta^{*}\\ 
+  \gamma^{*} & \delta 
+\end{bmatrix}
+
+
+$X =
+\begin{array}{cc}
+x & y \\
+z & w \\
+\end{array}$
+
+
+$M = \left( \begin{smallmatrix} a&b\\ c&d \end{smallmatrix} \right)$
+
+- matrix: unbracketed matrix
+- pmatrix: matrix surrounded by parentheses
+- bmatrix: matrix surrounded by square brackets
+- vmatrix: matrix surrounded by single vertical lines
+- Vmatrix: matrix surrounded by double vertical lines

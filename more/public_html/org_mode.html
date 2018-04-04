@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Emacs tips</title>
-<!-- 2018-04-03 Tue 20:36 -->
+<title>Notes for org-mode</title>
+<!-- 2018-04-03 Tue 20:34 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Alex" />
@@ -136,144 +136,137 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
 </head>
 <body>
 <div id="content">
-<h1 class="title">Emacs tips</h1>
+<h1 class="title">Notes for org-mode</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Commands</a>
-<ul>
-<li><a href="#sec-1-1">1.1. Case</a></li>
-<li><a href="#sec-1-2">1.2. Query replace</a></li>
-<li><a href="#sec-1-3">1.3. Rectangles</a></li>
-<li><a href="#sec-1-4">1.4. Insert sth to the begining of each line in a selected rectangle</a></li>
-</ul>
-</li>
-<li><a href="#sec-2">2. Modes</a>
-<ul>
-<li><a href="#sec-2-1">2.1. org-mode</a></li>
-<li><a href="#sec-2-2">2.2. Python IDE</a></li>
-</ul>
-</li>
+<li><a href="#sec-1">1. shortcuts</a></li>
+<li><a href="#sec-2">2. Math/Latex</a></li>
 </ul>
 </div>
 </div>
+
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Commands</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> shortcuts</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Case</h3>
-<div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
-<li>M-l
+<li>C-c C-x \ : runs the command org-toggle-pretty-entities
 </li>
 </ul>
-<p>
-Convert following word to lower case (downcase-word).
-</p>
-
-<ul class="org-ul">
-<li>M-u
-</li>
-</ul>
-<p>
-Convert following word to upper case (upcase-word). e.g. create abc -&gt; CREATE abc
-</p>
-
-<ul class="org-ul">
-<li>M-c
-</li>
-</ul>
-<p>
-Capitalize the following word (capitalize-word). e.g. create abc -&gt; Create abc
-</p>
-
-<ul class="org-ul">
-<li>C-x C-l
-</li>
-</ul>
-<p>
-Convert region to lower case (downcase-region).
-</p>
-
-<ul class="org-ul">
-<li>C-x C-u
-</li>
-</ul>
-<p>
-Convert region to upper case (upcase-region).
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Query replace</h3>
-<div class="outline-text-3" id="text-1-2">
-<ul class="org-ul">
-<li>M-% string RET newstring RET
-</li>
-</ul>
-<p>
-Replace some occurrences of string with newstring.
-</p>
-
-<p>
-C-M-% regexp RET newstring RET
-Replace some matches for regexp with newstring.
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Rectangles</h3>
-<div class="outline-text-3" id="text-1-3">
-<ul class="org-ul">
-<li>C-x r ?
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Insert sth to the begining of each line in a selected rectangle</h3>
-<div class="outline-text-3" id="text-1-4">
-<p>
-M-x string-insert-rectangle
-</p>
-</div>
 </div>
 </div>
 
 <div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Modes</h2>
+<h2 id="sec-2"><span class="section-number-2">2</span> Math/Latex</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> org-mode</h3>
-<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li></li>
+</ul>
 <p>
-<a href="org_mode.html">Notes for org-mode</a>
+If \(a^2=b\) and \( b=2 \), then the solution must be
+either $$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \].
 </p>
-</div>
-</div>
 
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Python IDE</h3>
-<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Matix
+</li>
+</ul>
+\begin{matrix}
+ a & b \\
+ c & d \\
+\end{matrix}
+
+\begin{pmatrix} 
+  \alpha     & \beta^{*}\\ 
+  \gamma^{*} & \delta 
+\end{pmatrix}
+
+\begin{bmatrix} 
+  \alpha     & \beta^{*}\\ 
+  \gamma^{*} & \delta 
+\end{bmatrix}
+
+
 <p>
-With jedi and elpy, Emacs can be a powerful Python IDE.
+$X =
 </p>
-</div>
+<p>
+\begin{array}{cc}
+x &amp; y <br  />
+z &amp; w <br  />
+\end{array}$
+</p>
+
+
+<p>
+\(M = \left( \begin{smallmatrix} a&b\\ c&d \end{smallmatrix} \right)\)
+</p>
+
+<ul class="org-ul">
+<li>matrix: unbracketed matrix
+</li>
+<li>pmatrix: matrix surrounded by parentheses
+</li>
+<li>bmatrix: matrix surrounded by square brackets
+</li>
+<li>vmatrix: matrix surrounded by single vertical lines
+</li>
+<li>Vmatrix: matrix surrounded by double vertical lines
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-03 Tue 20:36</p>
+<p class="date">Created: 2018-04-03 Tue 20:34</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

@@ -26,11 +26,10 @@
 - Notation:
   + (x, y) is an training example( x \in R^{n}, y \in {0, 1} )
   + m: the # of training examples( (x^{1}, y^{1}), (x^{2}, y^{2}), ..., (x^{m}, y^{m}) )
-      + m_{train}: the # of training examples
-      + m_{test}: the # of test examples
-  + n: the dimention of the input feature vector
+    + m_{train}: the # of training examples
+    + m_{test}: the # of test examples
+  + n_{x}: the dimention of the input feature vector
   + X: the input data
-
     X = 
     \begin{bmatrix} 
          |   |     | \\
@@ -38,43 +37,45 @@
          |   |     |        
     \end{bmatrix}    
 
-    X \in R^{mxn}
+    X \in R^{nxm}, X.shape = (n_{x}, m)
 
+  + Y: the output
+    Y = 
+    \begin{bmatrix}
+    y^{1} y^{2} ... y^{m}
+    \end{bmatrix}
 
+    Y \in R^{1xm}, Y.shape = (1, m)
+  + Keep w and b as separate  parameters
+  + superscript i indicates the i_{th} training example
+  + Loss functon is applied for only one single training example
+  + Cost function is for the entire training set
 
-
-
-Example: to be deleted
-If $a^2=b$ and \( b=2 \), then the solution must be
-either $$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \].
-
-\begin{matrix}
- a & b \\
- c & d \\
-\end{matrix}
-
-\begin{pmatrix} 
-  \alpha     & \beta^{*}\\ 
-  \gamma^{*} & \delta 
-\end{pmatrix}
-
-\begin{bmatrix} 
-  \alpha     & \beta^{*}\\ 
-  \gamma^{*} & \delta 
-\end{bmatrix}
-
-
-$X =
-\begin{array}{cc}
-x & y \\
-z & w \\
-\end{array}$
-
-
-$M = \left( \begin{smallmatrix} a&b\\ c&d \end{smallmatrix} \right)$
-
-- matrix: unbracketed matrix
-- pmatrix: matrix surrounded by parentheses
-- bmatrix: matrix surrounded by square brackets
-- vmatrix: matrix surrounded by single vertical lines
-- Vmatrix: matrix surrounded by double vertical lines
+** Logistic Regression
+   - Given x, want $\hat{y}$ = P(y=1|x)
+     x \in R^{n}, 
+   - Parameters: w \in R^{n}, b \in R
+   - Output:
+     
+     $\hat{y}$ = w^{T}x + b, is a linear functon of input x
+     
+     $\hat{y}$ = \sigma(w^{T}x + b)
+     
+     \sigma(z) = $\frac{1}{1+e^{-z}}$, or \sigma(z) = $1\Big/(1+e^{-z})^{}$
+     + \sigma(0) = 0.5
+     + \sigma(\infty) = 1
+     + \sigma(-\infty) = 0
+** Cost function
+   - $\hat{y^i}$ = \sigma(w^{T}x^{i} + b), where \sigma(z^{i}) = $\frac{1}{1+e^{(-z)^{i}}}$
+   - Given {(x^{1}, y^{1}), ..., (x^{m}, y^{m})}, train the model and find w and b so that $\hat{y}^i$ \approx y^{i}
+   - Loss (error) function
+     + want loss function as small as possible
+     + First function would be the squared root error L($\hat{y}$, y) = $\frac{1}{2}$ ($\hat{y}$ - y)^{2}
+       + we do not use this because it my leads to optimization problem which is not convex, means it contains
+         local optimum points.
+     + The loss function we'll use: L($\hat{y}$, y) = -(ylog$\hat{y}$ +(1-y)log(1-$\hat{y}$))
+       + if y=1 L($\hat{y}$, y) = -log$\hat{y}$, want log$\hat{y}$ large, want $\hat{y}$ large(y->1)
+       + if y=0 L($\hat{y}$, y) = -log(1-$\hat{y}$), want log(1-$\hat{y}$) large, want $\hat{y}$ small(y->0)
+       + the loss functiion was defined with respect to a single training example
+   - Cost function which measures how well you are doing on the entire training set.
+     + J(w, b) = $\frac{1}{m}$ $\sum_{i=1}^{m}$ L($\hat{y}^{i}$, y^{i}) = -$\frac{1}{m}$ $\sum_{i=1}^{m}$ [y^{i}log$\hat{y}^{i}$ + (1-y^{i})log(1-log$\hat{y}^{i}$)]

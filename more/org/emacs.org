@@ -32,5 +32,9 @@ Replace some matches for regexp with newstring.
 ** Insert sth to the begining of each line in a selected rectangle
    M-x string-insert-rectangle
 
+* Modes
+** org-mode
+[[file:org_mode.org][Notes for org-mode]]
+
 ** Python IDE
 With jedi and elpy, Emacs can be a powerful Python IDE.
