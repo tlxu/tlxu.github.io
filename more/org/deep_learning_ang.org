@@ -70,12 +70,24 @@
    - Given {(x^{1}, y^{1}), ..., (x^{m}, y^{m})}, train the model and find w and b so that $\hat{y}^i$ \approx y^{i}
    - Loss (error) function
      + want loss function as small as possible
-     + First function would be the squared root error L($\hat{y}$, y) = $\frac{1}{2}$ ($\hat{y}$ - y)^{2}
-       + we do not use this because it my leads to optimization problem which is not convex, means it contains
+     + First function would be the squared root error $\mathcal{L}$($\hat{y}$, y) = $\frac{1}{2}$ ($\hat{y}$ - y)^{2}
+       + we do not use this because it may lead to optimization problem which is not convex, means it contains
          local optimum points.
-     + The loss function we'll use: L($\hat{y}$, y) = -(ylog$\hat{y}$ +(1-y)log(1-$\hat{y}$))
-       + if y=1 L($\hat{y}$, y) = -log$\hat{y}$, want log$\hat{y}$ large, want $\hat{y}$ large(y->1)
-       + if y=0 L($\hat{y}$, y) = -log(1-$\hat{y}$), want log(1-$\hat{y}$) large, want $\hat{y}$ small(y->0)
+     + The loss function we'll use: $\mathcal{L}$($\hat{y}$, y) = -(ylog$\hat{y}$ +(1-y)log(1-$\hat{y}$))
+       + if y=1 $\mathcal{L}$($\hat{y}$, y) = -log$\hat{y}$, want log$\hat{y}$ large, want $\hat{y}$ large(y->1)
+       + if y=0 $\mathcal{L}$($\hat{y}$, y) = -log(1-$\hat{y}$), want log(1-$\hat{y}$) large, want $\hat{y}$ small(y->0)
        + the loss functiion was defined with respect to a single training example
    - Cost function which measures how well you are doing on the entire training set.
      + J(w, b) = $\frac{1}{m}$ $\sum_{i=1}^{m}$ L($\hat{y}^{i}$, y^{i}) = -$\frac{1}{m}$ $\sum_{i=1}^{m}$ [y^{i}log$\hat{y}^{i}$ + (1-y^{i})log(1-log$\hat{y}^{i}$)]
+** Gradient Decent
+   want to find w,b that minimize $\mathcal{J}$(w,b), $\mathcal{J}$(w,b) is a convex function.
+   $\frac{\partial{J}}{\partial{w}}$
+
+   Repeat {
+
+       w := w - \alpha$\frac{\partial{J(w)}}{\partial{w}}$ = w - \alpha*dw
+
+   }
+   
+   - \alpha is the learning rate and it controls how much step we take on each iteration.
+   - use "dw" to represent derivative term $\frac{\partial{J(w)}}{\partial{w}}$, same for "db"
