@@ -89,5 +89,18 @@
 
    }
    
-   - \alpha is the learning rate and it controls how much step we take on each iteration.
+   - \alpha is the learning rate and it controls how big a step we take on each iteration.
    - use "dw" to represent derivative term $\frac{\partial{J(w)}}{\partial{w}}$, same for "db"
+** Derivatives
+   - f(a) = 3a, the slope(derivative) of f(a) at a=2 is 3.
+     
+     $\frac{df(a)}{da}$ = 3 = $\frac{d}{da}$ f(a)
+
+   - J = 3v, v = a + u 
+     
+     $\frac{dJ}{du}$ = $\frac{dJ}{dv}$ $\frac{dv}{du}$ = 3 * 1 = 3
+** Computation Graph
+   - forward or left to right calculation to compute the cost function
+   - backward or right to left calculation to compute the derivatives
+
+** Logistic Regression Gradient decent
