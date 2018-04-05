@@ -104,3 +104,9 @@
    - backward or right to left calculation to compute the derivatives
 
 ** Logistic Regression Gradient decent
+   x1,w1,x2,w2,b  ->  z = w1x1 + w2x2 + b  ->  a = \sigma(z)  -> L(a,y)
+   - da = $\frac{dL}{da}$ = -$\frac{y}{a}$ + $\frac{1-y}{1-a}$
+   - dz = $\frac{dL}{dz}$ = $\frac{dL}{da}$ * $\frac{da}{dz}$ = (-$\frac{y}{a}$ + $\frac{1-y}{1-a}$) * a(1-a) = a-y
+   - dw1 = x1*dz,  dw2 = x2*dz,  db = dz
+   - w1 := w1 -\alpha dw1,  w2 := w2 - \alpha dw2,  b := b - \alpha db
+   

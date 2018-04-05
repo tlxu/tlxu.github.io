@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Notes for Neural Networks and Deep Learning</title>
-<!-- 2018-04-04 Wed 22:30 -->
+<!-- 2018-04-05 Thu 09:52 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Notes for Neural Networks and Deep Learning</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Alex" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -58,15 +65,14 @@
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -136,48 +142,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        // Only one of the two following lines, depending on user settings
-        // First allows browser-native MathML display, second forces HTML/CSS
-        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
-            jax: ["input/TeX", "output/HTML-CSS"],
-        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
-                     "TeX/noUndefined.js"],
-        tex2jax: {
-            inlineMath: [ ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
-            skipTags: ["script","noscript","style","textarea","pre","code"],
-            ignoreClass: "tex2jax_ignore",
-            processEscapes: false,
-            processEnvironments: true,
-            preview: "TeX"
-        },
-        showProcessingMessages: true,
         displayAlign: "center",
-        displayIndent: "2em",
+        displayIndent: "0em",
 
-        "HTML-CSS": {
-             scale: 100,
-             availableFonts: ["STIX","TeX"],
-             preferredFont: "TeX",
-             webFont: "TeX",
-             imageFont: "TeX",
-             showMathMenu: true,
-        },
-        MMLorHTML: {
-             prefer: {
-                 MSIE:    "MML",
-                 Firefox: "MML",
-                 Opera:   "HTML",
-                 other:   "HTML"
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
              }
-        }
-    });
-/*]]>*///-->
+});
 </script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -186,88 +172,72 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Courses</a></li>
-<li><a href="#sec-2">2. NN and DL</a>
+<li><a href="#orgheadline1">1. Courses</a></li>
+<li><a href="#orgheadline8">2. NN and DL</a>
 <ul>
-<li><a href="#sec-2-1">2.1. Logistic Regression</a></li>
-<li><a href="#sec-2-2">2.2. Cost function</a></li>
-<li><a href="#sec-2-3">2.3. Gradient Decent</a></li>
-<li><a href="#sec-2-4">2.4. Derivatives</a></li>
-<li><a href="#sec-2-5">2.5. Computation Graph</a></li>
-<li><a href="#sec-2-6">2.6. Logistic Regression Gradient decent</a></li>
+<li><a href="#orgheadline2">2.1. Logistic Regression</a></li>
+<li><a href="#orgheadline3">2.2. Cost function</a></li>
+<li><a href="#orgheadline4">2.3. Gradient Decent</a></li>
+<li><a href="#orgheadline5">2.4. Derivatives</a></li>
+<li><a href="#orgheadline6">2.5. Computation Graph</a></li>
+<li><a href="#orgheadline7">2.6. Logistic Regression Gradient decent</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Courses</h2>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Courses</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
-<li>Neural Networks and Deep Learning (4 weeks)
-</li>
-<li>Improving Deep Neural Networks: Hyperameter tuning, Regularization and Optimization (3 weeks)
-</li>
-<li>Structuring your Machine Learning project (2 weeks)
-</li>
-<li>Convolutional Neural Networks(CNN)
-</li>
-<li>Natural Language Processing(NLP): Builing Sequence Models
-</li>
+<li>Neural Networks and Deep Learning (4 weeks)</li>
+<li>Improving Deep Neural Networks: Hyperameter tuning, Regularization and Optimization (3 weeks)</li>
+<li>Structuring your Machine Learning project (2 weeks)</li>
+<li>Convolutional Neural Networks(CNN)</li>
+<li>Natural Language Processing(NLP): Builing Sequence Models</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> NN and DL</h2>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8"><span class="section-number-2">2</span> NN and DL</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li>RELU function: Rectified Linear Unit
-</li>
-<li>A single neuron network: y = wx + b, wich is linear regression
-</li>
-<li>Supervised learning
-</li>
-<li>Structured data vs unstructured data
-</li>
-<li>Drivers behind the rise of Deep Learning
+<li>RELU function: Rectified Linear Unit</li>
+<li>A single neuron network: y = wx + b, wich is linear regression</li>
+<li>Supervised learning</li>
+<li>Structured data vs unstructured data</li>
+<li><p>
+Drivers behind the rise of Deep Learning
 Scale drives deep learning process, to hit a very high performance you need two things: 
+</p>
 <ol class="org-ol">
-<li>bigger NN to take advantage of huge amount of data
-</li>
-<li>more data
-</li>
+<li>bigger NN to take advantage of huge amount of data</li>
+<li>more data</li>
 </ol>
 <p>
 Scale of:
 </p>
 <ol class="org-ol">
-<li>data
-</li>
-<li>computation: CPU GPU
-</li>
-<li>algorithms: sigmoid -&gt; RELU function
-</li>
-</ol>
-</li>
+<li>data</li>
+<li>computation: CPU GPU</li>
+<li>algorithms: sigmoid -&gt; RELU function</li>
+</ol></li>
 
 <li>Notation:
 <ul class="org-ul">
-<li>(x, y) is an training example( x &isin; R<sup>n</sup>, y &isin; {0, 1} )
-</li>
+<li>(x, y) is an training example( x &isin; R<sup>n</sup>, y &isin; {0, 1} )</li>
 <li>m: the # of training examples( (x<sup>1</sup>, y<sup>1</sup>), (x<sup>2</sup>, y<sup>2</sup>), &#x2026;, (x<sup>m</sup>, y<sup>m</sup>) )
 <ul class="org-ul">
-<li>m<sub>train</sub>: the # of training examples
-</li>
-<li>m<sub>test</sub>: the # of test examples
-</li>
-</ul>
-</li>
-<li>n<sub>x</sub>: the dimention of the input feature vector
-</li>
-<li>X: the input data
+<li>m<sub>train</sub>: the # of training examples</li>
+<li>m<sub>test</sub>: the # of test examples</li>
+</ul></li>
+<li>n<sub>x</sub>: the dimention of the input feature vector</li>
+<li><p>
+X: the input data
 X = 
+</p>
 \begin{bmatrix} 
      |   |     | \\
      x^{1 } x^{2} ... x^{m} \\
@@ -276,42 +246,37 @@ X =
 
 <p>
 X &isin; R<sup>nxm</sup>, X.shape = (n<sub>x</sub>, m)
-</p>
-</li>
+</p></li>
 
-<li>Y: the output
+<li><p>
+Y: the output
 Y = 
+</p>
 \begin{bmatrix}
 y^{1} y^{2} ... y^{m}
 \end{bmatrix}
 
 <p>
 Y &isin; R<sup>1xm</sup>, Y.shape = (1, m)
-</p>
-</li>
-<li>Keep w and b as separate  parameters
-</li>
-<li>superscript i indicates the i<sub>th</sub> training example
-</li>
-<li>Loss functon is applied for only one single training example
-</li>
-<li>Cost function is for the entire training set
-</li>
-</ul>
-</li>
+</p></li>
+<li>Keep w and b as separate  parameters</li>
+<li>superscript i indicates the i<sub>th</sub> training example</li>
+<li>Loss functon is applied for only one single training example</li>
+<li>Cost function is for the entire training set</li>
+</ul></li>
 </ul>
 </div>
 
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Logistic Regression</h3>
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">2.1</span> Logistic Regression</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>Given x, want \(\hat{y}\) = P(y=1|x)
-x &isin; R<sup>n</sup>, 
-</li>
-<li>Parameters: w &isin; R<sup>n</sup>, b &isin; R
-</li>
-<li>Output:
+x &isin; R<sup>n</sup>,</li>
+<li>Parameters: w &isin; R<sup>n</sup>, b &isin; R</li>
+<li><p>
+Output:
+</p>
 
 <p>
 \(\hat{y}\) = w<sup>T</sup>x + b, is a linear functon of input x
@@ -325,62 +290,46 @@ x &isin; R<sup>n</sup>,
 &sigma;(z) = \(\frac{1}{1+e^{-z}}\), or &sigma;(z) = \(1\Big/(1+e^{-z})^{}\)
 </p>
 <ul class="org-ul">
-<li>&sigma;(0) = 0.5
-</li>
-<li>&sigma;(&infin;) = 1
-</li>
-<li>&sigma;(-&infin;) = 0
-</li>
-</ul>
-</li>
+<li>&sigma;(0) = 0.5</li>
+<li>&sigma;(&infin;) = 1</li>
+<li>&sigma;(-&infin;) = 0</li>
+</ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Cost function</h3>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">2.2</span> Cost function</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
-<li>\(\hat{y^i}\) = &sigma;(w<sup>T</sup>x<sup>i</sup> + b), where &sigma;(z<sup>i</sup>) = \(\frac{1}{1+e^{(-z)^{i}}}\)
-</li>
-<li>Given {(x<sup>1</sup>, y<sup>1</sup>), &#x2026;, (x<sup>m</sup>, y<sup>m</sup>)}, train the model and find w and b so that \(\hat{y}^i\) &asymp; y<sup>i</sup>
-</li>
+<li>\(\hat{y^i}\) = &sigma;(w<sup>T</sup>x<sup>i</sup> + b), where &sigma;(z<sup>i</sup>) = \(\frac{1}{1+e^{(-z)^{i}}}\)</li>
+<li>Given {(x<sup>1</sup>, y<sup>1</sup>), &#x2026;, (x<sup>m</sup>, y<sup>m</sup>)}, train the model and find w and b so that \(\hat{y}^i\) &asymp; y<sup>i</sup></li>
 <li>Loss (error) function
 <ul class="org-ul">
-<li>want loss function as small as possible
-</li>
-<li>First function would be the squared root error $\mathcal{L}$(\(\hat{y}\), y) = \(\frac{1}{2}\) (\(\hat{y}\) - y)<sup>2</sup>
+<li>want loss function as small as possible</li>
+<li>First function would be the squared root error \(\mathcal{L}\)(\(\hat{y}\), y) = \(\frac{1}{2}\) (\(\hat{y}\) - y)<sup>2</sup>
 <ul class="org-ul">
 <li>we do not use this because it may lead to optimization problem which is not convex, means it contains
-local optimum points.
-</li>
-</ul>
-</li>
-<li>The loss function we'll use: $\mathcal{L}$(\(\hat{y}\), y) = -(ylog\(\hat{y}\) +(1-y)log(1-\(\hat{y}\)))
+local optimum points.</li>
+</ul></li>
+<li>The loss function we'll use: \(\mathcal{L}\)(\(\hat{y}\), y) = -(ylog\(\hat{y}\) +(1-y)log(1-\(\hat{y}\)))
 <ul class="org-ul">
-<li>if y=1 $\mathcal{L}$(\(\hat{y}\), y) = -log\(\hat{y}\), want log\(\hat{y}\) large, want \(\hat{y}\) large(y-&gt;1)
-</li>
-<li>if y=0 $\mathcal{L}$(\(\hat{y}\), y) = -log(1-\(\hat{y}\)), want log(1-\(\hat{y}\)) large, want \(\hat{y}\) small(y-&gt;0)
-</li>
-<li>the loss functiion was defined with respect to a single training example
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li>if y=1 \(\mathcal{L}\)(\(\hat{y}\), y) = -log\(\hat{y}\), want log\(\hat{y}\) large, want \(\hat{y}\) large(y-&gt;1)</li>
+<li>if y=0 \(\mathcal{L}\)(\(\hat{y}\), y) = -log(1-\(\hat{y}\)), want log(1-\(\hat{y}\)) large, want \(\hat{y}\) small(y-&gt;0)</li>
+<li>the loss functiion was defined with respect to a single training example</li>
+</ul></li>
+</ul></li>
 <li>Cost function which measures how well you are doing on the entire training set.
 <ul class="org-ul">
-<li>J(w, b) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}^{i}\), y<sup>i</sup>) = -\(\frac{1}{m}\) \(\sum_{i=1}^{m}\) [y<sup>i</sup>log\(\hat{y}^{i}\) + (1-y<sup>i</sup>)log(1-log\(\hat{y}^{i}\))]
-</li>
-</ul>
-</li>
+<li>J(w, b) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}^{i}\), y<sup>i</sup>) = -\(\frac{1}{m}\) \(\sum_{i=1}^{m}\) [y<sup>i</sup>log\(\hat{y}^{i}\) + (1-y<sup>i</sup>)log(1-log\(\hat{y}^{i}\))]</li>
+</ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Gradient Decent</h3>
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">2.3</span> Gradient Decent</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
-want to find w,b that minimize $\mathcal{J}$(w,b), $\mathcal{J}$(w,b) is a convex function.
+want to find w,b that minimize \(\mathcal{J}\)(w,b), \(\mathcal{J}\)(w,b) is a convex function.
 \(\frac{\partial{J}}{\partial{w}}\)
 </p>
 
@@ -397,54 +346,62 @@ w := w - &alpha;\(\frac{\partial{J(w)}}{\partial{w}}\) = w - &alpha;*dw
 </p>
 
 <ul class="org-ul">
-<li>&alpha; is the learning rate and it controls how big a step we take on each iteration.
-</li>
-<li>use "dw" to represent derivative term \(\frac{\partial{J(w)}}{\partial{w}}\), same for "db"
-</li>
+<li>&alpha; is the learning rate and it controls how big a step we take on each iteration.</li>
+<li>use "dw" to represent derivative term \(\frac{\partial{J(w)}}{\partial{w}}\), same for "db"</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Derivatives</h3>
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">2.4</span> Derivatives</h3>
 <div class="outline-text-3" id="text-2-4">
 <ul class="org-ul">
-<li>f(a) = 3a, the slope(derivative) of f(a) at a=2 is 3.
+<li><p>
+f(a) = 3a, the slope(derivative) of f(a) at a=2 is 3.
+</p>
 
 <p>
 \(\frac{df(a)}{da}\) = 3 = \(\frac{d}{da}\) f(a)
-</p>
-</li>
+</p></li>
 
-<li>J = 3v, v = a + u 
+<li><p>
+J = 3v, v = a + u 
+</p>
 
 <p>
 \(\frac{dJ}{du}\) = \(\frac{dJ}{dv}\) \(\frac{dv}{du}\) = 3 * 1 = 3
-</p>
-</li>
+</p></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2-5" class="outline-3">
-<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Computation Graph</h3>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">2.5</span> Computation Graph</h3>
 <div class="outline-text-3" id="text-2-5">
 <ul class="org-ul">
-<li>forward or left to right calculation to compute the cost function
-</li>
-<li>backward or right to left calculation to compute the derivatives
-</li>
+<li>forward or left to right calculation to compute the cost function</li>
+<li>backward or right to left calculation to compute the derivatives</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-2-6" class="outline-3">
-<h3 id="sec-2-6"><span class="section-number-3">2.6</span> Logistic Regression Gradient decent</h3>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">2.6</span> Logistic Regression Gradient decent</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+x1,w1,x2,w2,b  -&gt;  z = w1x1 + w2x2 + b  -&gt;  a = &sigma;(z)  -&gt; L(a,y)
+</p>
+<ul class="org-ul">
+<li>da = \(\frac{dL}{da}\) = -\(\frac{y}{a}\) + \(\frac{1-y}{1-a}\)</li>
+<li>dz = \(\frac{dL}{dz}\) = \(\frac{dL}{da}\) * \(\frac{da}{dz}\) = (-\(\frac{y}{a}\) + \(\frac{1-y}{1-a}\)) * a(1-a) = a-y</li>
+<li>dw1 = x1*dz,  dw2 = x2*dz,  db = dz</li>
+<li>w1 := w1 -&alpha; dw1,  w2 := w2 - &alpha; dw2,  b := b - &alpha; db</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-04 Wed 22:30</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="date">Created: 2018-04-05 Thu 09:52</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
