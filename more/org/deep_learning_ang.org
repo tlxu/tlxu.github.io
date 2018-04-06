@@ -178,7 +178,7 @@ Z = w^{T}X + b = np.dot(w.T, X) + b
 A = \sigma(Z)
 dZ = A - Y
 dw = $\frac{1}{m}$ X dZ^{T}
-db = $\frac{1}{m} np.sum(dZ)
+db = $\frac{1}{m}$ np.sum(dZ)
 
 w := w - \alpha dw
 b := b - \alpha db
