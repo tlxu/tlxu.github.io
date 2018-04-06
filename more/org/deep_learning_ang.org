@@ -1,5 +1,7 @@
 #+STARTUP: showall
 #+TITLE: Notes for Neural Networks and Deep Learning
+#+OPTIONS: \n:t
+#+STARTUP: indent
 
 * Courses
 1. Neural Networks and Deep Learning (4 weeks)
@@ -104,9 +106,32 @@
    - backward or right to left calculation to compute the derivatives
 
 ** Logistic Regression Gradient decent
-   x1,w1,x2,w2,b  ->  z = w1x1 + w2x2 + b  ->  a = \sigma(z)  -> L(a,y)
+   x_{1},w_{1},x_{2},w_{2},b  ->  z = w_{1}x_{1} + w_{2}x_{2} + b  ->  a = \sigma(z)  -> L(a,y)
    - da = $\frac{dL}{da}$ = -$\frac{y}{a}$ + $\frac{1-y}{1-a}$
    - dz = $\frac{dL}{dz}$ = $\frac{dL}{da}$ * $\frac{da}{dz}$ = (-$\frac{y}{a}$ + $\frac{1-y}{1-a}$) * a(1-a) = a-y
-   - dw1 = x1*dz,  dw2 = x2*dz,  db = dz
-   - w1 := w1 -\alpha dw1,  w2 := w2 - \alpha dw2,  b := b - \alpha db
-   
+   - dw_{1} = x_{1}*dz,  dw_{2} = x_{2}*dz,  db = dz
+   - w_{1} := w1 -\alpha dw_{1},  w_{2} := w_{2} - \alpha dw_{2},  b := b - \alpha db
+** Logistic Regression on m examples
+   J=0, dw1=0, dw2=0, db=0
+   For i = 1 to m
+       z^{i} = w^{T}x^{i} + b
+       a^{i} = \sigma(z^{i})
+       J += -(y^{i}loga^{i} + (1-y^{i})log(1-a^{i}))
+       dz^{i} = a^{i} - y^{i}
+       dw_{1} += x_{1}^{i} dz^{i}
+       dw_{2} += x_{2}^{i} dz^{i}   # we have only 2 features in this example
+       db += dz^{i}
+   J /= m
+   dw_{1} /= m, dw_{2} /= m, db_{} /= m
+
+   w_{1} := w1 -\alpha dw_{1},  w_{2} := w_{2} - \alpha dw_{2},  b := b - \alpha db   
+
+   Note:
+   - as you can see, implementation logistic regression in this way, you need to write 2 for-loops. One for-loop
+   over m training examples and the second for-loop is a for-loop over all the n features.
+   - two many explicit for-loops makes the algorithms run less efficiency. Use vertorization instead.
+
+** Vectorization
+   avoid using explicit for-loops.
+   Single Instruction Multiple Data(SIMD) features in python
+
