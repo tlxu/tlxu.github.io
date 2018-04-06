@@ -156,6 +156,7 @@
    dw /= m, db_{} /= m
    w_{1} := w1 -\alpha dw_{1},  w_{2} := w_{2} - \alpha dw_{2},  b := b - \alpha db   
    #+END_VERSE
+   
 *** Vectorizing Logistic Regression
 Z = [z^{1}, z^{2}, ..., z^{m}] = w^{T} X + [b, b, ..., b] = [w^{T}x^{1} + b, w^{T}x^{2} + b, ..., w^{T}x^{m} + b]
 #+BEGIN_SRC
@@ -163,4 +164,24 @@ Z = np.dot(w.T, X) + b   Note: b here is a (1,1) number
 #+END_SRC
 
 A = [a^{1}, a^{2}, ..., a^{m}] = \sigma(Z)
+
+Y = [y^{1}, y^{2}, ..., y^{3}]
+
+dZ = [dz^{1}, dz^{2}, ..., dz^{m}] = [a^{1}-y^{1}, a^{2}-y^{2}, ..., a^{m}-y^{m}] = A - Y
+
+db = $\frac{1}{m}$ $\sum_{i=1}^{m}$ dz^{i} = $\frac{1}{m}$ np.sum(dZ)
+
+dw = $\frac{1}{m}$ X dZ^{T}
+
+#+BEGIN_VERSE
+Z = w^{T}X + b = np.dot(w.T, X) + b
+A = \sigma(Z)
+dZ = A - Y
+dw = $\frac{1}{m}$ X dZ^{T}
+db = $\frac{1}{m} np.sum(dZ)
+
+w := w - \alpha dw
+b := b - \alpha db
+
+#+END_VERSE
 

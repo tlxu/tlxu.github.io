@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-04-06 Fri 09:37 -->
+<!-- 2018-04-06 Fri 16:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes for Neural Networks and Deep Learning</title>
@@ -554,6 +554,7 @@ dw /= m, db<sub>nil</sub> /= m<br />
 w<sub>1</sub> := w1 -&alpha; dw<sub>1</sub>,  w<sub>2</sub> := w<sub>2</sub> - &alpha; dw<sub>2</sub>,  b := b - &alpha; db<br />
 </p>
 </div>
+
 <div id="outline-container-orga50e95d" class="outline-4">
 <h4 id="orga50e95d"><span class="section-number-4">2.8.1</span> Vectorizing Logistic Regression</h4>
 <div class="outline-text-4" id="text-2-8-1">
@@ -567,6 +568,34 @@ Z = np.dot(w.T, X) + b   Note: b here is a (1,1) number
 <p>
 A = [a<sup>1</sup>, a<sup>2</sup>, &#x2026;, a<sup>m</sup>] = &sigma;(Z)<br />
 </p>
+
+<p>
+Y = [y<sup>1</sup>, y<sup>2</sup>, &#x2026;, y<sup>3</sup>]<br />
+</p>
+
+<p>
+dZ = [dz<sup>1</sup>, dz<sup>2</sup>, &#x2026;, dz<sup>m</sup>] = [a<sup>1</sup>-y<sup>1</sup>, a<sup>2</sup>-y<sup>2</sup>, &#x2026;, a<sup>m</sup>-y<sup>m</sup>] = A - Y<br />
+</p>
+
+<p>
+db = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) dz<sup>i</sup> = \(\frac{1}{m}\) np.sum(dZ)<br />
+</p>
+
+<p>
+dw = \(\frac{1}{m}\) X dZ<sup>T</sup><br />
+</p>
+
+<p class="verse">
+Z = w<sup>T</sup>X + b = np.dot(w.T, X) + b<br />
+A = &sigma;(Z)<br />
+dZ = A - Y<br />
+dw = \(\frac{1}{m}\) X dZ<sup>T</sup><br />
+db = $\frac{1}{m} np.sum(dZ)<br />
+<br />
+w := w - &alpha; dw<br />
+b := b - &alpha; db<br />
+<br />
+</p>
 </div>
 </div>
 </div>
@@ -574,7 +603,7 @@ A = [a<sup>1</sup>, a<sup>2</sup>, &#x2026;, a<sup>m</sup>] = &sigma;(Z)<br />
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-06 Fri 09:37</p>
+<p class="date">Created: 2018-04-06 Fri 16:49</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
