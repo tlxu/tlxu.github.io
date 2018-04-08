@@ -196,6 +196,7 @@ b := b - \alpha db
   + a = a.reshape((5,1))
   
 ** Logistic regression cost function
+*** cost on one single example
 Interpre $\hat{}$ = P(y=1|x)  The chance that y is equal to 1 for a given set of input features x.
 
 If y=1    P(y|x) = $\hat{y}$         the chance of y is equal to 1
@@ -208,6 +209,49 @@ P(y|x) = $\hat{y}^{y}$ $(1-\hat{y})^(1-y)$
 ->
 
 logP(y|x) = log($\hat{y}^{y}$ $(1-\hat{y})^(1-y)$) = ylog$\hat{y}$ + (1-y)log(1-$\hat{y}$) = -L($\hat{y}$, y)
+*** Cost on m examples
+P(lables in training set) = $\prod_{i=1}^{m}$ P(y^{(i)}|x^{(i)})
+-> logP(lables in training set) = log $\prod_{i=1}^{m}$ P(y^{(i)}|x^{(i)})
+-> logP(...) = $\sum_{i=1}^{m}$ logP(y^{(i)}|x^{(i)}) = -$\sum_{i=1}^{m}$ L($\hat{y}^{(i)}$, y^{(i)})
+in statistics, it is called the principle of maximum likelihood estimation, which means choose parameters to maximum logP(...)
+-> This justifies the cost we had for logistic regression
+Cost: J(w,b) = $\sum_{i=1}^{m}$ L($\hat{y}^{(i)}$, y^{(i)})
+because we now want to minimize the J(w,b) instead of maximum the likelihood, we've gotten rid of the minus sign in previous equation.
+-> Finally, for convenience or the initial that our quantities are better scale, we just add one over m extra scaling factor there.
+Cost: J(w,b) = $\frac{1}{m}$ $\sum_{i=1}^{m}$ L($\hat{y}^{(i)}$, y^{(i)})
 
-** test
+To summarize, by minimizing this cost function J of w and b we're really carrying out maximum likelihood estimation with the logitic
+regression model under the assumption that our training examples were on my ID or identically independently distributed.
 
+** Neural Network Reresentation
+*** For one example
+Given input x:
+    + a^{[0]} = x
+    + z^{[1]} = W^{[1]}a^{[0]} + b^{[1]}
+      a^{[1]} = \sigma(z^{[1]})
+    + z^{[2]} = W^{[2]}a^{[1]} + b^{[2]}
+      a^{[2]} = \sigma(z^{[2]})
+      
+#+ATTR_HTML: :width 800
+#+ATTR_ORG: :width 800
+#+CAPTION: for-loop on one example
+[[./img/dl_ang/nn_reprentation_1_example.png]]
+
+#+ATTR_HTML: :width 800
+#+ATTR_ORG: :width 800
+#+CAPTION: Vectoring on one example
+[[./img/dl_ang/nn_reprentation_1_example_2.png]]
+
+*** For m examples
+#+ATTR_HTML: :width 800
+#+ATTR_ORG: :width 800
+#+CAPTION: for-loop on m examples
+[[./img/dl_ang/nn_reprentation_m_examples_1.png]]
+
+#+ATTR_HTML: :width 800
+#+ATTR_ORG: :width 800
+#+CAPTION: Vectorizing accross m examples
+[[./img/dl_ang/nn_reprentation_m_examples_2.png]]
+
+- Horizontal index: different training examples from left to right yor are scanning through the training set
+  Vertical index : different nodes in the nueural network, 
