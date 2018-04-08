@@ -142,7 +142,6 @@
 
    dw_{1} /= m, dw_{2} /= m    --> dw /= m   
 
-
    #+BEGIN_VERSE
    J=0, dw=0, db=0
    For i = 1 to m
@@ -177,11 +176,38 @@ dw = $\frac{1}{m}$ X dZ^{T}
 Z = w^{T}X + b = np.dot(w.T, X) + b
 A = \sigma(Z)
 dZ = A - Y
-dw = $\frac{1}{m}$ X dZ^{T}
+dw = $\frac{1}{m}$ X dZ^{T}    *X \in R^{nxm}    dZ \in R^{1xm}    dw \in R^{nx1}*
 db = $\frac{1}{m}$ np.sum(dZ)
 
 w := w - \alpha dw
 b := b - \alpha db
 
 #+END_VERSE
+
+** Python/numpy vectors
+- a = np.random.randn(5)
+  + a.shape = (5,), is a "rank 1" array
+  + Don't use this "rank 1" array
+- a = np.random.randn(5, 1), a.shape = (5,1) is a volumn vector
+- a = np.random.randn(1, 5), a.shape = (1,5) is a row vector
+- use assertion to check the shape of a vector/matrix
+  + assert(a.shape = (5,1))
+- use reshape to reshape an array
+  + a = a.reshape((5,1))
+  
+** Logistic regression cost function
+Interpre $\hat{}$ = P(y=1|x)  The chance that y is equal to 1 for a given set of input features x.
+
+If y=1    P(y|x) = $\hat{y}$         the chance of y is equal to 1
+If y=0    P(y|x) = 1 - $\hat{y}$     the chance of y is equal to 0
+
+->
+
+P(y|x) = $\hat{y}^{y}$ $(1-\hat{y})^(1-y)$
+
+->
+
+logP(y|x) = log($\hat{y}^{y}$ $(1-\hat{y})^(1-y)$) = ylog$\hat{y}$ + (1-y)log(1-$\hat{y}$) = -L($\hat{y}$, y)
+
+** test
 
