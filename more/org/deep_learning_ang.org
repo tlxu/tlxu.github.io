@@ -255,3 +255,8 @@ Given input x:
 
 - Horizontal index: different training examples from left to right yor are scanning through the training set
   Vertical index : different nodes in the nueural network, 
+
+#+ATTR_HTML: :width 800
+#+ATTR_ORG: :width 800
+#+CAPTION: Recap
+[[./img/dl_ang/nn_reprentation_m_examples_recap.png]]
