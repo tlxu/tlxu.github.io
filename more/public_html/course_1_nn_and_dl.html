@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-04-09 Mon 10:53 -->
+<!-- 2018-04-09 Mon 12:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes for Neural Networks and Deep Learning</title>
@@ -281,12 +281,13 @@ for the JavaScript code in this tag.
 <li><a href="#org2c3bbc8">4. Neural Network Reresentation</a>
 <ul>
 <li><a href="#org70ac41a">4.1. For one example</a></li>
-<li><a href="#org2b3f2ab">4.2. For m examples</a></li>
+<li><a href="#orgb435779">4.2. For m examples</a></li>
 </ul>
 </li>
-<li><a href="#org417e9ef">5. Activation function</a>
+<li><a href="#org4079b78">5. Activation function</a>
 <ul>
-<li><a href="#org259f863">5.1. Why non-linear activation functions?</a></li>
+<li><a href="#orgcf7fab0">5.1. g(Z)</a></li>
+<li><a href="#org1579006">5.2. Why non-linear activation functions?</a></li>
 </ul>
 </li>
 </ul>
@@ -717,8 +718,8 @@ a<sup>[2]</sup> = &sigma;(z<sup>[2]</sup>)<br /></li>
 </div>
 </div>
 
-<div id="outline-container-org2b3f2ab" class="outline-3">
-<h3 id="org2b3f2ab"><span class="section-number-3">4.2</span> For m examples</h3>
+<div id="outline-container-orgb435779" class="outline-3">
+<h3 id="orgb435779"><span class="section-number-3">4.2</span> For m examples</h3>
 <div class="outline-text-3" id="text-4-2">
 
 <div class="figure">
@@ -749,23 +750,44 @@ Vertical index : different nodes in the nueural network,<br /></li>
 </div>
 </div>
 
-<div id="outline-container-org417e9ef" class="outline-2">
-<h2 id="org417e9ef"><span class="section-number-2">5</span> Activation function</h2>
+<div id="outline-container-org4079b78" class="outline-2">
+<h2 id="org4079b78"><span class="section-number-2">5</span> Activation function</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org259f863" class="outline-3">
-<h3 id="org259f863"><span class="section-number-3">5.1</span> Why non-linear activation functions?</h3>
+<div id="outline-container-orgcf7fab0" class="outline-3">
+<h3 id="orgcf7fab0"><span class="section-number-3">5.1</span> g(Z)</h3>
 <div class="outline-text-3" id="text-5-1">
-<p>
-A linear activation function: the neural network is just outputting a linear function of the input no matter how many layers your neural network has.<br />
-</p>
+<ul class="org-ul">
+<li>g(Z) = sigmoid(Z) = \(\frac{1}{1+e^{-Z}}\), &isin; (0,1)<br /></li>
+<li>g(Z) = tanh(Z) = \(\frac{e^{Z} - e^{-Z}}{e^{Z} + e^{-Z}}\), &isin; (-1, 1)<br />
+always works better than sigmoid function, the only exception is the output layer for a binary classification<br />
+in which case y &isin; {0, 1}<br /></li>
+<li>one of the downsides of both sigmoid and tanh funcions is that if Z is either very large or very small<br />
+then the gradient or the drivative of the slope of this funcions becomes very small(being closing to zero),<br />
+which slows down gradient decent.<br /></li>
+<li>g(Z) = RELU(Z) = max(0, Z)<br />
+This is mostly recommended for hidden layers.<br />
+RELU: Rectified linear unit, the derivative is 1 as long as Z is positive and the derivative or the slope is<br />
+zero when Z is negative.<br /></li>
+<li>g(Z) = leaky RELU(Z)<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1579006" class="outline-3">
+<h3 id="org1579006"><span class="section-number-3">5.2</span> Why non-linear activation functions?</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>A linear activation function: the neural network is just outputting a linear function of the input no matter how many layers your neural network has.<br /></li>
+<li>Output layer may be OK using linear function if you are doing a regression problem and y is a real number y &isin; R<br /></li>
+<li>But for hidden layers, never use linear activation fucntions, use RELU, tanh&#x2026;<br /></li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-09 Mon 10:53</p>
+<p class="date">Created: 2018-04-09 Mon 12:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

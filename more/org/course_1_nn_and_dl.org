@@ -255,5 +255,21 @@ Given input x:
 [[./img/dl_ang/nn_reprentation_m_examples_recap.png]]
 
 * Activation function
+** g(Z)
+   - g(Z) = sigmoid(Z) = $\frac{1}{1+e^{-Z}}$, \in (0,1)
+   - g(Z) = tanh(Z) = $\frac{e^{Z} - e^{-Z}}{e^{Z} + e^{-Z}}$, \in (-1, 1)
+     always works better than sigmoid function, the only exception is the output layer for a binary classification
+     in which case y \in {0, 1}
+   - one of the downsides of both sigmoid and tanh funcions is that if Z is either very large or very small
+     then the gradient or the drivative of the slope of this funcions becomes very small(being closing to zero),
+     which slows down gradient decent.
+   - g(Z) = RELU(Z) = max(0, Z)
+     This is mostly recommended for hidden layers.
+     RELU: Rectified linear unit, the derivative is 1 as long as Z is positive and the derivative or the slope is
+     zero when Z is negative.
+   - g(Z) = leaky RELU(Z)
 ** Why non-linear activation functions?
-   A linear activation function: the neural network is just outputting a linear function of the input no matter how many layers your neural network has.
+   - A linear activation function: the neural network is just outputting a linear function of the input no matter how many layers your neural network has.
+   - Output layer may be OK using linear function if you are doing a regression problem and y is a real number y \in R
+   - But for hidden layers, never use linear activation fucntions, use RELU, tanh...
+     
