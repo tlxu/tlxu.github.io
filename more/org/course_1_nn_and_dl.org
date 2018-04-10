@@ -281,3 +281,17 @@ Given input x:
    - Output layer may be OK using linear function if you are doing a regression problem and y is a real number y \in R
    - But for hidden layers, never use linear activation fucntions, use RELU, tanh...
 
+* Derivatives of activation functions
+    a = g(z)
+  - sigmoid function
+    g'(z) = $\frac{d}{dz}$ g(z) = g(z)(1 - g(z)) = a(1-a)
+  - tanh function
+    g'(z) = 1 - (tanh(z))^{2} = 1 - a^{2}
+  - ReLU
+    g'(z) =
+        + 0, if z < 0
+        + 1, if z >= 0
+ - Leaky ReLU
+   g'(z) =
+       + 0.01, if z < 0
+       + 1,    if z >= 0
