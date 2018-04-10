@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-04-09 Mon 12:22 -->
+<!-- 2018-04-09 Mon 22:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes for Neural Networks and Deep Learning</title>
@@ -258,36 +258,36 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6986d58">1. NN and DL</a></li>
-<li><a href="#org2312cf1">2. Logistic Regression</a>
+<li><a href="#orge0f0c4f">1. NN and DL</a></li>
+<li><a href="#orgb780048">2. Logistic Regression</a>
 <ul>
-<li><a href="#orgb80ce41">2.1. Cost function</a></li>
-<li><a href="#org5cfc473">2.2. Gradient Decent</a></li>
-<li><a href="#org08f2fee">2.3. Derivatives</a></li>
-<li><a href="#org32af9f8">2.4. Computation Graph</a></li>
-<li><a href="#org358fe68">2.5. Logistic Regression Gradient decent</a></li>
-<li><a href="#org12a81c5">2.6. Logistic Regression on m examples</a></li>
-<li><a href="#orgaef67a9">2.7. Vectorization</a></li>
-<li><a href="#org64b5634">2.8. Vectorizing Logistic Regression</a></li>
-<li><a href="#orgd4b2176">2.9. Python/numpy vectors</a></li>
+<li><a href="#org9f2de62">2.1. Cost function</a></li>
+<li><a href="#org6e74efb">2.2. Gradient Decent</a></li>
+<li><a href="#org772a6c2">2.3. Derivatives</a></li>
+<li><a href="#orgd235b4d">2.4. Computation Graph</a></li>
+<li><a href="#org5872066">2.5. Logistic Regression Gradient decent</a></li>
+<li><a href="#org101d107">2.6. Logistic Regression on m examples</a></li>
+<li><a href="#org1752cca">2.7. Vectorization</a></li>
+<li><a href="#org63c9541">2.8. Vectorizing Logistic Regression</a></li>
+<li><a href="#org612fd8b">2.9. Python/numpy vectors</a></li>
 </ul>
 </li>
-<li><a href="#org83122e9">3. Logistic regression cost function</a>
+<li><a href="#org21b1b5e">3. Logistic regression cost function</a>
 <ul>
-<li><a href="#org5598b70">3.1. cost on one single example</a></li>
-<li><a href="#orgb054426">3.2. Cost on m examples</a></li>
+<li><a href="#org7df6dde">3.1. cost on one single example</a></li>
+<li><a href="#orga6f7dc9">3.2. Cost on m examples</a></li>
 </ul>
 </li>
-<li><a href="#org2c3bbc8">4. Neural Network Reresentation</a>
+<li><a href="#orgf1c1b11">4. Neural Network Reresentation</a>
 <ul>
-<li><a href="#org70ac41a">4.1. For one example</a></li>
-<li><a href="#orgb435779">4.2. For m examples</a></li>
+<li><a href="#org7d61a55">4.1. For one example</a></li>
+<li><a href="#orgb290077">4.2. For m examples</a></li>
 </ul>
 </li>
-<li><a href="#org4079b78">5. Activation function</a>
+<li><a href="#org385f1dd">5. Activation function</a>
 <ul>
-<li><a href="#orgcf7fab0">5.1. g(Z)</a></li>
-<li><a href="#org1579006">5.2. Why non-linear activation functions?</a></li>
+<li><a href="#orgc7b85da">5.1. g(Z)</a></li>
+<li><a href="#orgc346135">5.2. Why non-linear activation functions?</a></li>
 </ul>
 </li>
 </ul>
@@ -297,8 +297,8 @@ for the JavaScript code in this tag.
 ## #+STARTUP: indent<br />
 </p>
 
-<div id="outline-container-org6986d58" class="outline-2">
-<h2 id="org6986d58"><span class="section-number-2">1</span> NN and DL</h2>
+<div id="outline-container-orge0f0c4f" class="outline-2">
+<h2 id="orge0f0c4f"><span class="section-number-2">1</span> NN and DL</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>RELU function: Rectified Linear Unit<br /></li>
@@ -366,8 +366,8 @@ Y &isin; R<sup>1xm</sup>, Y.shape = (1, m)<br />
 </div>
 </div>
 
-<div id="outline-container-org2312cf1" class="outline-2">
-<h2 id="org2312cf1"><span class="section-number-2">2</span> Logistic Regression</h2>
+<div id="outline-container-orgb780048" class="outline-2">
+<h2 id="orgb780048"><span class="section-number-2">2</span> Logistic Regression</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Given x, want \(\hat{y}\) = P(y=1|x)<br />
@@ -395,8 +395,8 @@ Output:<br />
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-orgb80ce41" class="outline-3">
-<h3 id="orgb80ce41"><span class="section-number-3">2.1</span> Cost function</h3>
+<div id="outline-container-org9f2de62" class="outline-3">
+<h3 id="org9f2de62"><span class="section-number-3">2.1</span> Cost function</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>\(\hat{y^i}\) = &sigma;(w<sup>T</sup>x<sup>i</sup> + b), where &sigma;(z<sup>i</sup>) = \(\frac{1}{1+e^{(-z)^{i}}}\)<br /></li>
@@ -423,8 +423,8 @@ local optimum points.<br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5cfc473" class="outline-3">
-<h3 id="org5cfc473"><span class="section-number-3">2.2</span> Gradient Decent</h3>
+<div id="outline-container-org6e74efb" class="outline-3">
+<h3 id="org6e74efb"><span class="section-number-3">2.2</span> Gradient Decent</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 want to find w,b that minimize \(\mathcal{J}\)(w,b), \(\mathcal{J}\)(w,b) is a convex function.<br />
@@ -449,8 +449,8 @@ w := w - &alpha;\(\frac{\partial{J(w)}}{\partial{w}}\) = w - &alpha;*dw<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org08f2fee" class="outline-3">
-<h3 id="org08f2fee"><span class="section-number-3">2.3</span> Derivatives</h3>
+<div id="outline-container-org772a6c2" class="outline-3">
+<h3 id="org772a6c2"><span class="section-number-3">2.3</span> Derivatives</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li><p>
@@ -471,8 +471,8 @@ J = 3v, v = a + u<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org32af9f8" class="outline-3">
-<h3 id="org32af9f8"><span class="section-number-3">2.4</span> Computation Graph</h3>
+<div id="outline-container-orgd235b4d" class="outline-3">
+<h3 id="orgd235b4d"><span class="section-number-3">2.4</span> Computation Graph</h3>
 <div class="outline-text-3" id="text-2-4">
 <ul class="org-ul">
 <li>forward or left to right calculation to compute the cost function<br /></li>
@@ -481,8 +481,8 @@ J = 3v, v = a + u<br />
 </div>
 </div>
 
-<div id="outline-container-org358fe68" class="outline-3">
-<h3 id="org358fe68"><span class="section-number-3">2.5</span> Logistic Regression Gradient decent</h3>
+<div id="outline-container-org5872066" class="outline-3">
+<h3 id="org5872066"><span class="section-number-3">2.5</span> Logistic Regression Gradient decent</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 x<sub>1</sub>,w<sub>1</sub>,x<sub>2</sub>,w<sub>2</sub>,b  -&gt;  z = w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> + b  -&gt;  a = &sigma;(z)  -&gt; L(a,y)<br />
@@ -495,8 +495,8 @@ x<sub>1</sub>,w<sub>1</sub>,x<sub>2</sub>,w<sub>2</sub>,b  -&gt;  z = w<sub>1</s
 </ul>
 </div>
 </div>
-<div id="outline-container-org12a81c5" class="outline-3">
-<h3 id="org12a81c5"><span class="section-number-3">2.6</span> Logistic Regression on m examples</h3>
+<div id="outline-container-org101d107" class="outline-3">
+<h3 id="org101d107"><span class="section-number-3">2.6</span> Logistic Regression on m examples</h3>
 <div class="outline-text-3" id="text-2-6">
 <p class="verse">
 J=0, dw1=0, dw2=0, db=0<br />
@@ -523,8 +523,8 @@ Note:<br />
 </div>
 </div>
 
-<div id="outline-container-orgaef67a9" class="outline-3">
-<h3 id="orgaef67a9"><span class="section-number-3">2.7</span> Vectorization</h3>
+<div id="outline-container-org1752cca" class="outline-3">
+<h3 id="org1752cca"><span class="section-number-3">2.7</span> Vectorization</h3>
 <div class="outline-text-3" id="text-2-7">
 <p>
 avoid using explicit for-loops.<br />
@@ -560,8 +560,8 @@ w<sub>1</sub> := w1 -&alpha; dw<sub>1</sub>,  w<sub>2</sub> := w<sub>2</sub> - &
 </div>
 </div>
 
-<div id="outline-container-org64b5634" class="outline-3">
-<h3 id="org64b5634"><span class="section-number-3">2.8</span> Vectorizing Logistic Regression</h3>
+<div id="outline-container-org63c9541" class="outline-3">
+<h3 id="org63c9541"><span class="section-number-3">2.8</span> Vectorizing Logistic Regression</h3>
 <div class="outline-text-3" id="text-2-8">
 <p>
 Z = [z<sup>1</sup>, z<sup>2</sup>, &#x2026;, z<sup>m</sup>] = w<sup>T</sup> X + [b, b, &#x2026;, b] = [w<sup>T</sup>x<sup>1</sup> + b, w<sup>T</sup>x<sup>2</sup> + b, &#x2026;, w<sup>T</sup>x<sup>m</sup> + b]<br />
@@ -604,8 +604,8 @@ b := b - &alpha; db<br />
 </div>
 </div>
 
-<div id="outline-container-orgd4b2176" class="outline-3">
-<h3 id="orgd4b2176"><span class="section-number-3">2.9</span> Python/numpy vectors</h3>
+<div id="outline-container-org612fd8b" class="outline-3">
+<h3 id="org612fd8b"><span class="section-number-3">2.9</span> Python/numpy vectors</h3>
 <div class="outline-text-3" id="text-2-9">
 <ul class="org-ul">
 <li>a = np.random.randn(5)<br />
@@ -628,12 +628,12 @@ b := b - &alpha; db<br />
 </div>
 </div>
 
-<div id="outline-container-org83122e9" class="outline-2">
-<h2 id="org83122e9"><span class="section-number-2">3</span> Logistic regression cost function</h2>
+<div id="outline-container-org21b1b5e" class="outline-2">
+<h2 id="org21b1b5e"><span class="section-number-2">3</span> Logistic regression cost function</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org5598b70" class="outline-3">
-<h3 id="org5598b70"><span class="section-number-3">3.1</span> cost on one single example</h3>
+<div id="outline-container-org7df6dde" class="outline-3">
+<h3 id="org7df6dde"><span class="section-number-3">3.1</span> cost on one single example</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Interpre \(\hat{}\) = P(y=1|x)  The chance that y is equal to 1 for a given set of input features x.<br />
@@ -661,8 +661,8 @@ logP(y|x) = log(\(\hat{y}^{y}\) \((1-\hat{y})^(1-y)\)) = ylog\(\hat{y}\) + (1-y)
 </p>
 </div>
 </div>
-<div id="outline-container-orgb054426" class="outline-3">
-<h3 id="orgb054426"><span class="section-number-3">3.2</span> Cost on m examples</h3>
+<div id="outline-container-orga6f7dc9" class="outline-3">
+<h3 id="orga6f7dc9"><span class="section-number-3">3.2</span> Cost on m examples</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 P(lables in training set) = \(\prod_{i=1}^{m}\) P(y<sup>(i)</sup>|x<sup>(i)</sup>)<br />
@@ -684,12 +684,12 @@ regression model under the assumption that our training examples were on my ID o
 </div>
 </div>
 
-<div id="outline-container-org2c3bbc8" class="outline-2">
-<h2 id="org2c3bbc8"><span class="section-number-2">4</span> Neural Network Reresentation</h2>
+<div id="outline-container-orgf1c1b11" class="outline-2">
+<h2 id="orgf1c1b11"><span class="section-number-2">4</span> Neural Network Reresentation</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org70ac41a" class="outline-3">
-<h3 id="org70ac41a"><span class="section-number-3">4.1</span> For one example</h3>
+<div id="outline-container-org7d61a55" class="outline-3">
+<h3 id="org7d61a55"><span class="section-number-3">4.1</span> For one example</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Given input x:<br />
@@ -718,8 +718,8 @@ a<sup>[2]</sup> = &sigma;(z<sup>[2]</sup>)<br /></li>
 </div>
 </div>
 
-<div id="outline-container-orgb435779" class="outline-3">
-<h3 id="orgb435779"><span class="section-number-3">4.2</span> For m examples</h3>
+<div id="outline-container-orgb290077" class="outline-3">
+<h3 id="orgb290077"><span class="section-number-3">4.2</span> For m examples</h3>
 <div class="outline-text-3" id="text-4-2">
 
 <div class="figure">
@@ -750,12 +750,12 @@ Vertical index : different nodes in the nueural network,<br /></li>
 </div>
 </div>
 
-<div id="outline-container-org4079b78" class="outline-2">
-<h2 id="org4079b78"><span class="section-number-2">5</span> Activation function</h2>
+<div id="outline-container-org385f1dd" class="outline-2">
+<h2 id="org385f1dd"><span class="section-number-2">5</span> Activation function</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgcf7fab0" class="outline-3">
-<h3 id="orgcf7fab0"><span class="section-number-3">5.1</span> g(Z)</h3>
+<div id="outline-container-orgc7b85da" class="outline-3">
+<h3 id="orgc7b85da"><span class="section-number-3">5.1</span> g(Z)</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>g(Z) = sigmoid(Z) = \(\frac{1}{1+e^{-Z}}\), &isin; (0,1)<br /></li>
@@ -769,12 +769,22 @@ which slows down gradient decent.<br /></li>
 This is mostly recommended for hidden layers.<br />
 RELU: Rectified linear unit, the derivative is 1 as long as Z is positive and the derivative or the slope is<br />
 zero when Z is negative.<br /></li>
-<li>g(Z) = leaky RELU(Z)<br /></li>
+<li>g(Z) = leaky RELU(Z)<br />
+Usually works better than RELU although it's not used as much in practice. Either one should be fine.<br /></li>
+<li>Neural network using RELU or leaky RELU learns faster than that using simoid and tanh.<br /></li>
 </ul>
+
+
+<div class="figure">
+<p><img src="./img/dl_ang/nn_activation_functions.png" alt="nn_activation_functions.png" width="800" /><br />
+</p>
+<p><span class="figure-number">Figure 6: </span>Recap of activation functions</p>
 </div>
 </div>
-<div id="outline-container-org1579006" class="outline-3">
-<h3 id="org1579006"><span class="section-number-3">5.2</span> Why non-linear activation functions?</h3>
+</div>
+
+<div id="outline-container-orgc346135" class="outline-3">
+<h3 id="orgc346135"><span class="section-number-3">5.2</span> Why non-linear activation functions?</h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
 <li>A linear activation function: the neural network is just outputting a linear function of the input no matter how many layers your neural network has.<br /></li>
@@ -787,7 +797,7 @@ zero when Z is negative.<br /></li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-09 Mon 12:22</p>
+<p class="date">Created: 2018-04-09 Mon 22:06</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

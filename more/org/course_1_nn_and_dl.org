@@ -268,8 +268,16 @@ Given input x:
      RELU: Rectified linear unit, the derivative is 1 as long as Z is positive and the derivative or the slope is
      zero when Z is negative.
    - g(Z) = leaky RELU(Z)
+     Usually works better than RELU although it's not used as much in practice. Either one should be fine.
+   - Neural network using RELU or leaky RELU learns faster than that using simoid and tanh.
+
+   #+ATTR_HTML: :width 800
+   #+ATTR_ORG: :width 800
+   #+CAPTION: Recap of activation functions
+   [[./img/dl_ang/nn_activation_functions.png]]
+
 ** Why non-linear activation functions?
    - A linear activation function: the neural network is just outputting a linear function of the input no matter how many layers your neural network has.
    - Output layer may be OK using linear function if you are doing a regression problem and y is a real number y \in R
    - But for hidden layers, never use linear activation fucntions, use RELU, tanh...
-     
+
