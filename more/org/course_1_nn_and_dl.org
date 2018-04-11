@@ -73,8 +73,8 @@
        + if y=0 $\mathcal{L}$($\hat{y}$, y) = -log(1-$\hat{y}$), want log(1-$\hat{y}$) large, want $\hat{y}$ small(y->0)
        + the loss functiion was defined with respect to a single training example
    - Cost function which measures how well you are doing on the entire training set.
-     + J(w, b) = $\frac{1}{m}$ $\sum_{i=1}^{m}$ L($\hat{y}^{i}$, y^{i}) = -$\frac{1}{m}$ $\sum_{i=1}^{m}$ [y^{i}log$\hat{y}^{i}$ + (1-y^{i})log(1-log$\hat{y}^{i}$)]
-** Gradient Decent
+     + J(w, b) = $\frac{1}{m}$ $\sum_{i=1}^{m}$ L($\hat{y}^{i}$, y^{i}) = -$\frac{1}{m}$ $\sum_{i=1}^{m}$ [y^{i}log$\hat{y}^{i}$ + (1-y^{i})log(1-$\hat{y}^{i}$)]
+** Gradient Descent
    want to find w,b that minimize $\mathcal{J}$(w,b), $\mathcal{J}$(w,b) is a convex function.
    $\frac{\partial{J}}{\partial{w}}$
 
@@ -98,7 +98,7 @@
    - forward or left to right calculation to compute the cost function
    - backward or right to left calculation to compute the derivatives
 
-** Logistic Regression Gradient decent
+** Logistic Regression Gradient descent
    x_{1},w_{1},x_{2},w_{2},b  ->  z = w_{1}x_{1} + w_{2}x_{2} + b  ->  a = \sigma(z)  -> L(a,y)
    - da = $\frac{dL}{da}$ = -$\frac{y}{a}$ + $\frac{1-y}{1-a}$
    - dz = $\frac{dL}{dz}$ = $\frac{dL}{da}$ * $\frac{da}{dz}$ = (-$\frac{y}{a}$ + $\frac{1-y}{1-a}$) * a(1-a) = a-y
@@ -116,7 +116,7 @@
        dw_{2} += x_{2}^{i} dz^{i}   # we have only 2 features in this example
        db += dz^{i}
    J /= m
-   dw_{1} /= m, dw_{2} /= m, db_{} /= m
+   dw_{1} /= m, dw_{2} /= m, db /= m
    w_{1} := w1 -\alpha dw_{1},  w_{2} := w_{2} - \alpha dw_{2},  b := b - \alpha db
 #+END_VERSE
 
@@ -131,7 +131,7 @@
    dw_{1} = 0, dw_{2} = 0  --> dw = np.zeros((n_{x}, 1))
 
    dw_{1} += x_{1}^{i} dz^{i}
-   dw_{2} += x_{2}^{i} dz^{i}    --> dw += x^{(i)}^{}dz^{(i)}
+   dw_{2} += x_{2}^{i} dz^{i}    --> dw += x^{(i)}dz^{(i)}
 
    dw_{1} /= m, dw_{2} /= m    --> dw /= m   
 
@@ -142,7 +142,7 @@
        a^{i} = \sigma(z^{i})
        J += -(y^{i}loga^{i} + (1-y^{i})log(1-a^{i}))
        dz^{i} = a^{i} - y^{i}
-       dw += x^{(i)}^{}dz^{(i) }      
+       dw += x^{(i)}dz^{(i)}
        db += dz^{i}
    J /= m
    dw /= m, db_{} /= m
@@ -157,7 +157,7 @@ Z = np.dot(w.T, X) + b   Note: b here is a (1,1) number
 
 A = [a^{1}, a^{2}, ..., a^{m}] = \sigma(Z)
 
-Y = [y^{1}, y^{2}, ..., y^{3}]
+Y = [y^{1}, y^{2}, ..., y^{m}]
 
 dZ = [dz^{1}, dz^{2}, ..., dz^{m}] = [a^{1}-y^{1}, a^{2}-y^{2}, ..., a^{m}-y^{m}] = A - Y
 
@@ -262,7 +262,7 @@ Given input x:
      in which case y \in {0, 1}
    - one of the downsides of both sigmoid and tanh funcions is that if Z is either very large or very small
      then the gradient or the drivative of the slope of this funcions becomes very small(being closing to zero),
-     which slows down gradient decent.
+     which slows down gradient descent.
    - g(Z) = RELU(Z) = max(0, Z)
      This is mostly recommended for hidden layers.
      RELU: Rectified linear unit, the derivative is 1 as long as Z is positive and the derivative or the slope is

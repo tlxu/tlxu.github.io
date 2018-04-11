@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-04-10 Tue 11:14 -->
+<!-- 2018-04-11 Wed 10:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes for Neural Networks and Deep Learning</title>
@@ -419,7 +419,7 @@ local optimum points.<br /></li>
 </ul></li>
 <li>Cost function which measures how well you are doing on the entire training set.<br />
 <ul class="org-ul">
-<li>J(w, b) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}^{i}\), y<sup>i</sup>) = -\(\frac{1}{m}\) \(\sum_{i=1}^{m}\) [y<sup>i</sup>log\(\hat{y}^{i}\) + (1-y<sup>i</sup>)log(1-log\(\hat{y}^{i}\))]<br /></li>
+<li>J(w, b) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}^{i}\), y<sup>i</sup>) = -\(\frac{1}{m}\) \(\sum_{i=1}^{m}\) [y<sup>i</sup>log\(\hat{y}^{i}\) + (1-y<sup>i</sup>)log(1-\(\hat{y}^{i}\))]<br /></li>
 </ul></li>
 </ul>
 </div>
@@ -510,7 +510,7 @@ For i = 1 to m<br />
 &#xa0;&#xa0;&#xa0;&#xa0;dw<sub>2</sub> += x<sub>2</sub><sup>i</sup> dz<sup>i</sup>   # we have only 2 features in this example<br />
 &#xa0;&#xa0;&#xa0;&#xa0;db += dz<sup>i</sup><br />
 J /= m<br />
-dw<sub>1</sub> /= m, dw<sub>2</sub> /= m, db<sub>nil</sub> /= m<br />
+dw<sub>1</sub> /= m, dw<sub>2</sub> /= m, db /= m<br />
 w<sub>1</sub> := w1 -&alpha; dw<sub>1</sub>,  w<sub>2</sub> := w<sub>2</sub> - &alpha; dw<sub>2</sub>,  b := b - &alpha; db<br />
 </p>
 
@@ -538,7 +538,7 @@ dw<sub>1</sub> = 0, dw<sub>2</sub> = 0  &#x2013;&gt; dw = np.zeros((n<sub>x</sub
 
 <p>
 dw<sub>1</sub> += x<sub>1</sub><sup>i</sup> dz<sup>i</sup><br />
-dw<sub>2</sub> += x<sub>2</sub><sup>i</sup> dz<sup>i</sup>    &#x2013;&gt; dw += x<sup>(i)</sup><sup>nil</sup>dz<sup>(i)</sup><br />
+dw<sub>2</sub> += x<sub>2</sub><sup>i</sup> dz<sup>i</sup>    &#x2013;&gt; dw += x<sup>(i)</sup>dz<sup>(i)</sup><br />
 </p>
 
 <p>
@@ -552,7 +552,7 @@ For i = 1 to m<br />
 &#xa0;&#xa0;&#xa0;&#xa0;a<sup>i</sup> = &sigma;(z<sup>i</sup>)<br />
 &#xa0;&#xa0;&#xa0;&#xa0;J += -(y<sup>i</sup>loga<sup>i</sup> + (1-y<sup>i</sup>)log(1-a<sup>i</sup>))<br />
 &#xa0;&#xa0;&#xa0;&#xa0;dz<sup>i</sup> = a<sup>i</sup> - y<sup>i</sup><br />
-&#xa0;&#xa0;&#xa0;&#xa0;dw += x<sup>(i)</sup><sup>nil</sup>dz<sup>(i) </sup>      <br />
+&#xa0;&#xa0;&#xa0;&#xa0;dw += x<sup>(i)</sup>dz<sup>(i)</sup><br />
 &#xa0;&#xa0;&#xa0;&#xa0;db += dz<sup>i</sup><br />
 J /= m<br />
 dw /= m, db<sub>nil</sub> /= m<br />
@@ -576,7 +576,7 @@ A = [a<sup>1</sup>, a<sup>2</sup>, &#x2026;, a<sup>m</sup>] = &sigma;(Z)<br />
 </p>
 
 <p>
-Y = [y<sup>1</sup>, y<sup>2</sup>, &#x2026;, y<sup>3</sup>]<br />
+Y = [y<sup>1</sup>, y<sup>2</sup>, &#x2026;, y<sup>m</sup>]<br />
 </p>
 
 <p>
@@ -827,7 +827,7 @@ g'(z) =<br />
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-10 Tue 11:14</p>
+<p class="date">Created: 2018-04-11 Wed 10:34</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
