@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-04-11 Wed 10:34 -->
+<!-- 2018-04-11 Wed 15:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes for Neural Networks and Deep Learning</title>
@@ -262,10 +262,10 @@ for the JavaScript code in this tag.
 <li><a href="#org2312cf1">2. Logistic Regression</a>
 <ul>
 <li><a href="#orgb80ce41">2.1. Cost function</a></li>
-<li><a href="#org5cfc473">2.2. Gradient Decent</a></li>
+<li><a href="#org4893de8">2.2. Gradient Descent</a></li>
 <li><a href="#org08f2fee">2.3. Derivatives</a></li>
 <li><a href="#org32af9f8">2.4. Computation Graph</a></li>
-<li><a href="#org358fe68">2.5. Logistic Regression Gradient decent</a></li>
+<li><a href="#org9931dcf">2.5. Logistic Regression Gradient descent</a></li>
 <li><a href="#org12a81c5">2.6. Logistic Regression on m examples</a></li>
 <li><a href="#orgaef67a9">2.7. Vectorization</a></li>
 <li><a href="#org64b5634">2.8. Vectorizing Logistic Regression</a></li>
@@ -291,6 +291,14 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#org3896686">6. Derivatives of activation functions</a></li>
+<li><a href="#org1177598">7. Gradient descent for neural networks</a>
+<ul>
+<li><a href="#orgaa13e3d">7.1. Parameters:</a></li>
+<li><a href="#org5b5d75b">7.2. Cost fucntion:</a></li>
+<li><a href="#org3212c5f">7.3. Use gradient descent to train the parameters,</a></li>
+<li><a href="#orgfc310c7">7.4. Formulas for computing derivatives</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -424,8 +432,8 @@ local optimum points.<br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5cfc473" class="outline-3">
-<h3 id="org5cfc473"><span class="section-number-3">2.2</span> Gradient Decent</h3>
+<div id="outline-container-org4893de8" class="outline-3">
+<h3 id="org4893de8"><span class="section-number-3">2.2</span> Gradient Descent</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 want to find w,b that minimize \(\mathcal{J}\)(w,b), \(\mathcal{J}\)(w,b) is a convex function.<br />
@@ -482,8 +490,8 @@ J = 3v, v = a + u<br />
 </div>
 </div>
 
-<div id="outline-container-org358fe68" class="outline-3">
-<h3 id="org358fe68"><span class="section-number-3">2.5</span> Logistic Regression Gradient decent</h3>
+<div id="outline-container-org9931dcf" class="outline-3">
+<h3 id="org9931dcf"><span class="section-number-3">2.5</span> Logistic Regression Gradient descent</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 x<sub>1</sub>,w<sub>1</sub>,x<sub>2</sub>,w<sub>2</sub>,b  -&gt;  z = w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> + b  -&gt;  a = &sigma;(z)  -&gt; L(a,y)<br />
@@ -765,7 +773,7 @@ always works better than sigmoid function, the only exception is the output laye
 in which case y &isin; {0, 1}<br /></li>
 <li>one of the downsides of both sigmoid and tanh funcions is that if Z is either very large or very small<br />
 then the gradient or the drivative of the slope of this funcions becomes very small(being closing to zero),<br />
-which slows down gradient decent.<br /></li>
+which slows down gradient descent.<br /></li>
 <li>g(Z) = RELU(Z) = max(0, Z)<br />
 This is mostly recommended for hidden layers.<br />
 RELU: Rectified linear unit, the derivative is 1 as long as Z is positive and the derivative or the slope is<br />
@@ -824,10 +832,89 @@ g'(z) =<br />
 </ul>
 </div>
 </div>
+
+<div id="outline-container-org1177598" class="outline-2">
+<h2 id="org1177598"><span class="section-number-2">7</span> Gradient descent for neural networks</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+n<sup>[0]</sup> = n<sub>x</sub> : number of feature for input layer<br />
+n<sup>[1]</sup> : number of nodes in hidden layer<br />
+n<sup>[2]</sup> : number of nodes in output layer<br />
+</p>
+</div>
+
+<div id="outline-container-orgaa13e3d" class="outline-3">
+<h3 id="orgaa13e3d"><span class="section-number-3">7.1</span> Parameters:</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+W<sup>[1]</sup> : (n<sup>[1]</sup>, n<sup>[0]</sup>) every row of W represents the weights of the input in previous layer<br />
+b<sup>[1]</sup> : (n<sup>[1]</sup>, 1) you can think of b as a value attached to each node<br />
+W<sup>[2]</sup> : (n<sup>[2]</sup>, n<sup>[1]</sup>)<br />
+b<sup>[2]</sup> : (n<sup>[2]</sup>, 1)<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5b5d75b" class="outline-3">
+<h3 id="org5b5d75b"><span class="section-number-3">7.2</span> Cost fucntion:</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+J(W<sup>[1]</sup>, b<sup>[1]</sup>, W<sup>[2]</sup>, b<sup>[2]</sup>) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}\), y)<br />
+\(\hat{y}\) = a<sup>[2]</sup><br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3212c5f" class="outline-3">
+<h3 id="org3212c5f"><span class="section-number-3">7.3</span> Use gradient descent to train the parameters,</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+Repeat {<br />
+</p>
+<ul class="org-ul">
+<li>compute predictions: \(\hat{y}^{(i)}\) for i = 1,2,&#x2026;,m<br /></li>
+<li>compute derivatives:<br />
+dW<sup>[1]</sup>, db<sup>[1]</sup>, dW<sup>[2]</sup>, db<sup>[2]</sup><br />
+W<sup>[1]</sup> := W<sup>[1]</sup> - &alpha; dW<sup>[1]</sup><br />
+b<sup>[1]</sup> := b<sup>[1]</sup> - &alpha; db<sup>[1]</sup><br />
+W<sup>[2]</sup> := W<sup>[2]</sup> - &alpha; dW<sup>[2]</sup><br />
+b<sup>[2]</sup> := b<sup>[2]</sup> - &alpha; db<sup>[2]</sup>        <br /></li>
+</ul>
+<p>
+}<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfc310c7" class="outline-3">
+<h3 id="orgfc310c7"><span class="section-number-3">7.4</span> Formulas for computing derivatives</h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li>Forward propagation:<br />
+Z<sup>[1]</sup> = W<sup>[1]</sup>X + b<sup>[1]</sup><br />
+A<sup>[1]</sup> = g<sup>[1]</sup>(Z<sup>[1]</sup>)<br />
+Z<sup>[2]</sup> = W<sup>[2]</sup>X + b<sup>[2]</sup><br />
+A<sup>[2]</sup> = g<sup>[2]</sup>(Z<sup>[2]</sup>)<br /></li>
+<li><p>
+Back propagation:<br />
+dZ<sup>[2]</sup> = A<sup>[2]</sup> - Y<br />
+dW<sup>[2]</sup> = \(\frac{1}{m}\) dZ<sup>[2]</sup> A<sup>[1]T</sup><br />
+db<sup>[2]</sup> = \(\frac{1}{m}\) np.sum(dZ<sup>[2]</sup>, axis=1, keepdims=True)  (n<sup>[2]</sup>, 1)<br />
+</p>
+
+<p>
+dZ<sup>[1]</sup> = W<sup>[2]T</sup> dZ<sup>[2]</sup> * g'<sup>[1]</sup>(Z<sup>[1]</sup>)<br />
+dW<sup>[1]</sup> = \(\frac{1}{m}\) dZ<sup>[1]</sup> A<sup>[0]T</sup>,  X = A<sup>[0]</sup><br />
+db<sup>[1]</sup> = \(\frac{1}{m}\) np.sum(dZ<sup>[1]</sup>, axis=1, keepdims=True)    (n<sup>[1]</sup>, 1)<br />
+</p></li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-11 Wed 10:34</p>
+<p class="date">Created: 2018-04-11 Wed 15:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

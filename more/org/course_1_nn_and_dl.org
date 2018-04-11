@@ -295,3 +295,45 @@ Given input x:
    g'(z) =
        + 0.01, if z < 0
        + 1,    if z >= 0
+
+* Gradient descent for neural networks
+  n^{[0]} = n_{x} : number of feature for input layer
+  n^{[1]} : number of nodes in hidden layer
+  n^{[2]} : number of nodes in output layer
+
+**  Parameters:
+  W^{[1]} : (n^{[1]}, n^{[0]}) every row of W represents the weights of the input in previous layer
+  b^{[1]} : (n^{[1]}, 1) you can think of b as a value attached to each node
+  W^{[2]} : (n^{[2]}, n^{[1]})
+  b^{[2]} : (n^{[2]}, 1)
+
+**  Cost fucntion:
+  J(W^{[1]}, b^{[1]}, W^{[2]}, b^{[2]}) = $\frac{1}{m}$ $\sum_{i=1}^{m}$ L($\hat{y}$, y)
+  $\hat{y}$ = a^{[2]}
+
+**  Use gradient descent to train the parameters,
+  Repeat {
+      - compute predictions: $\hat{y}^{(i)}$ for i = 1,2,...,m
+      - compute derivatives:
+        dW^{[1]}, db^{[1]}, dW^{[2]}, db^{[2]}
+        W^{[1]} := W^{[1]} - \alpha dW^{[1]}
+        b^{[1]} := b^{[1]} - \alpha db^{[1]}
+        W^{[2]} := W^{[2]} - \alpha dW^{[2]}
+        b^{[2]} := b^{[2]} - \alpha db^{[2]}        
+  }
+
+** Formulas for computing derivatives
+   - Forward propagation:
+     Z^{[1]} = W^{[1]}X + b^{[1]}
+     A^{[1]} = g^{[1]}(Z^{[1]})
+     Z^{[2]} = W^{[2]}X + b^{[2]}
+     A^{[2]} = g^{[2]}(Z^{[2]})
+   - Back propagation:
+     dZ^{[2]} = A^{[2]} - Y
+     dW^{[2]} = $\frac{1}{m}$ dZ^{[2]} A^{[1]T}
+     db^{[2]} = $\frac{1}{m}$ np.sum(dZ^{[2]}, axis=1, keepdims=True)  (n^{[2]}, 1)
+
+     dZ^{[1]} = W^{[2]T} dZ^{[2]} * g'^{[1]}(Z^{[1]})
+     dW^{[1]} = $\frac{1}{m}$ dZ^{[1]} A^{[0]T},  X = A^{[0]}
+     db^{[1]} = $\frac{1}{m}$ np.sum(dZ^{[1]}, axis=1, keepdims=True)    (n^{[1]}, 1)
+     
