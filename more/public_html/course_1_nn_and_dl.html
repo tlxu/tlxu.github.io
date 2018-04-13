@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-04-11 Wed 15:04 -->
+<!-- 2018-04-13 Fri 09:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes for Neural Networks and Deep Learning</title>
@@ -299,6 +299,13 @@ for the JavaScript code in this tag.
 <li><a href="#orgfc310c7">7.4. Formulas for computing derivatives</a></li>
 </ul>
 </li>
+<li><a href="#orged8b644">8. Random Initialization</a>
+<ul>
+<li><a href="#org9a734c4">8.1. what happens if you initialize weights to zero?</a></li>
+<li><a href="#org4e1d1f5">8.2. Solution</a></li>
+</ul>
+</li>
+<li><a href="#orga2b70f3">9. Deep neural network notation</a></li>
 </ul>
 </div>
 </div>
@@ -911,10 +918,99 @@ db<sup>[1]</sup> = \(\frac{1}{m}\) np.sum(dZ<sup>[1]</sup>, axis=1, keepdims=Tru
 </div>
 </div>
 </div>
+
+<div id="outline-container-orged8b644" class="outline-2">
+<h2 id="orged8b644"><span class="section-number-2">8</span> Random Initialization</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org9a734c4" class="outline-3">
+<h3 id="org9a734c4"><span class="section-number-3">8.1</span> what happens if you initialize weights to zero?</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+a<sub>1</sub><sup>[1]</sup> = a<sub>2</sub><sup>[1]</sup>  dz<sub>1</sub><sup>[1]</sup> = dz<sub>2</sub><sup>[1]</sup><br />
+</p>
+
+
+<p>
+dW =<br />
+</p>
+\begin{bmatrix}
+    u,v \\
+    u,v
+\end{bmatrix}    
+
+<p>
+W<sup>[1]</sup> := W<sup>[1]</sup> - &alpha; dW<br />
+</p>
+
+<p>
+W =<br />
+</p>
+\begin{bmatrix}
+    ...... \\
+    ......
+\end{bmatrix}
+<p>
+The first row equals the second row.<br />
+</p>
+
+<p>
+Both the hidden units compute the same function and both of them have the same influence on the output unit.<br />
+Then after one interation the same statement is still true since the two hidden units are still symmetric.<br />
+No matter after how many interations, no matter how long you train your network, both hidden units are still<br />
+computing exactly the same function. In this case, there is no point to have more than one hidden unit because<br />
+they are all computing the same thing. This is still true for large scale neural networks.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org4e1d1f5" class="outline-3">
+<h3 id="org4e1d1f5"><span class="section-number-3">8.2</span> Solution</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+The solution is to initialize your parameters randomly.<br />
+W<sup>[1]</sup> = np.random.randn((2,2)) * 0.01<br />
+b<sup>[1]</sup> = np.zero((2,1))   # it is OK to set b as zeros<br />
+W<sup>[2]</sup> = np.random.randn((1,2)) * 0.01<br />
+b<sup>[2]</sup> = np.zero((1,1))<br />
+</p>
+
+<p>
+why const 0.01 in the above initialization? why no 100, 1000?<br />
+Usually prefer to initialize weights to get very small random values. Why?<br />
+For tanh or sigmoid function, if weights are too large, you get very large activation values Z. So the derivatives are small and the gradient<br />
+descent would be very slow, so the learning  would be very slow.<br />
+</p>
+
+<p>
+If you don't have any tanh or sigmoid activiation function throughout your neural network this is less of an<br />
+issue. But if you're doing binary classification, your ouput unit is a sigmoid function, you don't wany your<br />
+initial prarameters to be too large.<br />
+</p>
+
+<p>
+You may pick 0.001 or something else for a deep neural network.<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga2b70f3" class="outline-2">
+<h2 id="orga2b70f3"><span class="section-number-2">9</span> Deep neural network notation</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+L = 4 : # of layers<br />
+n<sup>[l]</sup>: # of units in layer l, n<sup>[0]</sup> = n<sub>x</sub><br />
+a<sup>[l]</sup>: activiations in layer l, a<sup>[l]</sup> = g<sup>[l]</sup>(Z<sup>[l]</sup>)<br />
+W<sup>[l]</sup>: weights for Z<sup>[l]</sup><br />
+b<sup>[l]</sup>: bias of units in layer l<br />
+X = a<sup>[0]</sup>, \(\hat{y}\) = a<sup>[L]</sup><br />
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-11 Wed 15:04</p>
+<p class="date">Created: 2018-04-13 Fri 09:34</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

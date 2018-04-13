@@ -337,3 +337,53 @@ Given input x:
      dW^{[1]} = $\frac{1}{m}$ dZ^{[1]} A^{[0]T},  X = A^{[0]}
      db^{[1]} = $\frac{1}{m}$ np.sum(dZ^{[1]}, axis=1, keepdims=True)    (n^{[1]}, 1)
      
+* Random Initialization
+** what happens if you initialize weights to zero?
+   a_{1}^{[1]} = a_{2}^{[1]}  dz_{1}^{[1]} = dz_{2}^{[1]}
+   
+  
+    dW = 
+    \begin{bmatrix}
+        u,v \\
+        u,v
+    \end{bmatrix}    
+
+    W^{[1]} := W^{[1]} - \alpha dW
+
+    W = 
+    \begin{bmatrix}
+        ...... \\
+        ......
+    \end{bmatrix}
+    The first row equals the second row.
+
+    Both the hidden units compute the same function and both of them have the same influence on the output unit.
+    Then after one interation the same statement is still true since the two hidden units are still symmetric.
+    No matter after how many interations, no matter how long you train your network, both hidden units are still
+    computing exactly the same function. In this case, there is no point to have more than one hidden unit because
+    they are all computing the same thing. This is still true for large scale neural networks.
+** Solution
+   The solution is to initialize your parameters randomly.
+   W^{[1]} = np.random.randn((2,2)) * 0.01
+   b^{[1]} = np.zero((2,1))   # it is OK to set b as zeros
+   W^{[2]} = np.random.randn((1,2)) * 0.01
+   b^{[2]} = np.zero((1,1))
+
+   why const 0.01 in the above initialization? why no 100, 1000?
+   Usually prefer to initialize weights to get very small random values. Why?
+   For tanh or sigmoid function, if weights are too large, you get very large activation values Z. So the derivatives are small and the gradient
+   descent would be very slow, so the learning  would be very slow.
+
+   If you don't have any tanh or sigmoid activiation function throughout your neural network this is less of an
+   issue. But if you're doing binary classification, your ouput unit is a sigmoid function, you don't wany your
+   initial prarameters to be too large.
+
+   You may pick 0.001 or something else for a deep neural network.
+
+* Deep neural network notation
+  L = 4 : # of layers
+  n^{[l]}: # of units in layer l, n^{[0]} = n_{x}
+  a^{[l]}: activiations in layer l, a^{[l]} = g^{[l]}(Z^{[l]})
+  W^{[l]}: weights for Z^{[l]}
+  b^{[l]}: bias of units in layer l
+  X = a^{[0]}, $\hat{y}$ = a^{[L]}
