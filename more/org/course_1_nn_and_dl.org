@@ -380,10 +380,21 @@ Given input x:
 
    You may pick 0.001 or something else for a deep neural network.
 
-* Deep neural network notation
+* Deep neural network   
+** Deep neural network notation
   L = 4 : # of layers
   n^{[l]}: # of units in layer l, n^{[0]} = n_{x}
   a^{[l]}: activiations in layer l, a^{[l]} = g^{[l]}(Z^{[l]})
   W^{[l]}: weights for Z^{[l]}
   b^{[l]}: bias of units in layer l
   X = a^{[0]}, $\hat{y}$ = a^{[L]}
+** Forward propagation
+   For a single training example, the equations are:
+       - z^{[l]} = W^{[l]}a^{[l-1]} + b^{[l]}
+       - a^{[l]} = g^{[l]}(z^{[l]})
+
+   Vectorizing for the whole training set:
+   for l=1,2,...,L
+       - Z^{[l]} = W^{[l]}A^{[l-1]} + b^{[l]}
+       - A^{[l]} = g^{[l]}(Z^{[l]})   
+  

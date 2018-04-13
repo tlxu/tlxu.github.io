@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-04-13 Fri 09:34 -->
+<!-- 2018-04-13 Fri 10:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes for Neural Networks and Deep Learning</title>
@@ -305,7 +305,12 @@ for the JavaScript code in this tag.
 <li><a href="#org4e1d1f5">8.2. Solution</a></li>
 </ul>
 </li>
-<li><a href="#orga2b70f3">9. Deep neural network notation</a></li>
+<li><a href="#org67e0129">9. Deep neural network</a>
+<ul>
+<li><a href="#orga2b70f3">9.1. Deep neural network notation</a></li>
+<li><a href="#org0f5d312">9.2. Forward propagation</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -994,9 +999,13 @@ You may pick 0.001 or something else for a deep neural network.<br />
 </div>
 </div>
 
-<div id="outline-container-orga2b70f3" class="outline-2">
-<h2 id="orga2b70f3"><span class="section-number-2">9</span> Deep neural network notation</h2>
+<div id="outline-container-org67e0129" class="outline-2">
+<h2 id="org67e0129"><span class="section-number-2">9</span> Deep neural network</h2>
 <div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-orga2b70f3" class="outline-3">
+<h3 id="orga2b70f3"><span class="section-number-3">9.1</span> Deep neural network notation</h3>
+<div class="outline-text-3" id="text-9-1">
 <p>
 L = 4 : # of layers<br />
 n<sup>[l]</sup>: # of units in layer l, n<sup>[0]</sup> = n<sub>x</sub><br />
@@ -1007,10 +1016,32 @@ X = a<sup>[0]</sup>, \(\hat{y}\) = a<sup>[L]</sup><br />
 </p>
 </div>
 </div>
+<div id="outline-container-org0f5d312" class="outline-3">
+<h3 id="org0f5d312"><span class="section-number-3">9.2</span> Forward propagation</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+For a single training example, the equations are:<br />
+</p>
+<ul class="org-ul">
+<li>z<sup>[l]</sup> = W<sup>[l]</sup>a<sup>[l-1]</sup> + b<sup>[l]</sup><br /></li>
+<li>a<sup>[l]</sup> = g<sup>[l]</sup>(z<sup>[l]</sup>)<br /></li>
+</ul>
+
+<p>
+Vectorizing for the whole training set:<br />
+for l=1,2,&#x2026;,L<br />
+</p>
+<ul class="org-ul">
+<li>Z<sup>[l]</sup> = W<sup>[l]</sup>A<sup>[l-1]</sup> + b<sup>[l]</sup><br /></li>
+<li>A<sup>[l]</sup> = g<sup>[l]</sup>(Z<sup>[l]</sup>)<br /></li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-13 Fri 09:34</p>
+<p class="date">Created: 2018-04-13 Fri 10:10</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
