@@ -398,3 +398,21 @@ Given input x:
        - Z^{[l]} = W^{[l]}A^{[l-1]} + b^{[l]}
        - A^{[l]} = g^{[l]}(Z^{[l]})   
   
+** Matrix dimensions
+   For a single training example:
+   - z^{[l]}, a^{[l]}: (n^{[l]}, 1)
+   - dz^{[l]}, da^{[l]}: the same dimension as z^{[l]}, a^{[l]}     
+   - W^{[l]}: (n^{[l]}, n^{[l-1]})
+   - b^{[l]}: (n^{[l]}, 1)
+   - dW^{[l]}: the same dimension as W^{[l]}
+   - db^{[l]}: the same dimension as b^{[l]}
+
+   For m examples:
+   - Z^{[l]}, A^{[l]}: (n^{[l]}, m)
+   - dZ^{[l]}, dA^{[l]}: the same dimension as Z^{[l]}, A^{[l]}
+   - W^{[l]}: (n^{[l]}, n^{[l-1]})
+   - b^{[l]}: (n^{[l]}, m)
+   - dW^{[l]}: the same dimension as W^{[l]}
+   - db^{[l]}: the same dimension as b^{[l]}     
+
+   

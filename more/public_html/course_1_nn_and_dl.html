@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-04-13 Fri 10:10 -->
+<!-- 2018-04-13 Fri 11:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes for Neural Networks and Deep Learning</title>
@@ -309,6 +309,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orga2b70f3">9.1. Deep neural network notation</a></li>
 <li><a href="#org0f5d312">9.2. Forward propagation</a></li>
+<li><a href="#org12b3100">9.3. Matrix dimensions</a></li>
 </ul>
 </li>
 </ul>
@@ -1037,11 +1038,40 @@ for l=1,2,&#x2026;,L<br />
 </ul>
 </div>
 </div>
+
+<div id="outline-container-org12b3100" class="outline-3">
+<h3 id="org12b3100"><span class="section-number-3">9.3</span> Matrix dimensions</h3>
+<div class="outline-text-3" id="text-9-3">
+<p>
+For a single training example:<br />
+</p>
+<ul class="org-ul">
+<li>z<sup>[l]</sup>, a<sup>[l]</sup>: (n<sup>[l]</sup>, 1)<br /></li>
+<li>dz<sup>[l]</sup>, da<sup>[l]</sup>: the same dimension as z<sup>[l]</sup>, a<sup>[l]</sup>     <br /></li>
+<li>W<sup>[l]</sup>: (n<sup>[l]</sup>, n<sup>[l-1]</sup>)<br /></li>
+<li>b<sup>[l]</sup>: (n<sup>[l]</sup>, 1)<br /></li>
+<li>dW<sup>[l]</sup>: the same dimension as W<sup>[l]</sup><br /></li>
+<li>db<sup>[l]</sup>: the same dimension as b<sup>[l]</sup><br /></li>
+</ul>
+
+<p>
+For m examples:<br />
+</p>
+<ul class="org-ul">
+<li>Z<sup>[l]</sup>, A<sup>[l]</sup>: (n<sup>[l]</sup>, m)<br /></li>
+<li>dZ<sup>[l]</sup>, dA<sup>[l]</sup>: the same dimension as Z<sup>[l]</sup>, A<sup>[l]</sup><br /></li>
+<li>W<sup>[l]</sup>: (n<sup>[l]</sup>, n<sup>[l-1]</sup>)<br /></li>
+<li>b<sup>[l]</sup>: (n<sup>[l]</sup>, m)<br /></li>
+<li>dW<sup>[l]</sup>: the same dimension as W<sup>[l]</sup><br /></li>
+<li>db<sup>[l]</sup>: the same dimension as b<sup>[l]</sup>     <br /></li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-13 Fri 10:10</p>
+<p class="date">Created: 2018-04-13 Fri 11:36</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
