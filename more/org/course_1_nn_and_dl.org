@@ -416,3 +416,40 @@ Given input x:
    - db^{[l]}: the same dimension as b^{[l]}     
 
    
+* Building blocks of a Deep Neural Network
+  Basic build blocks to build a neural network in each layer there's:
+  - a forward progation step
+  - a corresponding back propagation step
+  - a cache to save information from one to the other
+  
+  #+ATTR_HTML: :width 800
+  #+ATTR_ORG: :width 800
+  #+CAPTION: Forward and backward functions
+  [[./img/dl_ang/forward_backward_functions.png]]
+
+** Forward and backward propagation for layer l
+  #+ATTR_HTML: :width 800
+  #+ATTR_ORG: :width 800
+  #+CAPTION: Backward propagation for layer l
+  [[./img/dl_ang/backward_propagation_for_layer_l.png]]
+  
+  #+ATTR_HTML: :width 800
+  #+ATTR_ORG: :width 800
+  #+CAPTION: Backward propagation for layer l
+  [[./img/dl_ang/backward_propagation_for_layer_l_summary.png]]  
+  
+* Parameters and Hyperparameters
+** Parameters
+   W and b
+** Hyperparameters
+   - learning rate \alpha
+   - # interfations
+   - # hidden layer L
+   - # hidden units n^{[1]}, n^{[2]}, ... n^{[L]}
+   - choice of activation functions
+   - Momentum
+   - minibatch size
+   - regularizations
+** Applied deep learning
+   Applied deep learning is a very empirical process.
+   Idea -> Code -> Experiment -> Idea ....
