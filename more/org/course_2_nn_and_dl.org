@@ -57,12 +57,12 @@
    N -> high variance? -> resolve it -> high bias? -> Y -> go back
    N -> Done.
    
-** High bias
+*** High bias
    Training data problem, try
    - bigger network(more layers/units)
    - train longer
    - Maybe NN architecture search
-** High variance
+*** High variance
    Dev set problem, try
    - more data
    - regularization
