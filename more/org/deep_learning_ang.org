@@ -4,8 +4,8 @@
 #+STARTUP: indent
 
 * Courses
-1. [[file:course_1_nn_and_dl.org][Neural Networks and Deep Learning (4 weeks)]]
-2. Improving Deep Neural Networks: Hyperameter tuning, Regularization and Optimization (3 weeks)
+1. [[file:course_1_nn_and_dl.org][Neural Networks and Deep Learning]] (4 weeks)
+2. [[file:course_2_nn_and_dl.org][Improving Deep Neural Networks: Hyperameter tuning, Regularization and Optimization]] (3 weeks)
 3. Structuring your Machine Learning project (2 weeks)
 4. Convolutional Neural Networks(CNN)
 5. Natural Language Processing(NLP): Builing Sequence Models
