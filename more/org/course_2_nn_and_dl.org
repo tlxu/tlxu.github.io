@@ -1,0 +1,24 @@
+#+STARTUP: showall
+#+TITLE: Improving Deep Neural Networks
+#+OPTIONS: \n:t
+## #+STARTUP: indent
+
+* Data Sets
+  Train/Dev/Test sets
+  - Training set
+    Use training set on your algorithms
+  - Dev - Development set/ Cross Validation set
+    Use Dev set to see which of many different models perform best on your dev set, then you get your final model
+  - Test set
+    Evaluate your model on your test set to get an unbiased estimate of how well your algorithm is doing
+
+** Ratio
+   - Small amount of data(100, 1k, 10k), 60%, 20%, and 20% respectively
+   - Big data era(> 1M), dev/test are much smaller
+     98%, 1%, 1%, or 99.5%, 0.25%, 0.25, or 99.5%, 0.4%, 0.1%
+
+** Mismatched tain/test disriibution
+   Rule of thumb:
+   - Make sure dev and test sets come from the same distribution.
+   - Your training set might come from a different distribution.
+   - You might be OK to not have a test set
