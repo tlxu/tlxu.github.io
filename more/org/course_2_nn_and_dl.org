@@ -1,9 +1,9 @@
 #+STARTUP: showall
 #+TITLE: Improving Deep Neural Networks
 #+OPTIONS: \n:t
-## #+STARTUP: indent
 
-* Data Sets
+* Seting up ML application
+** Data Sets
   Train/Dev/Test sets
   - Training set
     Use training set on your algorithms
@@ -12,13 +12,63 @@
   - Test set
     Evaluate your model on your test set to get an unbiased estimate of how well your algorithm is doing
 
-** Ratio
+*** Ratio
    - Small amount of data(100, 1k, 10k), 60%, 20%, and 20% respectively
    - Big data era(> 1M), dev/test are much smaller
      98%, 1%, 1%, or 99.5%, 0.25%, 0.25, or 99.5%, 0.4%, 0.1%
 
-** Mismatched tain/test disriibution
+*** Mismatched tain/test disriibution
    Rule of thumb:
    - Make sure dev and test sets come from the same distribution.
    - Your training set might come from a different distribution.
    - You might be OK to not have a test set
+
+** Bias/Variance
+   - High bias: Underfitting the data
+   - High variance: Overfitting the data
+
+    Looking at the training set error and dev set error, you'll render a diagnosis of your algorithm having
+    high variance or high bias.
+
+    e.g. for high variance:
+    - train set error: 1%
+    - dev set error:  10%
+           
+    e.g. for high bias: not even fit the training set very well
+    - train set error: 15%
+    - dev set error:   16%
+
+    e.g. for high bias and high variance
+    - train set error: 15%
+    - dev set error:   30%
+
+    e.g. for low bias and low variance
+    - train set error: 0.5%
+    - dev set error:   1% 
+
+    Taking a look at your training error, you know how well you are fitting the training data, which tells you
+    if you have a bias problem.
+
+    Looking at how much higher your error goes(dev set error - train set error), that gives you a sens how bad
+    is the variance problems.
+
+** Basic recipe for ML
+   high biase ? Y -> resolve it
+   N -> high variance? -> resolve it -> high bias? -> Y -> go back
+   N -> Done.
+   
+** High bias
+   Training data problem, try
+   - bigger network(more layers/units)
+   - train longer
+   - Maybe NN architecture search
+** High variance
+   Dev set problem, try
+   - more data
+   - regularization
+   - Maybe NN architecture search
+
+   
+
+
+

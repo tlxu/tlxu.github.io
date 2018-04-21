@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-04-21 Sat 10:04 -->
+<!-- 2018-04-21 Sat 10:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Improving Deep Neural Networks</title>
@@ -236,22 +236,31 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd8501dd">1. Data Sets</a>
+<li><a href="#org905b6bb">1. Seting up ML application</a>
 <ul>
-<li><a href="#orgc3caa8d">1.1. Ratio</a></li>
-<li><a href="#org4dd48f1">1.2. Mismatched tain/test disriibution</a></li>
+<li><a href="#orgd8501dd">1.1. Data Sets</a>
+<ul>
+<li><a href="#orgc3caa8d">1.1.1. Ratio</a></li>
+<li><a href="#org4dd48f1">1.1.2. Mismatched tain/test disriibution</a></li>
+</ul>
+</li>
+<li><a href="#org66d807d">1.2. Bias/Variance</a></li>
+<li><a href="#orgb2510dc">1.3. Basic recipe for ML</a></li>
+<li><a href="#orgd211a36">1.4. High bias</a></li>
+<li><a href="#orgee04c4e">1.5. High variance</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-## #+STARTUP: indent<br />
-</p>
 
-<div id="outline-container-orgd8501dd" class="outline-2">
-<h2 id="orgd8501dd"><span class="section-number-2">1</span> Data Sets</h2>
+<div id="outline-container-org905b6bb" class="outline-2">
+<h2 id="org905b6bb"><span class="section-number-2">1</span> Seting up ML application</h2>
 <div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgd8501dd" class="outline-3">
+<h3 id="orgd8501dd"><span class="section-number-3">1.1</span> Data Sets</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
 Train/Dev/Test sets<br />
 </p>
@@ -265,9 +274,9 @@ Evaluate your model on your test set to get an unbiased estimate of how well you
 </ul>
 </div>
 
-<div id="outline-container-orgc3caa8d" class="outline-3">
-<h3 id="orgc3caa8d"><span class="section-number-3">1.1</span> Ratio</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgc3caa8d" class="outline-4">
+<h4 id="orgc3caa8d"><span class="section-number-4">1.1.1</span> Ratio</h4>
+<div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
 <li>Small amount of data(100, 1k, 10k), 60%, 20%, and 20% respectively<br /></li>
 <li>Big data era(&gt; 1M), dev/test are much smaller<br />
@@ -276,9 +285,9 @@ Evaluate your model on your test set to get an unbiased estimate of how well you
 </div>
 </div>
 
-<div id="outline-container-org4dd48f1" class="outline-3">
-<h3 id="org4dd48f1"><span class="section-number-3">1.2</span> Mismatched tain/test disriibution</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org4dd48f1" class="outline-4">
+<h4 id="org4dd48f1"><span class="section-number-4">1.1.2</span> Mismatched tain/test disriibution</h4>
+<div class="outline-text-4" id="text-1-1-2">
 <p>
 Rule of thumb:<br />
 </p>
@@ -290,10 +299,108 @@ Rule of thumb:<br />
 </div>
 </div>
 </div>
+
+<div id="outline-container-org66d807d" class="outline-3">
+<h3 id="org66d807d"><span class="section-number-3">1.2</span> Bias/Variance</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>High bias: Underfitting the data<br /></li>
+<li><p>
+High variance: Overfitting the data<br />
+</p>
+
+<p>
+Looking at the training set error and dev set error, you'll render a diagnosis of your algorithm having<br />
+high variance or high bias.<br />
+</p>
+
+<p>
+e.g. for high variance:<br />
+</p>
+<ul class="org-ul">
+<li>train set error: 1%<br /></li>
+<li>dev set error:  10%<br /></li>
+</ul>
+
+<p>
+e.g. for high bias: not even fit the training set very well<br />
+</p>
+<ul class="org-ul">
+<li>train set error: 15%<br /></li>
+<li>dev set error:   16%<br /></li>
+</ul>
+
+<p>
+e.g. for high bias and high variance<br />
+</p>
+<ul class="org-ul">
+<li>train set error: 15%<br /></li>
+<li>dev set error:   30%<br /></li>
+</ul>
+
+<p>
+e.g. for low bias and low variance<br />
+</p>
+<ul class="org-ul">
+<li>train set error: 0.5%<br /></li>
+<li>dev set error:   1%<br /></li>
+</ul>
+
+<p>
+Taking a look at your training error, you know how well you are fitting the training data, which tells you<br />
+if you have a bias problem.<br />
+</p>
+
+<p>
+Looking at how much higher your error goes(dev set error - train set error), that gives you a sens how bad<br />
+is the variance problems.<br />
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb2510dc" class="outline-3">
+<h3 id="orgb2510dc"><span class="section-number-3">1.3</span> Basic recipe for ML</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+high biase ? Y -&gt; resolve it<br />
+N -&gt; high variance? -&gt; resolve it -&gt; high bias? -&gt; Y -&gt; go back<br />
+N -&gt; Done.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd211a36" class="outline-3">
+<h3 id="orgd211a36"><span class="section-number-3">1.4</span> High bias</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Training data problem, try<br />
+</p>
+<ul class="org-ul">
+<li>bigger network(more layers/units)<br /></li>
+<li>train longer<br /></li>
+<li>Maybe NN architecture search<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgee04c4e" class="outline-3">
+<h3 id="orgee04c4e"><span class="section-number-3">1.5</span> High variance</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Dev set problem, try<br />
+</p>
+<ul class="org-ul">
+<li>more data<br /></li>
+<li>regularization<br /></li>
+<li>Maybe NN architecture search<br /></li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-21 Sat 10:04</p>
+<p class="date">Created: 2018-04-21 Sat 10:49</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
