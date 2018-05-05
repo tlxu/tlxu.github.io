@@ -68,7 +68,27 @@
    - regularization
    - Maybe NN architecture search
 
+  
+* Regularization
+   \lambda is the regularization parameter  
+** Logistic regression
+*** L2 Regularization
+     + J(w, b) = $\frac{1}{m}$ $\sum_{i=1}^{m}$ L($\hat{y}^{i}$, y^{i}) + $\frac{\lambda}{2m}$ ||w||^{2}_{2}
+     + ||w||^{2}_{2} = $\sum_{j=1}^{n}$ w_{j}^{2} = w^{T}w
+*** L1 Regularization
+     + $\frac{\lambda}{2m} \sum_{j=1}^{n}|w|_{1}$ = $\frac{\lambda}{2m}$ ||w||_{1}
    
+** Neural Network
+     + J(w^{[1]}, b^{[1]}, ..., w^{[L]}, b^{[L]}) = $\frac{1}{m}$ $\sum_{i=1}^{m}$ L($\hat{y}^{i}$, y^{i}) + $\frac{\lambda}{2m}$ ||w^{[L]}||^{2}_{2}
+     + $\|w^{[l]}\|^{2}_{F}$ = $\sum_{i=1}^{n^{[l-1]}}$ $\sum_{j=1}^{n^{[l]}}$ (w_{ij}^{[l]})^{2}
+       w: (n^{[l-1]}, n^{[l]})
+       Frobenius norm
+     + dw^{[l]} = (from backprop) + $\frac{\lambda}{m}$ w^{[l]}
+       w^{[l]} := w^{[l]} - \alpha dw^{[l]}
+                = w^{[l]} - \alpha [(from backprop) + $\frac{\lambda}{m}$ w^{[l]}]
+                = w^{[l]} -  \alpha $\frac{\lambda}{m}$ w^{[l]} - \alpha (from backprop)
+                = (1 - $\frac{\alpha\lambda}{m}$)w^{[l]} - \alpha (from backprop)
 
+       L2 regrulariztion is sometimes called "Weight decay"
 
 

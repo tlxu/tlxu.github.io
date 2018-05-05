@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-04-21 Sat 10:54 -->
+<!-- 2018-05-05 Sat 10:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Improving Deep Neural Networks</title>
@@ -228,6 +228,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -251,6 +273,17 @@ for the JavaScript code in this tag.
 <li><a href="#orgee04c4e">1.3.2. High variance</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#org4e0af87">2. Regularization</a>
+<ul>
+<li><a href="#org98839e2">2.1. Logistic regression</a>
+<ul>
+<li><a href="#org18d31d6">2.1.1. L2 Regularization</a></li>
+<li><a href="#orgfc52319">2.1.2. L1 Regularization</a></li>
+</ul>
+</li>
+<li><a href="#org56fe3c7">2.2. Neural Network</a></li>
 </ul>
 </li>
 </ul>
@@ -400,10 +433,65 @@ Dev set problem, try<br />
 </div>
 </div>
 </div>
+
+
+<div id="outline-container-org4e0af87" class="outline-2">
+<h2 id="org4e0af87"><span class="section-number-2">2</span> Regularization</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+&lambda; is the regularization parameter<br />
+</p>
+</div>
+<div id="outline-container-org98839e2" class="outline-3">
+<h3 id="org98839e2"><span class="section-number-3">2.1</span> Logistic regression</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-org18d31d6" class="outline-4">
+<h4 id="org18d31d6"><span class="section-number-4">2.1.1</span> L2 Regularization</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<ul class="org-ul">
+<li>J(w, b) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}^{i}\), y<sup>i</sup>) + \(\frac{\lambda}{2m}\) ||w||<sup>2</sup><sub>2</sub><br /></li>
+<li>||w||<sup>2</sup><sub>2</sub> = \(\sum_{j=1}^{n}\) w<sub>j</sub><sup>2</sup> = w<sup>T</sup>w<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfc52319" class="outline-4">
+<h4 id="orgfc52319"><span class="section-number-4">2.1.2</span> L1 Regularization</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<ul class="org-ul">
+<li>\(\frac{\lambda}{2m} \sum_{j=1}^{n}|w|_{1}\) = \(\frac{\lambda}{2m}\) ||w||<sub>1</sub><br /></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org56fe3c7" class="outline-3">
+<h3 id="org56fe3c7"><span class="section-number-3">2.2</span> Neural Network</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>J(w<sup>[1]</sup>, b<sup>[1]</sup>, &#x2026;, w<sup>[L]</sup>, b<sup>[L]</sup>) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}^{i}\), y<sup>i</sup>) + \(\frac{\lambda}{2m}\) ||w<sup>[L]</sup>||<sup>2</sup><sub>2</sub><br /></li>
+<li>\(\|w^{[l]}\|^{2}_{F}\) = \(\sum_{i=1}^{n^{[l-1]}}\) \(\sum_{j=1}^{n^{[l]}}\) (w<sub>ij</sub><sup>[l]</sup>)<sup>2</sup><br />
+w: (n<sup>[l-1]</sup>, n<sup>[l]</sup>)<br />
+Frobenius norm<br /></li>
+<li><p>
+dw<sup>[l]</sup> = (from backprop) + \(\frac{\lambda}{m}\) w<sup>[l]</sup><br />
+w<sup>[l]</sup> := w<sup>[l]</sup> - &alpha; dw<sup>[l]</sup><br />
+         = w<sup>[l]</sup> - &alpha; [(from backprop) + \(\frac{\lambda}{m}\) w<sup>[l]</sup>]<br />
+         = w<sup>[l]</sup> -  &alpha; \(\frac{\lambda}{m}\) w<sup>[l]</sup> - &alpha; (from backprop)<br />
+         = (1 - \(\frac{\alpha\lambda}{m}\))w<sup>[l]</sup> - &alpha; (from backprop)<br />
+</p>
+
+<p>
+L2 regrulariztion is sometimes called "Weight decay"<br />
+</p></li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-21 Sat 10:54</p>
+<p class="date">Created: 2018-05-05 Sat 10:19</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
