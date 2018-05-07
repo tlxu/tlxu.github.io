@@ -79,8 +79,8 @@
      + $\frac{\lambda}{2m} \sum_{j=1}^{n}|w|_{1}$ = $\frac{\lambda}{2m}$ ||w||_{1}
    
 ** Neural Network
-     + J(w^{[1]}, b^{[1]}, ..., w^{[L]}, b^{[L]}) = $\frac{1}{m}$ $\sum_{i=1}^{m}$ L($\hat{y}^{i}$, y^{i}) + $\frac{\lambda}{2m}$ ||w^{[L]}||^{2}_{2}
-     + $\|w^{[l]}\|^{2}_{F}$ = $\sum_{i=1}^{n^{[l-1]}}$ $\sum_{j=1}^{n^{[l]}}$ (w_{ij}^{[l]})^{2}
+     + J(w^{[1]}, b^{[1]}, ..., w^{[L]}, b^{[L]}) = $\frac{1}{m}$ $\sum_{i=1}^{m}$ L($\hat{y}^{i}$, y^{i}) + $\frac{\lambda}{2m} \sum_{l=1}^{L}  \|w^{[l]}\|^{2}_{2}$
+     + $\|w^{[l]}\|^{2}_{F}$ = $\sum_{i=1}^{n^{[l-1]}} \sum_{j=1}^{n^{[l]}} (w_{ij}^{[l]})^{2}$
        w: (n^{[l-1]}, n^{[l]})
        Frobenius norm
      + dw^{[l]} = (from backprop) + $\frac{\lambda}{m}$ w^{[l]}
@@ -91,4 +91,17 @@
 
        L2 regrulariztion is sometimes called "Weight decay"
 
+** How does regularization prevent overfitting?
+*** Intuition 1
+   Cranking up \lambda to be very big will set W close to 0 - you can think of it as zeroing out or at least reducing
+   the impact of hidden units, so you end up with a much simpler network, as if you were just using logistic regression,
+   which prevents overfitting.
+*** Intuition 2
+    For example, we are using tanh activation function.
+    If \lambda is large, then W^{[l]} is small, then Z^{[l]} is small - it takes on a small range of values, g(z)
+    would be roughly linear, as if every layer would be roughtly linear, as if it's just logistic regression,
+    then the whole network is jsut a linera network, which prevents overfitting.
 
+
+
+   

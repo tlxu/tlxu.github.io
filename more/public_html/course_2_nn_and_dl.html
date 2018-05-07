@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-05 Sat 10:19 -->
+<!-- 2018-05-06 Sun 18:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Improving Deep Neural Networks</title>
@@ -284,6 +284,12 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#org56fe3c7">2.2. Neural Network</a></li>
+<li><a href="#org06c88cd">2.3. How does regularization prevent overfitting?</a>
+<ul>
+<li><a href="#org4903456">2.3.1. Intuition 1</a></li>
+<li><a href="#org1536521">2.3.2. Intuition 2</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -469,8 +475,8 @@ Dev set problem, try<br />
 <h3 id="org56fe3c7"><span class="section-number-3">2.2</span> Neural Network</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
-<li>J(w<sup>[1]</sup>, b<sup>[1]</sup>, &#x2026;, w<sup>[L]</sup>, b<sup>[L]</sup>) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}^{i}\), y<sup>i</sup>) + \(\frac{\lambda}{2m}\) ||w<sup>[L]</sup>||<sup>2</sup><sub>2</sub><br /></li>
-<li>\(\|w^{[l]}\|^{2}_{F}\) = \(\sum_{i=1}^{n^{[l-1]}}\) \(\sum_{j=1}^{n^{[l]}}\) (w<sub>ij</sub><sup>[l]</sup>)<sup>2</sup><br />
+<li>J(w<sup>[1]</sup>, b<sup>[1]</sup>, &#x2026;, w<sup>[L]</sup>, b<sup>[L]</sup>) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}^{i}\), y<sup>i</sup>) + \(\frac{\lambda}{2m} \sum_{l=1}^{L}  \|w^{[l]}\|^{2}_{2}\)<br /></li>
+<li>\(\|w^{[l]}\|^{2}_{F}\) = \(\sum_{i=1}^{n^{[l-1]}} \sum_{j=1}^{n^{[l]}} (w_{ij}^{[l]})^{2}\)<br />
 w: (n<sup>[l-1]</sup>, n<sup>[l]</sup>)<br />
 Frobenius norm<br /></li>
 <li><p>
@@ -487,11 +493,38 @@ L2 regrulariztion is sometimes called "Weight decay"<br />
 </ul>
 </div>
 </div>
+
+<div id="outline-container-org06c88cd" class="outline-3">
+<h3 id="org06c88cd"><span class="section-number-3">2.3</span> How does regularization prevent overfitting?</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-org4903456" class="outline-4">
+<h4 id="org4903456"><span class="section-number-4">2.3.1</span> Intuition 1</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+Cranking up &lambda; to be very big will set W close to 0 - you can think of it as zeroing out or at least reducing<br />
+the impact of hidden units, so you end up with a much simpler network, as if you were just using logistic regression,<br />
+which prevents overfitting.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org1536521" class="outline-4">
+<h4 id="org1536521"><span class="section-number-4">2.3.2</span> Intuition 2</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+For example, we are using tanh activation function.<br />
+If &lambda; is large, then W<sup>[l]</sup> is small, then Z<sup>[l]</sup> is small - it takes on a small range of values, g(z)<br />
+would be roughly linear, as if every layer would be roughtly linear, as if it's just logistic regression,<br />
+then the whole network is jsut a linera network, which prevents overfitting.<br />
+</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-05-05 Sat 10:19</p>
+<p class="date">Created: 2018-05-06 Sun 18:20</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
