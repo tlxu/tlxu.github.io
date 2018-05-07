@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-06 Sun 18:20 -->
+<!-- 2018-05-07 Mon 09:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Improving Deep Neural Networks</title>
@@ -258,36 +258,36 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org905b6bb">1. Seting up ML application</a>
+<li><a href="#org89220a1">1. Seting up ML application</a>
 <ul>
-<li><a href="#orgd8501dd">1.1. Data Sets</a>
+<li><a href="#org4b5fe55">1.1. Data Sets</a>
 <ul>
-<li><a href="#orgc3caa8d">1.1.1. Ratio</a></li>
-<li><a href="#org4dd48f1">1.1.2. Mismatched tain/test disriibution</a></li>
+<li><a href="#org1fa7e99">1.1.1. Ratio</a></li>
+<li><a href="#org570de5f">1.1.2. Mismatched tain/test disriibution</a></li>
 </ul>
 </li>
-<li><a href="#org66d807d">1.2. Bias/Variance</a></li>
-<li><a href="#orgb2510dc">1.3. Basic recipe for ML</a>
+<li><a href="#org4f08b55">1.2. Bias/Variance</a></li>
+<li><a href="#org0beaabb">1.3. Basic recipe for ML</a>
 <ul>
-<li><a href="#orgd211a36">1.3.1. High bias</a></li>
-<li><a href="#orgee04c4e">1.3.2. High variance</a></li>
+<li><a href="#org39f6c44">1.3.1. High bias</a></li>
+<li><a href="#orgc34fcfe">1.3.2. High variance</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org4e0af87">2. Regularization</a>
+<li><a href="#orgdc6bb5f">2. Regularization</a>
 <ul>
-<li><a href="#org98839e2">2.1. Logistic regression</a>
+<li><a href="#org22f1f1b">2.1. Logistic regression</a>
 <ul>
-<li><a href="#org18d31d6">2.1.1. L2 Regularization</a></li>
-<li><a href="#orgfc52319">2.1.2. L1 Regularization</a></li>
+<li><a href="#orgd747fea">2.1.1. L2 Regularization</a></li>
+<li><a href="#org5475e72">2.1.2. L1 Regularization</a></li>
 </ul>
 </li>
-<li><a href="#org56fe3c7">2.2. Neural Network</a></li>
-<li><a href="#org06c88cd">2.3. How does regularization prevent overfitting?</a>
+<li><a href="#org0ac1d8a">2.2. Neural Network</a></li>
+<li><a href="#org4ed790d">2.3. How does regularization prevent overfitting?</a>
 <ul>
-<li><a href="#org4903456">2.3.1. Intuition 1</a></li>
-<li><a href="#org1536521">2.3.2. Intuition 2</a></li>
+<li><a href="#orge0e22d1">2.3.1. Intuition 1</a></li>
+<li><a href="#org4b8cdbd">2.3.2. Intuition 2</a></li>
 </ul>
 </li>
 </ul>
@@ -296,12 +296,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org905b6bb" class="outline-2">
-<h2 id="org905b6bb"><span class="section-number-2">1</span> Seting up ML application</h2>
+<div id="outline-container-org89220a1" class="outline-2">
+<h2 id="org89220a1"><span class="section-number-2">1</span> Seting up ML application</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgd8501dd" class="outline-3">
-<h3 id="orgd8501dd"><span class="section-number-3">1.1</span> Data Sets</h3>
+<div id="outline-container-org4b5fe55" class="outline-3">
+<h3 id="org4b5fe55"><span class="section-number-3">1.1</span> Data Sets</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Train/Dev/Test sets<br />
@@ -316,8 +316,8 @@ Evaluate your model on your test set to get an unbiased estimate of how well you
 </ul>
 </div>
 
-<div id="outline-container-orgc3caa8d" class="outline-4">
-<h4 id="orgc3caa8d"><span class="section-number-4">1.1.1</span> Ratio</h4>
+<div id="outline-container-org1fa7e99" class="outline-4">
+<h4 id="org1fa7e99"><span class="section-number-4">1.1.1</span> Ratio</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
 <li>Small amount of data(100, 1k, 10k), 60%, 20%, and 20% respectively<br /></li>
@@ -327,8 +327,8 @@ Evaluate your model on your test set to get an unbiased estimate of how well you
 </div>
 </div>
 
-<div id="outline-container-org4dd48f1" class="outline-4">
-<h4 id="org4dd48f1"><span class="section-number-4">1.1.2</span> Mismatched tain/test disriibution</h4>
+<div id="outline-container-org570de5f" class="outline-4">
+<h4 id="org570de5f"><span class="section-number-4">1.1.2</span> Mismatched tain/test disriibution</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 Rule of thumb:<br />
@@ -342,8 +342,8 @@ Rule of thumb:<br />
 </div>
 </div>
 
-<div id="outline-container-org66d807d" class="outline-3">
-<h3 id="org66d807d"><span class="section-number-3">1.2</span> Bias/Variance</h3>
+<div id="outline-container-org4f08b55" class="outline-3">
+<h3 id="org4f08b55"><span class="section-number-3">1.2</span> Bias/Variance</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>High bias: Underfitting the data<br /></li>
@@ -401,8 +401,8 @@ is the variance problems.<br />
 </div>
 </div>
 
-<div id="outline-container-orgb2510dc" class="outline-3">
-<h3 id="orgb2510dc"><span class="section-number-3">1.3</span> Basic recipe for ML</h3>
+<div id="outline-container-org0beaabb" class="outline-3">
+<h3 id="org0beaabb"><span class="section-number-3">1.3</span> Basic recipe for ML</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 high biase ? Y -&gt; resolve it<br />
@@ -411,8 +411,8 @@ N -&gt; Done.<br />
 </p>
 </div>
 
-<div id="outline-container-orgd211a36" class="outline-4">
-<h4 id="orgd211a36"><span class="section-number-4">1.3.1</span> High bias</h4>
+<div id="outline-container-org39f6c44" class="outline-4">
+<h4 id="org39f6c44"><span class="section-number-4">1.3.1</span> High bias</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 Training data problem, try<br />
@@ -424,8 +424,8 @@ Training data problem, try<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgee04c4e" class="outline-4">
-<h4 id="orgee04c4e"><span class="section-number-4">1.3.2</span> High variance</h4>
+<div id="outline-container-orgc34fcfe" class="outline-4">
+<h4 id="orgc34fcfe"><span class="section-number-4">1.3.2</span> High variance</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <p>
 Dev set problem, try<br />
@@ -441,19 +441,19 @@ Dev set problem, try<br />
 </div>
 
 
-<div id="outline-container-org4e0af87" class="outline-2">
-<h2 id="org4e0af87"><span class="section-number-2">2</span> Regularization</h2>
+<div id="outline-container-orgdc6bb5f" class="outline-2">
+<h2 id="orgdc6bb5f"><span class="section-number-2">2</span> Regularization</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 &lambda; is the regularization parameter<br />
 </p>
 </div>
-<div id="outline-container-org98839e2" class="outline-3">
-<h3 id="org98839e2"><span class="section-number-3">2.1</span> Logistic regression</h3>
+<div id="outline-container-org22f1f1b" class="outline-3">
+<h3 id="org22f1f1b"><span class="section-number-3">2.1</span> Logistic regression</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-org18d31d6" class="outline-4">
-<h4 id="org18d31d6"><span class="section-number-4">2.1.1</span> L2 Regularization</h4>
+<div id="outline-container-orgd747fea" class="outline-4">
+<h4 id="orgd747fea"><span class="section-number-4">2.1.1</span> L2 Regularization</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <ul class="org-ul">
 <li>J(w, b) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}^{i}\), y<sup>i</sup>) + \(\frac{\lambda}{2m}\) ||w||<sup>2</sup><sub>2</sub><br /></li>
@@ -461,8 +461,8 @@ Dev set problem, try<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfc52319" class="outline-4">
-<h4 id="orgfc52319"><span class="section-number-4">2.1.2</span> L1 Regularization</h4>
+<div id="outline-container-org5475e72" class="outline-4">
+<h4 id="org5475e72"><span class="section-number-4">2.1.2</span> L1 Regularization</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <ul class="org-ul">
 <li>\(\frac{\lambda}{2m} \sum_{j=1}^{n}|w|_{1}\) = \(\frac{\lambda}{2m}\) ||w||<sub>1</sub><br /></li>
@@ -471,8 +471,8 @@ Dev set problem, try<br />
 </div>
 </div>
 
-<div id="outline-container-org56fe3c7" class="outline-3">
-<h3 id="org56fe3c7"><span class="section-number-3">2.2</span> Neural Network</h3>
+<div id="outline-container-org0ac1d8a" class="outline-3">
+<h3 id="org0ac1d8a"><span class="section-number-3">2.2</span> Neural Network</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>J(w<sup>[1]</sup>, b<sup>[1]</sup>, &#x2026;, w<sup>[L]</sup>, b<sup>[L]</sup>) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}^{i}\), y<sup>i</sup>) + \(\frac{\lambda}{2m} \sum_{l=1}^{L}  \|w^{[l]}\|^{2}_{2}\)<br /></li>
@@ -494,12 +494,12 @@ L2 regrulariztion is sometimes called "Weight decay"<br />
 </div>
 </div>
 
-<div id="outline-container-org06c88cd" class="outline-3">
-<h3 id="org06c88cd"><span class="section-number-3">2.3</span> How does regularization prevent overfitting?</h3>
+<div id="outline-container-org4ed790d" class="outline-3">
+<h3 id="org4ed790d"><span class="section-number-3">2.3</span> How does regularization prevent overfitting?</h3>
 <div class="outline-text-3" id="text-2-3">
 </div>
-<div id="outline-container-org4903456" class="outline-4">
-<h4 id="org4903456"><span class="section-number-4">2.3.1</span> Intuition 1</h4>
+<div id="outline-container-orge0e22d1" class="outline-4">
+<h4 id="orge0e22d1"><span class="section-number-4">2.3.1</span> Intuition 1</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <p>
 Cranking up &lambda; to be very big will set W close to 0 - you can think of it as zeroing out or at least reducing<br />
@@ -508,8 +508,8 @@ which prevents overfitting.<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org1536521" class="outline-4">
-<h4 id="org1536521"><span class="section-number-4">2.3.2</span> Intuition 2</h4>
+<div id="outline-container-org4b8cdbd" class="outline-4">
+<h4 id="org4b8cdbd"><span class="section-number-4">2.3.2</span> Intuition 2</h4>
 <div class="outline-text-4" id="text-2-3-2">
 <p>
 For example, we are using tanh activation function.<br />
@@ -524,7 +524,7 @@ then the whole network is jsut a linera network, which prevents overfitting.<br 
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-05-06 Sun 18:20</p>
+<p class="date">Created: 2018-05-07 Mon 09:08</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
