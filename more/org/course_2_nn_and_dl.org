@@ -102,6 +102,25 @@
     would be roughly linear, as if every layer would be roughtly linear, as if it's just logistic regression,
     then the whole network is jsut a linera network, which prevents overfitting.
 
+** Dropout regularization
+   Drop some nodes, you get a diminished/reduced network.
+*** Implementation with Inverted dropout
+    Illustrate with layer l=3, keep-prob=0.8
+    - d3 = np.random.rand(a3.shape[0], a3.shape[1]) < keep-prob
+      d3 is a bollean vector
+      a3 = np.multiply(a3, d3) or a3 *= d3
+      a3 /= keep-prob # scale a3 up, not to change the expected value of a3
+    - No dropout at test time
+    - No dropout for input layer
+    - Use lower keep-prob for the layers have more hidden units, vice versa.
+*** Why drop-out work
+    Intuition: Can't rely on any one feature, so have to spread out weights.
+    The input of a unit can get randomly eliminated.
 
+    Use different keep-prob for different layer.
 
+*** Downside
+    The cost function J is no longer well defined on every iteration since it randomly killing off
+    a bunch of nodes. What to do is turning off dropout by setting keep-pro = 1 and make sure that
+    it is monotonically decreasing J and then turn on dropout.
    

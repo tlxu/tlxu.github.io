@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-07 Mon 09:08 -->
+<!-- 2018-05-07 Mon 16:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Improving Deep Neural Networks</title>
@@ -290,6 +290,13 @@ for the JavaScript code in this tag.
 <li><a href="#org4b8cdbd">2.3.2. Intuition 2</a></li>
 </ul>
 </li>
+<li><a href="#org888791e">2.4. Dropout regularization</a>
+<ul>
+<li><a href="#org7ca6d17">2.4.1. Implementation with Inverted dropout</a></li>
+<li><a href="#orgfa118e4">2.4.2. Why drop-out work</a></li>
+<li><a href="#org3df0c26">2.4.3. Downside</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -520,11 +527,61 @@ then the whole network is jsut a linera network, which prevents overfitting.<br 
 </div>
 </div>
 </div>
+
+<div id="outline-container-org888791e" class="outline-3">
+<h3 id="org888791e"><span class="section-number-3">2.4</span> Dropout regularization</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Drop some nodes, you get a diminished/reduced network.<br />
+</p>
+</div>
+<div id="outline-container-org7ca6d17" class="outline-4">
+<h4 id="org7ca6d17"><span class="section-number-4">2.4.1</span> Implementation with Inverted dropout</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+Illustrate with layer l=3, keep-prob=0.8<br />
+</p>
+<ul class="org-ul">
+<li>d3 = np.random.rand(a3.shape[0], a3.shape[1]) &lt; keep-prob<br />
+d3 is a bollean vector<br />
+a3 = np.multiply(a3, d3) or a3 *= d3<br />
+a3 /= keep-prob # scale a3 up, not to change the expected value of a3<br /></li>
+<li>No dropout at test time<br /></li>
+<li>No dropout for input layer<br /></li>
+<li>Use lower keep-prob for the layers have more hidden units, vice versa.<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfa118e4" class="outline-4">
+<h4 id="orgfa118e4"><span class="section-number-4">2.4.2</span> Why drop-out work</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<p>
+Intuition: Can't rely on any one feature, so have to spread out weights.<br />
+The input of a unit can get randomly eliminated.<br />
+</p>
+
+<p>
+Use different keep-prob for different layer.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3df0c26" class="outline-4">
+<h4 id="org3df0c26"><span class="section-number-4">2.4.3</span> Downside</h4>
+<div class="outline-text-4" id="text-2-4-3">
+<p>
+The cost function J is no longer well defined on every iteration since it randomly killing off<br />
+a bunch of nodes. What to do is turning off dropout by setting keep-pro = 1 and make sure that<br />
+it is monotonically decreasing J and then turn on dropout.<br />
+</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-05-07 Mon 09:08</p>
+<p class="date">Created: 2018-05-07 Mon 16:46</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
