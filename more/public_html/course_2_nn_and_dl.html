@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-07 Mon 16:46 -->
+<!-- 2018-05-08 Tue 10:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Improving Deep Neural Networks</title>
@@ -297,8 +297,10 @@ for the JavaScript code in this tag.
 <li><a href="#org3df0c26">2.4.3. Downside</a></li>
 </ul>
 </li>
+<li><a href="#org1de0b21">2.5. Other Regularization Methods</a></li>
 </ul>
 </li>
+<li><a href="#org4d70673">3. Normalizing Inputs</a></li>
 </ul>
 </div>
 </div>
@@ -531,9 +533,10 @@ then the whole network is jsut a linera network, which prevents overfitting.<br 
 <div id="outline-container-org888791e" class="outline-3">
 <h3 id="org888791e"><span class="section-number-3">2.4</span> Dropout regularization</h3>
 <div class="outline-text-3" id="text-2-4">
-<p>
-Drop some nodes, you get a diminished/reduced network.<br />
-</p>
+<ul class="org-ul">
+<li>Drop some nodes, you get a diminished/reduced network.<br /></li>
+<li>If your deep NN is significantly overfitting, dropout will usually reduce the number of errors by a lot.<br /></li>
+</ul>
 </div>
 <div id="outline-container-org7ca6d17" class="outline-4">
 <h4 id="org7ca6d17"><span class="section-number-4">2.4.1</span> Implementation with Inverted dropout</h4>
@@ -577,11 +580,47 @@ it is monotonically decreasing J and then turn on dropout.<br />
 </div>
 </div>
 </div>
+
+<div id="outline-container-org1de0b21" class="outline-3">
+<h3 id="org1de0b21"><span class="section-number-3">2.5</span> Other Regularization Methods</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>flip/rotate an image to get more brand new training examples<br /></li>
+<li>early-stopping, using dev set error, dev set usually goes down and then goes up, stop the training half way.<br /></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4d70673" class="outline-2">
+<h2 id="org4d70673"><span class="section-number-2">3</span> Normalizing Inputs</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Make features in the same scale so that it makes gradient decent faster.<br />
+The cost function well on average look more symmetric and you have more spherical contours, you can have<br />
+bigger learning rate, the gradient decent can pretty much go straight to the minimum you can take much larger<br />
+steps. Makes cost function J easier and faster to optimize.<br />
+</p>
+
+<ul class="org-ul">
+<li>Step 1 subtract mean:<br />
+u = \(\frac{1}{m} \sum_{i=1}^{m}x^{i}\)<br />
+x := x - u<br />
+move the training set until it has zero mean<br /></li>
+<li>Step 2 normalize variance:<br />
+\(\sigma^{2} = \frac{1}{m} \sum_{i=1}^{m}x^{i}**2\)    element-wise squared<br />
+x /= \(\sigma^{2}\)<br /></li>
+
+<li>Use normalization to scale your training data and <b>the same u and \(\sigma^{2}\)</b> to normalize your test set.<br /></li>
+<li>Use normalization when input features have dramaticlly different ranges.<br /></li>
+</ul>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-05-07 Mon 16:46</p>
+<p class="date">Created: 2018-05-08 Tue 10:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -103,7 +103,8 @@
     then the whole network is jsut a linera network, which prevents overfitting.
 
 ** Dropout regularization
-   Drop some nodes, you get a diminished/reduced network.
+   - Drop some nodes, you get a diminished/reduced network.
+   - If your deep NN is significantly overfitting, dropout will usually reduce the number of errors by a lot.
 *** Implementation with Inverted dropout
     Illustrate with layer l=3, keep-prob=0.8
     - d3 = np.random.rand(a3.shape[0], a3.shape[1]) < keep-prob
@@ -124,3 +125,24 @@
     a bunch of nodes. What to do is turning off dropout by setting keep-pro = 1 and make sure that
     it is monotonically decreasing J and then turn on dropout.
    
+** Other Regularization Methods
+   - flip/rotate an image to get more brand new training examples
+   - early-stopping, using dev set error, dev set usually goes down and then goes up, stop the training half way.
+
+
+* Normalizing Inputs     
+  Make features in the same scale so that it makes gradient decent faster.
+  The cost function well on average look more symmetric and you have more spherical contours, you can have
+  bigger learning rate, the gradient decent can pretty much go straight to the minimum you can take much larger
+  steps. Makes cost function J easier and faster to optimize.
+
+  - Step 1 subtract mean:
+    u = $\frac{1}{m} \sum_{i=1}^{m}x^{i}$
+    x := x - u
+    move the training set until it has zero mean
+  - Step 2 normalize variance:
+    $\sigma^{2} = \frac{1}{m} \sum_{i=1}^{m}x^{i}**2$    element-wise squared
+    x /= $\sigma^{2}$
+
+  - Use normalization to scale your training data and *the same u and $\sigma^{2}$* to normalize your test set.
+  - Use normalization when input features have dramaticlly different ranges.
