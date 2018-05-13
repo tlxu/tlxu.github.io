@@ -146,3 +146,21 @@
 
   - Use normalization to scale your training data and *the same u and $\sigma^{2}$* to normalize your test set.
   - Use normalization when input features have dramaticlly different ranges.
+
+
+* Vanishing/exploding gradients
+  If L is large for very deep neural network, $\hat{Y}$ will be very large/small in fact that this grows/decreases
+  exponentially. It makes gradient decent slow to learn anything. The deep NN suffers from this.
+
+** Weight initialization for deep networks
+     A partial solution which helps a lot on the problem of vanishing and exploding is careful choice of how you initialize the weights.
+     - RELU
+       W^{[l]} = np.random.randn(shape..) * np.sqrt($\frac{2}{n^{[l-1]}}$)
+     - tanh
+       sqrt($\frac{1}{n^{[l-1]}}$)  #Xavier initialization
+       other variance:
+       sqrt($\frac{2}{n^{[l-1]}*n^{[l]}}$)
+
+    Choosing a reasonable scaling for how you initialize your weights which makes your weights not explode too quickly and not decay to
+    zero too quickly, so that you can train a reasonaly deep nework without the weights or the gradients exploding or vanishing too much.
+    
