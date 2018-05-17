@@ -164,3 +164,20 @@
     Choosing a reasonable scaling for how you initialize your weights which makes your weights not explode too quickly and not decay to
     zero too quickly, so that you can train a reasonaly deep nework without the weights or the gradients exploding or vanishing too much.
     
+* Gradient Checking(Grad Check)
+  Take W^{[1]}, b^{[1]}, ..., W^{[L]},b^{[L]} and reshape into a big vector \theta.
+  J(W^{[1]}, b^{[1]}, ..., W^{[L]},b^{[L]) = J(\Theta) = J(\theta_{1}, \theta_{2}, \theta_{3}, ...)
+  Take dW^{[1]}, db^{[1]}, ..., dW^{[L]},db^{[L]} and reshape into a big vector d\theta.
+
+  for each i:
+      d\Theta_{approx}[i] = $\frac{J(\theta_{1}, \theta_{2}, ..., \theta_{i}+\epsilon, ...) - J(\theta_{1}, \theta_{2}, ..., \theta_{i}-\epsilon, ...)}{2\epsilon}$ $\approx$ d\theta[i] = $\frac{dJ}{d\theta_{i}}$
+
+  check d\Theta_{approx} \approx d\Theta   --> suppose \epsilon = 10^{-7}
+  check $\frac{\|d\Theta_{approx} - d\Theta\|_{2}}{\|d\Theta_{approx}\|_{2} + \|d\Theta\|_{2}} \approx 10^{-7}$ is great, 10^{-5} OK, 10^{-3} worry
+  
+  Notes:
+  - Don't use in training, only to debug, because computing d\Theta[i] is slow
+  - If algorithm fails grad check, look at components to try to identify bug
+  - Remember regularization
+  - Doesn't work with dropout
+  - Run at random initialization; perhaps again after some training

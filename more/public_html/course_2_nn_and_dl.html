@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-13 Sun 12:17 -->
+<!-- 2018-05-16 Wed 22:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Improving Deep Neural Networks</title>
@@ -306,6 +306,7 @@ for the JavaScript code in this tag.
 <li><a href="#org615f17d">4.1. Weight initialization for deep networks</a></li>
 </ul>
 </li>
+<li><a href="#org7246385">5. Gradient Checking(Grad Check)</a></li>
 </ul>
 </div>
 </div>
@@ -655,10 +656,42 @@ zero too quickly, so that you can train a reasonaly deep nework without the weig
 </div>
 </div>
 </div>
+
+<div id="outline-container-org7246385" class="outline-2">
+<h2 id="org7246385"><span class="section-number-2">5</span> Gradient Checking(Grad Check)</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Take W<sup>[1]</sup>, b<sup>[1]</sup>, &#x2026;, W<sup>[L]</sup>,b<sup>[L]</sup> and reshape into a big vector &theta;.<br />
+J(W<sup>[1]</sup>, b<sup>[1]</sup>, &#x2026;, W<sup>[L]</sup>,b^{[L]) = J(&Theta;) = J(&theta;<sub>1</sub>, &theta;<sub>2</sub>, &theta;<sub>3</sub>, &#x2026;)<br />
+Take dW<sup>[1]</sup>, db<sup>[1]</sup>, &#x2026;, dW<sup>[L]</sup>,db<sup>[L]</sup> and reshape into a big vector d&theta;.<br />
+</p>
+
+<p>
+for each i:<br />
+    d&Theta;<sub>approx</sub>[i] = \(\frac{J(\theta_{1}, \theta_{2}, ..., \theta_{i}+\epsilon, ...) - J(\theta_{1}, \theta_{2}, ..., \theta_{i}-\epsilon, ...)}{2\epsilon}\) \(\approx\) d&theta;[i] = \(\frac{dJ}{d\theta_{i}}\)<br />
+</p>
+
+<p>
+check d&Theta;<sub>approx</sub> &asymp; d&Theta;   &#x2013;&gt; suppose &epsilon; = 10<sup>-7</sup><br />
+check \(\frac{\|d\Theta_{approx} - d\Theta\|_{2}}{\|d\Theta_{approx}\|_{2} + \|d\Theta\|_{2}} \approx 10^{-7}\) is great, 10<sup>-5</sup> OK, 10<sup>-3</sup> worry<br />
+</p>
+
+<p>
+Notes:<br />
+</p>
+<ul class="org-ul">
+<li>Don't use in training, only to debug, because computing d&Theta;[i] is slow<br /></li>
+<li>If algorithm fails grad check, look at components to try to identify bug<br /></li>
+<li>Remember regularization<br /></li>
+<li>Doesn't work with dropout<br /></li>
+<li>Run at random initialization; perhaps again after some training<br /></li>
+</ul>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-05-13 Sun 12:17</p>
+<p class="date">Created: 2018-05-16 Wed 22:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
