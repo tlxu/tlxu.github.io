@@ -181,3 +181,55 @@
   - Remember regularization
   - Doesn't work with dropout
   - Run at random initialization; perhaps again after some training
+
+* Optimization Algorithms    
+
+** Mini batch gradient descent
+   Example:
+   X = [x^{(1)}, x^{(2)}, x^{(3)}, ...                          ... x^{(m)}]  \in (n_{x}, m)
+   Y = [y^{(1)}, y^{(2)}, y^{(3)}, ...                          ... y^{(m)}]  \in (1, m)
+   what if m = 5,000,000 ?
+   mini-batch of 1,000 each,
+   5,000 mini-baches
+   X^{{1}} = [x^{(1)}, x^{(2)}, ..., x^{(1000)}]
+   X^{{2}} = [x^{(1001)}, x^{(1002)}, ..., x^{(2000)}]
+   ...
+   X^{{5000}} = [x^{(4,999,001)}, x^{(4,999,002)}, ..., x^{(5,000,000)}] 
+
+   Y^{{1}} = [y^{(1)}, y^{(2)}, ..., y^{(1000)}]   
+   Y^{{2}} = [y^{(1001)}, y^{(1002)}, ..., y^{(2000)}]
+   ...
+   Y^{{5000}} = [y^{(4,999,001)}, y^{(4,999,002)}, ..., y^{(5,000,000)}] 
+
+   mini-batch t: X^{{t}} \in (n_{x}, 1000), Y^{{t}} \in (1, 1000)
+
+
+   for t = 1,...,5000:
+       Forward prop on X^{{t}}:
+           Z^{[1]} = W^{[1]}X + b^{[1]}
+           A^{[1]} = g^{[1]}(Z^{[1]})
+           ...
+           A^{[L]} = g^{[L]}(Z^{[L]})
+           Note: vectorized implementation on the above
+           
+       Compute cost J = $\frac{1}{1000} \sum_{i=1}^{l}L(\hat{y}^{(i)}, y^{(i)}) + \frac{\lambda}{2*1000} \sum_{l}||W^{[l]}||^{2}_{F}$
+
+       Backprop to copute gradients with respect to J^{{t}} (using (X^{{t}}, Y^{{t}}))
+       W^{[l]} := W^{[l]} -\alpha dW^{[l]}, b^{[l]} := b^{[l]} - \alpha db^{[l]}
+       one pass through your training set, also called "1 epoch"
+
+       1. Batch gradient descent, a single pass through the training set allows you to take only one gradient descent
+          step with
+       2. Mini batch gradient descent, one epoc allows you to take 5000 gradient descent steps.
+       3. Mini batch runs much faster than batch gradient descent.
+
+    Plot J^{{t}} using X^{{t}}, Y^{{t}}, is a lot bit noisy, but the trend going down.  
+*** Choosing mini-batch size
+    If mini-batch size = m : Batch gradient descent, too long per iteration
+    If mini-batch size = 1 : stochastic gradient descent, loose speeding for vectorizaton
+
+    In practice: some value in-beteen 1 and m, fatest learning
+    if small training set, just use batch gradient decent, e.g. m < 2000
+    typical mini-batch size: 64, 128, 512 (power of 2)
+    make sure mini-batch(X^{t}, Y^{t}) fit in CPU/GPU memory
+    
