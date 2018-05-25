@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-25 Fri 13:48 -->
+<!-- 2018-05-25 Fri 15:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Improving Deep Neural Networks</title>
@@ -842,13 +842,20 @@ Repeat {<br />
 
 <div id="outline-container-org2bcd446" class="outline-4">
 <h4 id="org2bcd446"><span class="section-number-4">6.2.2</span> Bias correction in exponentially weighted average</h4>
+<div class="outline-text-4" id="text-6-2-2">
+<p>
+The first values are usually low since v<sub>0</sub> is 0. The fix is: \(\frac{v_{t}}{1-\beta^{t}}\)<br />
+e.g.: t=2, 1-&beta;<sup>t</sup> = 1-0.98<sup>2</sup> = 0.0396<br />
+when t is large 1-&beta;<sup>t</sup> &asymp; 1, v<sub>t</sub> &asymp; \(\frac{v_{t}}{1-\beta^{t}}\)<br />
+</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-05-25 Fri 13:48</p>
+<p class="date">Created: 2018-05-25 Fri 15:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -270,4 +270,6 @@
     }
 
 *** Bias correction in exponentially weighted average
-    
+    The first values are usually low since v_{0} is 0. The fix is: $\frac{v_{t}}{1-\beta^{t}}$
+    e.g.: t=2, 1-\beta^{t} = 1-0.98^{2} = 0.0396
+    when t is large 1-\beta^{t} \approx 1, v_{t} \approx $\frac{v_{t}}{1-\beta^{t}}$
