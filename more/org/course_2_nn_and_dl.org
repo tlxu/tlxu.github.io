@@ -233,3 +233,41 @@
     typical mini-batch size: 64, 128, 512 (power of 2)
     make sure mini-batch(X^{t}, Y^{t}) fit in CPU/GPU memory
     
+** Exponentially weighted (Moving) averages
+   v_{t} = \beta v_{t-1} + (1-\beta)\theta_{t}
+   v_{t} as the approximately average over the last $\frac{1}{1-\beta}$ values.
+   \beta = 0.9 \approx the last 10 values average
+   P = 0.98 \approx the last 50 values average
+
+   v_{100} = 0.9v_{99} + 0.1\theta_{100}
+   v_{99} = 0.9v_{98} + 0.1\theta_{99}   
+   v_{98} = 0.9v_{97} + 0.1\theta_{98}
+   ...
+
+   v_{100} = 0.1\theta_{100} + 0.9v_{99}
+       = 0.1\theta_{100} + 0.9(0.9v_{98} + 0.1\theta_{99})
+       = 0.1\theta_{100} + 0.1*0.9\theta_{99} + 0.9^{2}v_{98}
+       = 0.1\theta_{100} + 0.1*0.9\theta_{99} + 0.9^{2}(0.9v_{97} + 0.1\theta_{98})
+       = 0.1\theta_{100} + 0.1*0.9\theta_{99} + 0.1*0.9^{2}\theta_{98} + 0.9^{3}v_{97}
+       = 0.1\theta_{100} + 0.1*0.9\theta_{99} + 0.1*0.9^{2}\theta_{98} +0.1*0.9^{3}\theta_{97} + 0.9^{4}v_{96}
+       = ...
+
+       0.9^{10} \approx 0.35 \approx $\frac{1}{e}$
+
+
+*** Implementing exponentially weighted averages
+    v_{0} = 0
+    v_{1} = \beta v_{0} +(1-\beta)\theta_{1}
+    v_{2} = \beta v_{1} +(1-\beta)\theta_{2}
+    v_{3} = \beta v_{2} +(1-\beta)\theta_{3}    
+    ...
+
+    Or:
+    V_{\theta} = 0
+    Repeat {
+        Get next \Theta_{t}
+        V_{\Theta} := \beta V + (1-\beta)\Theta_{t}
+    }
+
+*** Bias correction in exponentially weighted average
+    

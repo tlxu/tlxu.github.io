@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-24 Thu 16:34 -->
+<!-- 2018-05-25 Fri 13:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Improving Deep Neural Networks</title>
@@ -312,6 +312,12 @@ for the JavaScript code in this tag.
 <li><a href="#org6b37275">6.1. Mini batch gradient descent</a>
 <ul>
 <li><a href="#org1971383">6.1.1. Choosing mini-batch size</a></li>
+</ul>
+</li>
+<li><a href="#org0981e42">6.2. Exponentially weighted (Moving) averages</a>
+<ul>
+<li><a href="#org5c2cc04">6.2.1. Implementing exponentially weighted averages</a></li>
+<li><a href="#org2bcd446">6.2.2. Bias correction in exponentially weighted average</a></li>
 </ul>
 </li>
 </ul>
@@ -778,11 +784,71 @@ make sure mini-batch(X<sup>t</sup>, Y<sup>t</sup>) fit in CPU/GPU memory<br />
 </div>
 </div>
 </div>
+
+<div id="outline-container-org0981e42" class="outline-3">
+<h3 id="org0981e42"><span class="section-number-3">6.2</span> Exponentially weighted (Moving) averages</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+v<sub>t</sub> = &beta; v<sub>t-1</sub> + (1-&beta;)&theta;<sub>t</sub><br />
+v<sub>t</sub> as the approximately average over the last \(\frac{1}{1-\beta}\) values.<br />
+&beta; = 0.9 &asymp; the last 10 values average<br />
+P = 0.98 &asymp; the last 50 values average<br />
+</p>
+
+<p>
+v<sub>100</sub> = 0.9v<sub>99</sub> + 0.1&theta;<sub>100</sub><br />
+v<sub>99</sub> = 0.9v<sub>98</sub> + 0.1&theta;<sub>99</sub>   <br />
+v<sub>98</sub> = 0.9v<sub>97</sub> + 0.1&theta;<sub>98</sub><br />
+&#x2026;<br />
+</p>
+
+<p>
+v<sub>100</sub> = 0.1&theta;<sub>100</sub> + 0.9v<sub>99</sub><br />
+    = 0.1&theta;<sub>100</sub> + 0.9(0.9v<sub>98</sub> + 0.1&theta;<sub>99</sub>)<br />
+    = 0.1&theta;<sub>100</sub> + 0.1*0.9&theta;<sub>99</sub> + 0.9<sup>2</sup>v<sub>98</sub><br />
+    = 0.1&theta;<sub>100</sub> + 0.1*0.9&theta;<sub>99</sub> + 0.9<sup>2</sup>(0.9v<sub>97</sub> + 0.1&theta;<sub>98</sub>)<br />
+    = 0.1&theta;<sub>100</sub> + 0.1*0.9&theta;<sub>99</sub> + 0.1*0.9<sup>2</sup>&theta;<sub>98</sub> + 0.9<sup>3</sup>v<sub>97</sub><br />
+    = 0.1&theta;<sub>100</sub> + 0.1*0.9&theta;<sub>99</sub> + 0.1*0.9<sup>2</sup>&theta;<sub>98</sub> +0.1*0.9<sup>3</sup>&theta;<sub>97</sub> + 0.9<sup>4</sup>v<sub>96</sub><br />
+    = &#x2026;<br />
+</p>
+
+<p>
+0.9<sup>10</sup> &asymp; 0.35 &asymp; \(\frac{1}{e}\)<br />
+</p>
+</div>
+
+
+<div id="outline-container-org5c2cc04" class="outline-4">
+<h4 id="org5c2cc04"><span class="section-number-4">6.2.1</span> Implementing exponentially weighted averages</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<p>
+v<sub>0</sub> = 0<br />
+v<sub>1</sub> = &beta; v<sub>0</sub> +(1-&beta;)&theta;<sub>1</sub><br />
+v<sub>2</sub> = &beta; v<sub>1</sub> +(1-&beta;)&theta;<sub>2</sub><br />
+v<sub>3</sub> = &beta; v<sub>2</sub> +(1-&beta;)&theta;<sub>3</sub>    <br />
+&#x2026;<br />
+</p>
+
+<p>
+Or:<br />
+V<sub>&theta;</sub> = 0<br />
+Repeat {<br />
+    Get next &Theta;<sub>t</sub><br />
+    V<sub>&Theta;</sub> := &beta; V + (1-&beta;)&Theta;<sub>t</sub><br />
+}<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2bcd446" class="outline-4">
+<h4 id="org2bcd446"><span class="section-number-4">6.2.2</span> Bias correction in exponentially weighted average</h4>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-05-24 Thu 16:34</p>
+<p class="date">Created: 2018-05-25 Fri 13:48</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
