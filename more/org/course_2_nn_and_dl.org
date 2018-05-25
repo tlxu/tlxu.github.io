@@ -273,3 +273,22 @@
     The first values are usually low since v_{0} is 0. The fix is: $\frac{v_{t}}{1-\beta^{t}}$
     e.g.: t=2, 1-\beta^{t} = 1-0.98^{2} = 0.0396
     when t is large 1-\beta^{t} \approx 1, v_{t} \approx $\frac{v_{t}}{1-\beta^{t}}$
+    In practice peopele usually don't do this, since after 10(suppose \beta=0.9) iterations your moving average will
+    have warmed up and there's no longer a bias estimate.
+
+*** Gradient descent with momentum
+    - Implementation 1
+    Initilzation:
+        v_{dW} = 0, v_{db} = 0
+        
+    On iteration t:
+        Compute dW, db on the current mini-batch
+        v_{dW} = \beta v_{dW} + (1-\beta)dW
+        v_{db} = \beta v_{db} + (1-\beta)db
+        W = W - \alpha v_{dW}, b = b - \alpha v_{db}
+
+        Hyperparameters: \alpha, \beta
+
+  - Implementation 2
+   Another variation:
+       v_{dW} = \beta v_{dW} + dW, needs to change learning rate \alpha
