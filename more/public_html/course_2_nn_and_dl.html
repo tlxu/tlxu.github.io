@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-25 Fri 15:57 -->
+<!-- 2018-05-28 Mon 10:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Improving Deep Neural Networks</title>
@@ -319,8 +319,10 @@ for the JavaScript code in this tag.
 <li><a href="#org5c2cc04">6.2.1. Implementing exponentially weighted averages</a></li>
 <li><a href="#org2bcd446">6.2.2. Bias correction in exponentially weighted average</a></li>
 <li><a href="#org00b402f">6.2.3. Gradient descent with momentum</a></li>
+<li><a href="#org201ec77">6.2.4. Speed up Gradient descent with RMSprop</a></li>
 </ul>
 </li>
+<li><a href="#orgae67688">6.3. Adam optimization algorithm</a></li>
 </ul>
 </li>
 </ul>
@@ -884,12 +886,70 @@ Another variation:<br />
 </ul>
 </div>
 </div>
+
+<div id="outline-container-org201ec77" class="outline-4">
+<h4 id="org201ec77"><span class="section-number-4">6.2.4</span> Speed up Gradient descent with RMSprop</h4>
+<div class="outline-text-4" id="text-6-2-4">
+<p>
+On iteration t:<br />
+    Compute dW, db on the current mini-batch<br />
+    S<sub>dW</sub> = &beta; S<sub>dW</sub> + (1-&beta;)dW<sup>2</sup>    // Note the square operation is element wise<br />
+    S<sub>db</sub> = &beta; S<sub>db</sub> + (1-&beta;)db<sup>2</sup><br />
+    W = W - &alpha; \(\frac{dW}{\sqrt{S_{dW}}}\), b = b - &alpha; \(\frac{db}{\sqrt{S_{db}}}\)<br />
+</p>
+
+<p>
+If dW is small and db is large, W will be updated dramatically. You can use a larger learning rate &alpha;.<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgae67688" class="outline-3">
+<h3 id="orgae67688"><span class="section-number-3">6.3</span> Adam optimization algorithm</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+Initilzation:<br />
+    V<sub>dW</sub> = 0, S<sub>dW</sub> = 0, V<sub>db</sub> = 0, S<sub>db</sub> = 0<br />
+</p>
+
+<p>
+On iteration t:<br />
+    Compute dW, db using current mini-batch<br />
+    V<sub>dW</sub> = &beta;<sub>1</sub> V<sub>dW</sub> + (1-&beta;<sub>1</sub>)dW, V<sub>db</sub> = &beta;<sub>1</sub> V<sub>db</sub> + (1-&beta;<sub>1</sub>)db  &lt;&#x2013; "momentum" &beta;<sub>1</sub> <br />
+    S<sub>dW</sub> = &beta;<sub>2</sub> S<sub>dW</sub> + (1-&beta;<sub>2</sub>)dW<sup>2</sup>, S<sub>db</sub> = &beta;<sub>2</sub> S<sub>db</sub> + (1-&beta;<sub>2</sub>)db<sup>2</sup>  &lt;&#x2013; "RMSpro" &beta;<sub>2</sub><br />
+    // Note the square operation is element wise<br />
+</p>
+
+<p>
+\(V^{corrected}_{dW} = \frac{V_{dW}}{(1-\beta^{t}_{1})}\),  \(V^{corrected}_{db} = \frac{V_{db}}{(1-\beta^{t}_{1})}\)<br />
+\(S^{corrected}_{dW} = \frac{S_{dW}}{(1-\beta^{t}_{2})}\),  \(S^{corrected}_{db} = \frac{S_{db}}{(1-\beta^{t}_{2})}\)<br />
+</p>
+
+<p>
+W := W - &alpha; \(\frac{V^{corrected}_{dW}}{\sqrt{S^{corrected}_{dW}}+\epsilon}\), b := b - &alpha; \(\frac{V^{corrected}{db}}{\sqrt{S^{corrected}_{db}}+\epsilon}\)<br />
+</p>
+
+<p>
+Hyperparameters choice:<br />
+</p>
+<ul class="org-ul">
+<li>&alpha; : needs to be tune<br /></li>
+<li>&beta;<sub>1</sub> : 0.9 (dW)<br /></li>
+<li>&beta;<sub>2</sub> : 0.999 (dW<sup>2</sup>)<br /></li>
+<li>&epsilon; : 10<sup>-8</sup><br /></li>
+</ul>
+
+<p>
+Adam: Adaptive moment estimation<br />
+</p>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-05-25 Fri 15:57</p>
+<p class="date">Created: 2018-05-28 Mon 10:44</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
