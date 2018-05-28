@@ -325,3 +325,14 @@
 
        Adam: Adaptive moment estimation
    
+** Learning rate decay
+   slowly reduce \alpha
+
+   1 epoch = 1 pass through the data
+
+   - \alpha = $\frac{1}{1 + decayrate*epochnum}$ \alpha_{0}
+   - \alpha = 0.95^{epochnum} \alpha{0}  : exponentially decay
+   - \alpha = $\frac{K}{\sqrt{epochnum}}$ \alpha_{0}  or  $\frac{K}{\sqrt{t}}$ \alpha_{0}
+   - decrease \alpha by each t: discrete staircase
+   - or manually decay, works for traning a small number of models
+
