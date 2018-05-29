@@ -336,3 +336,5 @@
    - decrease \alpha by each t: discrete staircase
    - or manually decay, works for traning a small number of models
 
+* Hyperparameter tuning
+** Using an appropriate scale to pick hyperameters
