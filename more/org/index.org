@@ -9,6 +9,10 @@
 [[file:machine_learning.org][Machine Learning]]
 
 * Algorithms
+[[https://github.com/tianlixu/algorithm/tree/master/sorting][sorting]]
+
+* Database
+[[file:mysql.org][MySQL]] Oracle DB2
 
 * Misc
 
