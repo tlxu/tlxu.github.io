@@ -1,0 +1,23 @@
+#+STARTUP: showall
+#+TITLE: MySQL cheetsheet
+
+* Installation
+  Following thse two links: [[https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04][link1]] and [[https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/][link2]]
+** Installing MySQL  
+    - sudo apt-get update
+    - sudo apt-get install mysql-server
+** Configuring MySQL
+    - sudo mysql_secure_installation
+
+** mysql service
+   mysql is running as a Linux service.
+   - systemctl status mysql.service
+
+* Commands
+- mysql -u username -p
+- CREATE DATABASE dbname;
+- SHOW DATABASES;  
+- USE dbname;
+- SHOW TABLES;
+- Create a database user
+  GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
