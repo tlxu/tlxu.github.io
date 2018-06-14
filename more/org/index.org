@@ -19,6 +19,5 @@ root@ubuntu:~/dev/github$ whoami
 [[file:mysql.org][MySQL]] Oracle DB2
 
 
-
 * Misc
 
