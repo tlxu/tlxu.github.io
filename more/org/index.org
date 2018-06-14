@@ -2,8 +2,12 @@
 #+TITLE: Alex's Home page
 #+OPTIONS: creator:comment d:(not LOGBOOK) date:t e:t email:t f:t inline:t
 
+* WhoAmI
+root@ubuntu:~/dev/github$ whoami
+[[https://github.com/tianlixu][root]]
+
 * General
-[[file:emacs.org][Emacs]]
+[[file:emacs.org][Emacs]] [[file:vbox.org][Ubuntu VM]] 
 
 * AI
 [[file:machine_learning.org][Machine Learning]]
@@ -13,6 +17,8 @@
 
 * Database
 [[file:mysql.org][MySQL]] Oracle DB2
+
+
 
 * Misc
 

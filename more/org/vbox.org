@@ -1,0 +1,28 @@
+#+STARTUP: showall
+#+TITLE: My Ubuntu VM in VirtualBox
+
+* Configure network
+  1. Adapter 1(default) as NAT
+  2. Add a new vboxnet via File -> Host Network Manager -> Create Host-only Network
+  3. Enable Adaper 2 as Host-only Adapter, select name created in step 2: vboxnet0
+
+  Use ifconfig to check the network interfaces, you'll see two intefaces like:
+  enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+          inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+
+  enp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+          inet 192.168.56.101  netmask 255.255.255.0  broadcast 192.168.56.255
+
+  You can now access the Guest VM via IP 192.168.56.101.
+
+* Enable root user  
+  - sudo passwd root
+  To change the passwd, so that you can su to it directly.
+
+* Tools
+  - sudo apt install net-tools
+  - sudo apt install ssh
+  - sudo apt install emacs25  
+  - sudo apt install git
+  - sudo apt install screen
+
