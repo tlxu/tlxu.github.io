@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-06-13 Wed 20:54 -->
+<!-- 2018-06-16 Sat 14:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>MySQL cheetsheet</title>
@@ -295,15 +295,47 @@ mysql is running as a Linux service.
 <li>SHOW DATABASES;</li>
 <li>USE dbname;</li>
 <li>SHOW TABLES;</li>
+<li>SELECT User, Host, authentication_string FROM mysql.user;</li>
 <li>Create a database user
-GRANT ALL PRIVILEGES ON <b>.</b> TO 'username'@'localhost' IDENTIFIED BY 'password';</li>
+login as root:
+    sudo mysql -u root -p
+set validate password policy to low:
+    SET GLOBAL validate_password_policy=LOW;
+create user 'myusr':
+    CREATE USER 'myusr'@'localhost' IDENTIFIED BY 'myusr';  # the last myusr is the password
+grant privileges:
+    GRANT ALL PRIVILEGES ON <b>.</b> TO 'myusr'@'localhost' WITH GRANT OPTION;</li>
+
+<li>Change password for a usr
+ALTER USER 'myusr'@'localhost' IDENTIFIED BY 'MyNewPassword';
+FLUSH PRIVILEGES;</li>
+
+<li><p>
+Enable remote connection:
+sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
+change bind address from
+    bind-address            =  127.0.0.1
+to
+    bind-address            =  192.168.1.100
+</p>
+
+<p>
+GRANT ALL ON <b>.</b> to root@'192.168.56.1' IDENTIFIED BY 'r00t';
+GRANT ALL ON <b>.</b> to mysql@'192.168.56.1' IDENTIFIED BY 'mysql';
+FLUSH PRIVILEGES;  
+</p>
+
+<p>
+Remote connect to MySql via MySQL Workbench or comand line:
+mysql -u myusr -h 192.168.56.101 -P 3306 -p
+</p></li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-06-13 Wed 20:54</p>
+<p class="date">Created: 2018-06-16 Sat 14:24</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

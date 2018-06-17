@@ -19,5 +19,31 @@
 - SHOW DATABASES;  
 - USE dbname;
 - SHOW TABLES;
+- SELECT User, Host, authentication_string FROM mysql.user;  
 - Create a database user
-  GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+  login as root:
+      sudo mysql -u root -p
+  set validate password policy to low:
+      SET GLOBAL validate_password_policy=LOW;
+  create user 'myusr':
+      CREATE USER 'myusr'@'localhost' IDENTIFIED BY 'myusr';  # the last myusr is the password
+  grant privileges:
+      GRANT ALL PRIVILEGES ON *.* TO 'myusr'@'localhost' WITH GRANT OPTION;
+
+- Change password for a usr
+  ALTER USER 'myusr'@'localhost' IDENTIFIED BY 'MyNewPassword';
+  FLUSH PRIVILEGES; 
+
+- Enable remote connection:
+  sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
+  change bind address from
+      bind-address            =  127.0.0.1
+  to
+      bind-address            =  192.168.1.100
+
+  GRANT ALL ON *.* to root@'192.168.56.1' IDENTIFIED BY 'r00t';
+  GRANT ALL ON *.* to mysql@'192.168.56.1' IDENTIFIED BY 'mysql';
+  FLUSH PRIVILEGES;  
+
+  Remote connect to MySql via MySQL Workbench or comand line:
+  mysql -u myusr -h 192.168.56.101 -P 3306 -p
