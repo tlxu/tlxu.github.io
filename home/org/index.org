@@ -18,6 +18,4 @@ root@ubuntu:~/dev/github$ whoami
 * Database
 [[file:hana.org][HANA]] [[file:mysql.org][MySQL]] Oracle DB2
 
-
 * Misc
-
