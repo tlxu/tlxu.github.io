@@ -11,7 +11,9 @@
 
 ** mysql service
    mysql is running as a Linux service.
-   - systemctl status mysql.service
+   - sudo service mysql status
+   - sudo service mysql stop
+   - sudo service mysql start
 
 * Commands
 - mysql -u username -p
