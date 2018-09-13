@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-24 Thu 12:31 -->
+<!-- 2018-09-11 Tue 18:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Notes for org-mode</title>
+<title>My Ubuntu VM in VirtualBox</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Alex" />
 <style type="text/css">
@@ -228,127 +228,75 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
-<h1 class="title">Notes for org-mode</h1>
+<h1 class="title">My Ubuntu VM in VirtualBox</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org07b70d2">1. shortcuts</a></li>
-<li><a href="#org124413f">2. Math/Latex</a>
-<ul>
-<li><a href="#orgfc3d8b5">2.1. superscript/subscript, square root</a></li>
-<li><a href="#org7306756">2.2. Matix</a></li>
-<li><a href="#org2e98dc7">2.3. '\|' for ||</a></li>
-</ul>
-</li>
+<li><a href="#org867048b">1. Configure network</a></li>
+<li><a href="#org1bc5784">2. Enable root user</a></li>
+<li><a href="#org3d3924c">3. Tools</a></li>
 </ul>
 </div>
 </div>
 
-
-<div id="outline-container-org07b70d2" class="outline-2">
-<h2 id="org07b70d2"><span class="section-number-2">1</span> shortcuts</h2>
+<div id="outline-container-org867048b" class="outline-2">
+<h2 id="org867048b"><span class="section-number-2">1</span> Configure network</h2>
 <div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li>C-c C-x \ : runs the command org-toggle-pretty-entities</li>
-</ul>
+<ol class="org-ol">
+<li>Adapter 1(default) as NAT</li>
+<li>Add a new vboxnet via File -&gt; Host Network Manager -&gt; Create Host-only Network</li>
+<li>Enable Adaper 2 as Host-only Adapter, select name created in step 2: vboxnet0</li>
+</ol>
+
+<p>
+Use ifconfig to check the network interfaces, you'll see two intefaces like:
+enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+</p>
+
+<p>
+enp0s8: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 192.168.56.101  netmask 255.255.255.0  broadcast 192.168.56.255
+</p>
+
+<p>
+You can now access the Guest VM via IP 192.168.56.101.
+</p>
 </div>
 </div>
 
-<div id="outline-container-org124413f" class="outline-2">
-<h2 id="org124413f"><span class="section-number-2">2</span> Math/Latex</h2>
+<div id="outline-container-org1bc5784" class="outline-2">
+<h2 id="org1bc5784"><span class="section-number-2">2</span> Enable root user</h2>
 <div class="outline-text-2" id="text-2">
-</div>
-<div id="outline-container-orgfc3d8b5" class="outline-3">
-<h3 id="orgfc3d8b5"><span class="section-number-3">2.1</span> superscript/subscript, square root</h3>
-<div class="outline-text-3" id="text-2-1">
-<p>
-If \(a^2=b\) and \( b=2 \), then the solution must be
-either \[ a=+\sqrt{2} \] or \[ a=-\sqrt{2} \].
-</p>
-</div>
-</div>
-
-<div id="outline-container-org7306756" class="outline-3">
-<h3 id="org7306756"><span class="section-number-3">2.2</span> Matix</h3>
-<div class="outline-text-3" id="text-2-2">
-\begin{matrix}
- a & b \\
- c & d \\
-\end{matrix}
-
-\begin{pmatrix} 
-  \alpha     & \beta^{*}\\ 
-  \gamma^{*} & \delta 
-\end{pmatrix}
-
-\begin{bmatrix} 
-  \alpha     & \beta^{*}\\ 
-  \gamma^{*} & \delta 
-\end{bmatrix}
-
-
-<p>
-\(X =
-\begin{array}{cc}
-x & y \\
-z & w \\
-\end{array}\)
-</p>
-
-
-<p>
-\(M = \left( \begin{smallmatrix} a&b\\ c&d \end{smallmatrix} \right)\)
-</p>
-
 <ul class="org-ul">
-<li>matrix: unbracketed matrix</li>
-<li>pmatrix: matrix surrounded by parentheses</li>
-<li>bmatrix: matrix surrounded by square brackets</li>
-<li>vmatrix: matrix surrounded by single vertical lines</li>
-<li>Vmatrix: matrix surrounded by double vertical lines</li>
+<li>sudo passwd root</li>
 </ul>
+<p>
+To change the passwd, so that you can su to it directly.
+</p>
 </div>
 </div>
 
-<div id="outline-container-org2e98dc7" class="outline-3">
-<h3 id="org2e98dc7"><span class="section-number-3">2.3</span> '\|' for ||</h3>
-<div class="outline-text-3" id="text-2-3">
-<p>
-\(\|a\|\)<sup>2</sup> = a * a
-</p>
-</div>
+<div id="outline-container-org3d3924c" class="outline-2">
+<h2 id="org3d3924c"><span class="section-number-2">3</span> Tools</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>sudo apt install net-tools</li>
+<li>sudo apt install ssh</li>
+<li>sudo apt install emacs25</li>
+<li>sudo apt install git</li>
+<li>sudo apt install screen</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-05-24 Thu 12:31</p>
+<p class="date">Created: 2018-09-11 Tue 18:02</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

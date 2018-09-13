@@ -1,0 +1,9 @@
+#+STARTUP: showall
+#+TITLE: SAP HANA cheetsheet
+
+* SAP HANA Studio
+
+* odata service
+  Expose one table in HANA as a REST service.
+
+* SQL

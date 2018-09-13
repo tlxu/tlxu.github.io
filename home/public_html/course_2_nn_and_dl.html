@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-06-13 Wed 20:54 -->
+<!-- 2018-09-11 Tue 16:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Improving Deep Neural Networks</title>
@@ -258,89 +258,89 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org905b6bb">1. Seting up ML application</a>
+<li><a href="#org426f1f3">1. Seting up ML application</a>
 <ul>
-<li><a href="#orgd8501dd">1.1. Data Sets</a>
+<li><a href="#orga21d2ab">1.1. Data Sets</a>
 <ul>
-<li><a href="#orgc3caa8d">1.1.1. Ratio</a></li>
-<li><a href="#org4dd48f1">1.1.2. Mismatched tain/test disriibution</a></li>
+<li><a href="#org7182173">1.1.1. Ratio</a></li>
+<li><a href="#orgb72c302">1.1.2. Mismatched tain/test disriibution</a></li>
 </ul>
 </li>
-<li><a href="#org66d807d">1.2. Bias/Variance</a></li>
-<li><a href="#orgb2510dc">1.3. Basic recipe for ML</a>
+<li><a href="#orgf68b269">1.2. Bias/Variance</a></li>
+<li><a href="#org6385d4a">1.3. Basic recipe for ML</a>
 <ul>
-<li><a href="#orgd211a36">1.3.1. High bias</a></li>
-<li><a href="#orgee04c4e">1.3.2. High variance</a></li>
+<li><a href="#orgdfc5581">1.3.1. High bias</a></li>
+<li><a href="#org94bd7d7">1.3.2. High variance</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org4e0af87">2. Regularization</a>
+<li><a href="#orgf298724">2. Regularization</a>
 <ul>
-<li><a href="#org98839e2">2.1. Logistic regression</a>
+<li><a href="#orge2c5d58">2.1. Logistic regression</a>
 <ul>
-<li><a href="#org18d31d6">2.1.1. L2 Regularization</a></li>
-<li><a href="#orgfc52319">2.1.2. L1 Regularization</a></li>
+<li><a href="#org6f2bcf6">2.1.1. L2 Regularization</a></li>
+<li><a href="#org39fcca5">2.1.2. L1 Regularization</a></li>
 </ul>
 </li>
-<li><a href="#org56fe3c7">2.2. Neural Network</a></li>
-<li><a href="#org06c88cd">2.3. How does regularization prevent overfitting?</a>
+<li><a href="#org200ae62">2.2. Neural Network</a></li>
+<li><a href="#orgd30b569">2.3. How does regularization prevent overfitting?</a>
 <ul>
-<li><a href="#org4903456">2.3.1. Intuition 1</a></li>
-<li><a href="#org1536521">2.3.2. Intuition 2</a></li>
+<li><a href="#org17a6ec9">2.3.1. Intuition 1</a></li>
+<li><a href="#org1c1c314">2.3.2. Intuition 2</a></li>
 </ul>
 </li>
-<li><a href="#org56b15ea">2.4. Dropout regularization</a>
+<li><a href="#org32e90b2">2.4. Dropout regularization</a>
 <ul>
-<li><a href="#org0186e9b">2.4.1. Implementation with Inverted dropout</a></li>
-<li><a href="#orgdf2b5b3">2.4.2. Why drop-out work</a></li>
-<li><a href="#org94dec3b">2.4.3. Downside</a></li>
+<li><a href="#orgcde723b">2.4.1. Implementation with Inverted dropout</a></li>
+<li><a href="#org9e8ad01">2.4.2. Why drop-out work</a></li>
+<li><a href="#org456453a">2.4.3. Downside</a></li>
 </ul>
 </li>
-<li><a href="#org37f9784">2.5. Other Regularization Methods</a></li>
+<li><a href="#orgd18ec57">2.5. Other Regularization Methods</a></li>
 </ul>
 </li>
-<li><a href="#org65b75dd">3. Normalizing Inputs</a></li>
-<li><a href="#org35448ce">4. Vanishing/exploding gradients</a>
+<li><a href="#org4a4a057">3. Normalizing Inputs</a></li>
+<li><a href="#org66b7b60">4. Vanishing/exploding gradients</a>
 <ul>
-<li><a href="#org615f17d">4.1. Weight initialization for deep networks</a></li>
+<li><a href="#org92c1457">4.1. Weight initialization for deep networks</a></li>
 </ul>
 </li>
-<li><a href="#org7246385">5. Gradient Checking(Grad Check)</a></li>
-<li><a href="#org2e34a4c">6. Optimization Algorithms</a>
+<li><a href="#org2bce87b">5. Gradient Checking(Grad Check)</a></li>
+<li><a href="#org59b30ed">6. Optimization Algorithms</a>
 <ul>
-<li><a href="#orgd9f41f7">6.1. Mini batch gradient descent</a>
+<li><a href="#orgc3d1b9f">6.1. Mini batch gradient descent</a>
 <ul>
-<li><a href="#org032fa05">6.1.1. Choosing mini-batch size</a></li>
+<li><a href="#org9a888e5">6.1.1. Choosing mini-batch size</a></li>
 </ul>
 </li>
-<li><a href="#orgb943f42">6.2. Exponentially weighted (Moving) averages</a>
+<li><a href="#org75d78eb">6.2. Exponentially weighted (Moving) averages</a>
 <ul>
-<li><a href="#org7a2cfc9">6.2.1. Implementing exponentially weighted averages</a></li>
-<li><a href="#org59b0cce">6.2.2. Bias correction in exponentially weighted average</a></li>
-<li><a href="#org6f05ec6">6.2.3. Gradient descent with momentum</a></li>
-<li><a href="#org6d2596b">6.2.4. Speed up Gradient descent with RMSprop</a></li>
+<li><a href="#org4f5ea2d">6.2.1. Implementing exponentially weighted averages</a></li>
+<li><a href="#orga5cf689">6.2.2. Bias correction in exponentially weighted average</a></li>
+<li><a href="#orgcf7d8c5">6.2.3. Gradient descent with momentum</a></li>
+<li><a href="#org8ec4d52">6.2.4. Speed up Gradient descent with RMSprop</a></li>
 </ul>
 </li>
-<li><a href="#orgf2731a2">6.3. Adam optimization algorithm</a></li>
-<li><a href="#orgd86f53a">6.4. Learning rate decay</a></li>
+<li><a href="#org4d72d3f">6.3. Adam optimization algorithm</a></li>
+<li><a href="#org5c6e0ab">6.4. Learning rate decay</a></li>
 </ul>
 </li>
-<li><a href="#org9492bff">7. Hyperparameter tuning</a>
+<li><a href="#orgba8efd2">7. Hyperparameter tuning</a>
 <ul>
-<li><a href="#org2f74b91">7.1. Using an appropriate scale to pick hyperameters</a></li>
+<li><a href="#orgd6c3f1a">7.1. Using an appropriate scale to pick hyperameters</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org905b6bb" class="outline-2">
-<h2 id="org905b6bb"><span class="section-number-2">1</span> Seting up ML application</h2>
+<div id="outline-container-org426f1f3" class="outline-2">
+<h2 id="org426f1f3"><span class="section-number-2">1</span> Seting up ML application</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgd8501dd" class="outline-3">
-<h3 id="orgd8501dd"><span class="section-number-3">1.1</span> Data Sets</h3>
+<div id="outline-container-orga21d2ab" class="outline-3">
+<h3 id="orga21d2ab"><span class="section-number-3">1.1</span> Data Sets</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Train/Dev/Test sets<br />
@@ -355,8 +355,8 @@ Evaluate your model on your test set to get an unbiased estimate of how well you
 </ul>
 </div>
 
-<div id="outline-container-orgc3caa8d" class="outline-4">
-<h4 id="orgc3caa8d"><span class="section-number-4">1.1.1</span> Ratio</h4>
+<div id="outline-container-org7182173" class="outline-4">
+<h4 id="org7182173"><span class="section-number-4">1.1.1</span> Ratio</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
 <li>Small amount of data(100, 1k, 10k), 60%, 20%, and 20% respectively<br /></li>
@@ -366,8 +366,8 @@ Evaluate your model on your test set to get an unbiased estimate of how well you
 </div>
 </div>
 
-<div id="outline-container-org4dd48f1" class="outline-4">
-<h4 id="org4dd48f1"><span class="section-number-4">1.1.2</span> Mismatched tain/test disriibution</h4>
+<div id="outline-container-orgb72c302" class="outline-4">
+<h4 id="orgb72c302"><span class="section-number-4">1.1.2</span> Mismatched tain/test disriibution</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 Rule of thumb:<br />
@@ -381,8 +381,8 @@ Rule of thumb:<br />
 </div>
 </div>
 
-<div id="outline-container-org66d807d" class="outline-3">
-<h3 id="org66d807d"><span class="section-number-3">1.2</span> Bias/Variance</h3>
+<div id="outline-container-orgf68b269" class="outline-3">
+<h3 id="orgf68b269"><span class="section-number-3">1.2</span> Bias/Variance</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>High bias: Underfitting the data<br /></li>
@@ -440,8 +440,8 @@ is the variance problems.<br />
 </div>
 </div>
 
-<div id="outline-container-orgb2510dc" class="outline-3">
-<h3 id="orgb2510dc"><span class="section-number-3">1.3</span> Basic recipe for ML</h3>
+<div id="outline-container-org6385d4a" class="outline-3">
+<h3 id="org6385d4a"><span class="section-number-3">1.3</span> Basic recipe for ML</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 high biase ? Y -&gt; resolve it<br />
@@ -450,8 +450,8 @@ N -&gt; Done.<br />
 </p>
 </div>
 
-<div id="outline-container-orgd211a36" class="outline-4">
-<h4 id="orgd211a36"><span class="section-number-4">1.3.1</span> High bias</h4>
+<div id="outline-container-orgdfc5581" class="outline-4">
+<h4 id="orgdfc5581"><span class="section-number-4">1.3.1</span> High bias</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 Training data problem, try<br />
@@ -463,8 +463,8 @@ Training data problem, try<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgee04c4e" class="outline-4">
-<h4 id="orgee04c4e"><span class="section-number-4">1.3.2</span> High variance</h4>
+<div id="outline-container-org94bd7d7" class="outline-4">
+<h4 id="org94bd7d7"><span class="section-number-4">1.3.2</span> High variance</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <p>
 Dev set problem, try<br />
@@ -480,19 +480,19 @@ Dev set problem, try<br />
 </div>
 
 
-<div id="outline-container-org4e0af87" class="outline-2">
-<h2 id="org4e0af87"><span class="section-number-2">2</span> Regularization</h2>
+<div id="outline-container-orgf298724" class="outline-2">
+<h2 id="orgf298724"><span class="section-number-2">2</span> Regularization</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 &lambda; is the regularization parameter<br />
 </p>
 </div>
-<div id="outline-container-org98839e2" class="outline-3">
-<h3 id="org98839e2"><span class="section-number-3">2.1</span> Logistic regression</h3>
+<div id="outline-container-orge2c5d58" class="outline-3">
+<h3 id="orge2c5d58"><span class="section-number-3">2.1</span> Logistic regression</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-org18d31d6" class="outline-4">
-<h4 id="org18d31d6"><span class="section-number-4">2.1.1</span> L2 Regularization</h4>
+<div id="outline-container-org6f2bcf6" class="outline-4">
+<h4 id="org6f2bcf6"><span class="section-number-4">2.1.1</span> L2 Regularization</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <ul class="org-ul">
 <li>J(w, b) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}^{i}\), y<sup>i</sup>) + \(\frac{\lambda}{2m}\) ||w||<sup>2</sup><sub>2</sub><br /></li>
@@ -500,8 +500,8 @@ Dev set problem, try<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfc52319" class="outline-4">
-<h4 id="orgfc52319"><span class="section-number-4">2.1.2</span> L1 Regularization</h4>
+<div id="outline-container-org39fcca5" class="outline-4">
+<h4 id="org39fcca5"><span class="section-number-4">2.1.2</span> L1 Regularization</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <ul class="org-ul">
 <li>\(\frac{\lambda}{2m} \sum_{j=1}^{n}|w|_{1}\) = \(\frac{\lambda}{2m}\) ||w||<sub>1</sub><br /></li>
@@ -510,8 +510,8 @@ Dev set problem, try<br />
 </div>
 </div>
 
-<div id="outline-container-org56fe3c7" class="outline-3">
-<h3 id="org56fe3c7"><span class="section-number-3">2.2</span> Neural Network</h3>
+<div id="outline-container-org200ae62" class="outline-3">
+<h3 id="org200ae62"><span class="section-number-3">2.2</span> Neural Network</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>J(w<sup>[1]</sup>, b<sup>[1]</sup>, &#x2026;, w<sup>[L]</sup>, b<sup>[L]</sup>) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}^{i}\), y<sup>i</sup>) + \(\frac{\lambda}{2m} \sum_{l=1}^{L}  \|w^{[l]}\|^{2}_{2}\)<br /></li>
@@ -533,12 +533,12 @@ L2 regrulariztion is sometimes called "Weight decay"<br />
 </div>
 </div>
 
-<div id="outline-container-org06c88cd" class="outline-3">
-<h3 id="org06c88cd"><span class="section-number-3">2.3</span> How does regularization prevent overfitting?</h3>
+<div id="outline-container-orgd30b569" class="outline-3">
+<h3 id="orgd30b569"><span class="section-number-3">2.3</span> How does regularization prevent overfitting?</h3>
 <div class="outline-text-3" id="text-2-3">
 </div>
-<div id="outline-container-org4903456" class="outline-4">
-<h4 id="org4903456"><span class="section-number-4">2.3.1</span> Intuition 1</h4>
+<div id="outline-container-org17a6ec9" class="outline-4">
+<h4 id="org17a6ec9"><span class="section-number-4">2.3.1</span> Intuition 1</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <p>
 Cranking up &lambda; to be very big will set W close to 0 - you can think of it as zeroing out or at least reducing<br />
@@ -547,8 +547,8 @@ which prevents overfitting.<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org1536521" class="outline-4">
-<h4 id="org1536521"><span class="section-number-4">2.3.2</span> Intuition 2</h4>
+<div id="outline-container-org1c1c314" class="outline-4">
+<h4 id="org1c1c314"><span class="section-number-4">2.3.2</span> Intuition 2</h4>
 <div class="outline-text-4" id="text-2-3-2">
 <p>
 For example, we are using tanh activation function.<br />
@@ -560,16 +560,16 @@ then the whole network is jsut a linera network, which prevents overfitting.<br 
 </div>
 </div>
 
-<div id="outline-container-org56b15ea" class="outline-3">
-<h3 id="org56b15ea"><span class="section-number-3">2.4</span> Dropout regularization</h3>
+<div id="outline-container-org32e90b2" class="outline-3">
+<h3 id="org32e90b2"><span class="section-number-3">2.4</span> Dropout regularization</h3>
 <div class="outline-text-3" id="text-2-4">
 <ul class="org-ul">
 <li>Drop some nodes, you get a diminished/reduced network.<br /></li>
 <li>If your deep NN is significantly overfitting, dropout will usually reduce the number of errors by a lot.<br /></li>
 </ul>
 </div>
-<div id="outline-container-org0186e9b" class="outline-4">
-<h4 id="org0186e9b"><span class="section-number-4">2.4.1</span> Implementation with Inverted dropout</h4>
+<div id="outline-container-orgcde723b" class="outline-4">
+<h4 id="orgcde723b"><span class="section-number-4">2.4.1</span> Implementation with Inverted dropout</h4>
 <div class="outline-text-4" id="text-2-4-1">
 <p>
 Illustrate with layer l=3, keep-prob=0.8<br />
@@ -585,8 +585,8 @@ a3 /= keep-prob # scale a3 up, not to change the expected value of a3<br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdf2b5b3" class="outline-4">
-<h4 id="orgdf2b5b3"><span class="section-number-4">2.4.2</span> Why drop-out work</h4>
+<div id="outline-container-org9e8ad01" class="outline-4">
+<h4 id="org9e8ad01"><span class="section-number-4">2.4.2</span> Why drop-out work</h4>
 <div class="outline-text-4" id="text-2-4-2">
 <p>
 Intuition: Can't rely on any one feature, so have to spread out weights.<br />
@@ -599,8 +599,8 @@ Use different keep-prob for different layer.<br />
 </div>
 </div>
 
-<div id="outline-container-org94dec3b" class="outline-4">
-<h4 id="org94dec3b"><span class="section-number-4">2.4.3</span> Downside</h4>
+<div id="outline-container-org456453a" class="outline-4">
+<h4 id="org456453a"><span class="section-number-4">2.4.3</span> Downside</h4>
 <div class="outline-text-4" id="text-2-4-3">
 <p>
 The cost function J is no longer well defined on every iteration since it randomly killing off<br />
@@ -611,8 +611,8 @@ it is monotonically decreasing J and then turn on dropout.<br />
 </div>
 </div>
 
-<div id="outline-container-org37f9784" class="outline-3">
-<h3 id="org37f9784"><span class="section-number-3">2.5</span> Other Regularization Methods</h3>
+<div id="outline-container-orgd18ec57" class="outline-3">
+<h3 id="orgd18ec57"><span class="section-number-3">2.5</span> Other Regularization Methods</h3>
 <div class="outline-text-3" id="text-2-5">
 <ul class="org-ul">
 <li>flip/rotate an image to get more brand new training examples<br /></li>
@@ -623,8 +623,8 @@ it is monotonically decreasing J and then turn on dropout.<br />
 </div>
 
 
-<div id="outline-container-org65b75dd" class="outline-2">
-<h2 id="org65b75dd"><span class="section-number-2">3</span> Normalizing Inputs</h2>
+<div id="outline-container-org4a4a057" class="outline-2">
+<h2 id="org4a4a057"><span class="section-number-2">3</span> Normalizing Inputs</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Make features in the same scale so that it makes gradient decent faster.<br />
@@ -649,8 +649,8 @@ x /= \(\sigma^{2}\)<br /></li>
 </div>
 
 
-<div id="outline-container-org35448ce" class="outline-2">
-<h2 id="org35448ce"><span class="section-number-2">4</span> Vanishing/exploding gradients</h2>
+<div id="outline-container-org66b7b60" class="outline-2">
+<h2 id="org66b7b60"><span class="section-number-2">4</span> Vanishing/exploding gradients</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 If L is large for very deep neural network, \(\hat{Y}\) will be very large/small in fact that this grows/decreases<br />
@@ -658,8 +658,8 @@ exponentially. It makes gradient decent slow to learn anything. The deep NN suff
 </p>
 </div>
 
-<div id="outline-container-org615f17d" class="outline-3">
-<h3 id="org615f17d"><span class="section-number-3">4.1</span> Weight initialization for deep networks</h3>
+<div id="outline-container-org92c1457" class="outline-3">
+<h3 id="org92c1457"><span class="section-number-3">4.1</span> Weight initialization for deep networks</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 A partial solution which helps a lot on the problem of vanishing and exploding is careful choice of how you initialize the weights.<br />
@@ -681,8 +681,8 @@ zero too quickly, so that you can train a reasonaly deep nework without the weig
 </div>
 </div>
 
-<div id="outline-container-org7246385" class="outline-2">
-<h2 id="org7246385"><span class="section-number-2">5</span> Gradient Checking(Grad Check)</h2>
+<div id="outline-container-org2bce87b" class="outline-2">
+<h2 id="org2bce87b"><span class="section-number-2">5</span> Gradient Checking(Grad Check)</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Take W<sup>[1]</sup>, b<sup>[1]</sup>, &#x2026;, W<sup>[L]</sup>,b<sup>[L]</sup> and reshape into a big vector &theta;.<br />
@@ -713,12 +713,12 @@ Notes:<br />
 </div>
 </div>
 
-<div id="outline-container-org2e34a4c" class="outline-2">
-<h2 id="org2e34a4c"><span class="section-number-2">6</span> Optimization Algorithms</h2>
+<div id="outline-container-org59b30ed" class="outline-2">
+<h2 id="org59b30ed"><span class="section-number-2">6</span> Optimization Algorithms</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgd9f41f7" class="outline-3">
-<h3 id="orgd9f41f7"><span class="section-number-3">6.1</span> Mini batch gradient descent</h3>
+<div id="outline-container-orgc3d1b9f" class="outline-3">
+<h3 id="orgc3d1b9f"><span class="section-number-3">6.1</span> Mini batch gradient descent</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 Example:<br />
@@ -776,8 +776,8 @@ step with<br /></li>
 Plot J<sup>{t}</sup> using X<sup>{t}</sup>, Y<sup>{t}</sup>, is a lot bit noisy, but the trend going down.<br />
 </p>
 </div>
-<div id="outline-container-org032fa05" class="outline-4">
-<h4 id="org032fa05"><span class="section-number-4">6.1.1</span> Choosing mini-batch size</h4>
+<div id="outline-container-org9a888e5" class="outline-4">
+<h4 id="org9a888e5"><span class="section-number-4">6.1.1</span> Choosing mini-batch size</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <p>
 If mini-batch size = m : Batch gradient descent, too long per iteration<br />
@@ -794,8 +794,8 @@ make sure mini-batch(X<sup>t</sup>, Y<sup>t</sup>) fit in CPU/GPU memory<br />
 </div>
 </div>
 
-<div id="outline-container-orgb943f42" class="outline-3">
-<h3 id="orgb943f42"><span class="section-number-3">6.2</span> Exponentially weighted (Moving) averages</h3>
+<div id="outline-container-org75d78eb" class="outline-3">
+<h3 id="org75d78eb"><span class="section-number-3">6.2</span> Exponentially weighted (Moving) averages</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 v<sub>t</sub> = &beta; v<sub>t-1</sub> + (1-&beta;)&theta;<sub>t</sub><br />
@@ -827,8 +827,8 @@ v<sub>100</sub> = 0.1&theta;<sub>100</sub> + 0.9v<sub>99</sub><br />
 </div>
 
 
-<div id="outline-container-org7a2cfc9" class="outline-4">
-<h4 id="org7a2cfc9"><span class="section-number-4">6.2.1</span> Implementing exponentially weighted averages</h4>
+<div id="outline-container-org4f5ea2d" class="outline-4">
+<h4 id="org4f5ea2d"><span class="section-number-4">6.2.1</span> Implementing exponentially weighted averages</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <p>
 v<sub>0</sub> = 0<br />
@@ -849,8 +849,8 @@ Repeat {<br />
 </div>
 </div>
 
-<div id="outline-container-org59b0cce" class="outline-4">
-<h4 id="org59b0cce"><span class="section-number-4">6.2.2</span> Bias correction in exponentially weighted average</h4>
+<div id="outline-container-orga5cf689" class="outline-4">
+<h4 id="orga5cf689"><span class="section-number-4">6.2.2</span> Bias correction in exponentially weighted average</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <p>
 The first values are usually low since v<sub>0</sub> is 0. The fix is: \(\frac{v_{t}}{1-\beta^{t}}\)<br />
@@ -862,8 +862,8 @@ have warmed up and there's no longer a bias estimate.<br />
 </div>
 </div>
 
-<div id="outline-container-org6f05ec6" class="outline-4">
-<h4 id="org6f05ec6"><span class="section-number-4">6.2.3</span> Gradient descent with momentum</h4>
+<div id="outline-container-orgcf7d8c5" class="outline-4">
+<h4 id="orgcf7d8c5"><span class="section-number-4">6.2.3</span> Gradient descent with momentum</h4>
 <div class="outline-text-4" id="text-6-2-3">
 <ul class="org-ul">
 <li>Implementation 1<br /></li>
@@ -893,8 +893,8 @@ Another variation:<br />
 </div>
 </div>
 
-<div id="outline-container-org6d2596b" class="outline-4">
-<h4 id="org6d2596b"><span class="section-number-4">6.2.4</span> Speed up Gradient descent with RMSprop</h4>
+<div id="outline-container-org8ec4d52" class="outline-4">
+<h4 id="org8ec4d52"><span class="section-number-4">6.2.4</span> Speed up Gradient descent with RMSprop</h4>
 <div class="outline-text-4" id="text-6-2-4">
 <p>
 On iteration t:<br />
@@ -911,8 +911,8 @@ If dW is small and db is large, W will be updated dramatically. You can use a la
 </div>
 </div>
 
-<div id="outline-container-orgf2731a2" class="outline-3">
-<h3 id="orgf2731a2"><span class="section-number-3">6.3</span> Adam optimization algorithm</h3>
+<div id="outline-container-org4d72d3f" class="outline-3">
+<h3 id="org4d72d3f"><span class="section-number-3">6.3</span> Adam optimization algorithm</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 Initilzation:<br />
@@ -952,8 +952,8 @@ Adam: Adaptive moment estimation<br />
 </div>
 </div>
 
-<div id="outline-container-orgd86f53a" class="outline-3">
-<h3 id="orgd86f53a"><span class="section-number-3">6.4</span> Learning rate decay</h3>
+<div id="outline-container-org5c6e0ab" class="outline-3">
+<h3 id="org5c6e0ab"><span class="section-number-3">6.4</span> Learning rate decay</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 slowly reduce &alpha;<br />
@@ -974,18 +974,18 @@ slowly reduce &alpha;<br />
 </div>
 </div>
 
-<div id="outline-container-org9492bff" class="outline-2">
-<h2 id="org9492bff"><span class="section-number-2">7</span> Hyperparameter tuning</h2>
+<div id="outline-container-orgba8efd2" class="outline-2">
+<h2 id="orgba8efd2"><span class="section-number-2">7</span> Hyperparameter tuning</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org2f74b91" class="outline-3">
-<h3 id="org2f74b91"><span class="section-number-3">7.1</span> Using an appropriate scale to pick hyperameters</h3>
+<div id="outline-container-orgd6c3f1a" class="outline-3">
+<h3 id="orgd6c3f1a"><span class="section-number-3">7.1</span> Using an appropriate scale to pick hyperameters</h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-06-13 Wed 20:54</p>
+<p class="date">Created: 2018-09-11 Tue 16:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

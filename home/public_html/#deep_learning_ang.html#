@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-04-08 Sun 10:16 -->
+<!-- 2018-09-11 Tue 16:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Emacs tips</title>
+<title>Notes for Neural Networks and Deep Learning</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Alex" />
 <style type="text/css">
@@ -231,136 +231,32 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Emacs tips</h1>
+<h1 class="title">Notes for Neural Networks and Deep Learning</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgafe0a75">1. Commands</a>
-<ul>
-<li><a href="#org6a6a833">1.1. Case</a></li>
-<li><a href="#org20b405d">1.2. Query replace</a></li>
-<li><a href="#orgc6fa53f">1.3. Rectangles</a></li>
-<li><a href="#org093dfe6">1.4. Insert sth to the begining of each line in a selected rectangle</a></li>
-</ul>
-</li>
-<li><a href="#orgf54c40a">2. Modes</a>
-<ul>
-<li><a href="#orgd56b56c">2.1. org-mode</a></li>
-<li><a href="#org97da88d">2.2. Python IDE</a></li>
-</ul>
-</li>
+<li><a href="#org0d6c749">1. Courses</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgafe0a75" class="outline-2">
-<h2 id="orgafe0a75"><span class="section-number-2">1</span> Commands</h2>
+<div id="outline-container-org0d6c749" class="outline-2">
+<h2 id="org0d6c749"><span class="section-number-2">1</span> Courses</h2>
 <div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-org6a6a833" class="outline-3">
-<h3 id="org6a6a833"><span class="section-number-3">1.1</span> Case</h3>
-<div class="outline-text-3" id="text-1-1">
-<ul class="org-ul">
-<li>M-l</li>
-</ul>
-<p>
-Convert following word to lower case (downcase-word).
-</p>
-
-<ul class="org-ul">
-<li>M-u</li>
-</ul>
-<p>
-Convert following word to upper case (upcase-word). e.g. create abc -&gt; CREATE abc
-</p>
-
-<ul class="org-ul">
-<li>M-c</li>
-</ul>
-<p>
-Capitalize the following word (capitalize-word). e.g. create abc -&gt; Create abc
-</p>
-
-<ul class="org-ul">
-<li>C-x C-l</li>
-</ul>
-<p>
-Convert region to lower case (downcase-region).
-</p>
-
-<ul class="org-ul">
-<li>C-x C-u</li>
-</ul>
-<p>
-Convert region to upper case (upcase-region).
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-org20b405d" class="outline-3">
-<h3 id="org20b405d"><span class="section-number-3">1.2</span> Query replace</h3>
-<div class="outline-text-3" id="text-1-2">
-<ul class="org-ul">
-<li>M-% string RET newstring RET</li>
-</ul>
-<p>
-Replace some occurrences of string with newstring.
-</p>
-
-<p>
-C-M-% regexp RET newstring RET
-Replace some matches for regexp with newstring.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgc6fa53f" class="outline-3">
-<h3 id="orgc6fa53f"><span class="section-number-3">1.3</span> Rectangles</h3>
-<div class="outline-text-3" id="text-1-3">
-<ul class="org-ul">
-<li>C-x r ?</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org093dfe6" class="outline-3">
-<h3 id="org093dfe6"><span class="section-number-3">1.4</span> Insert sth to the begining of each line in a selected rectangle</h3>
-<div class="outline-text-3" id="text-1-4">
-<p>
-M-x string-insert-rectangle
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgf54c40a" class="outline-2">
-<h2 id="orgf54c40a"><span class="section-number-2">2</span> Modes</h2>
-<div class="outline-text-2" id="text-2">
-</div>
-<div id="outline-container-orgd56b56c" class="outline-3">
-<h3 id="orgd56b56c"><span class="section-number-3">2.1</span> org-mode</h3>
-<div class="outline-text-3" id="text-2-1">
-<p>
-<a href="org_mode.html">Notes for org-mode</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-org97da88d" class="outline-3">
-<h3 id="org97da88d"><span class="section-number-3">2.2</span> Python IDE</h3>
-<div class="outline-text-3" id="text-2-2">
-<p>
-With jedi and elpy, Emacs can be a powerful Python IDE.
-</p>
-</div>
+<ol class="org-ol">
+<li><a href="course_1_nn_and_dl.html">Neural Networks and Deep Learning</a> (4 weeks)<br /></li>
+<li><a href="course_2_nn_and_dl.html">Improving Deep Neural Networks: Hyperameter tuning, Regularization and Optimization</a> (3 weeks)<br /></li>
+<li>Structuring your Machine Learning project (2 weeks)<br /></li>
+<li>Convolutional Neural Networks(CNN)<br /></li>
+<li>Natural Language Processing(NLP): Builing Sequence Models<br /></li>
+</ol>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-04-08 Sun 10:16</p>
+<p class="date">Created: 2018-09-11 Tue 16:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

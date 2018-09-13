@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-07 Mon 09:08 -->
+<!-- 2018-09-11 Tue 16:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes for Neural Networks and Deep Learning</title>
@@ -258,70 +258,70 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6986d58">1. NN and DL</a></li>
-<li><a href="#org2312cf1">2. Logistic Regression</a>
+<li><a href="#org840c450">1. NN and DL</a></li>
+<li><a href="#orga51ff88">2. Logistic Regression</a>
 <ul>
-<li><a href="#orgb80ce41">2.1. Cost function</a></li>
-<li><a href="#org4893de8">2.2. Gradient Descent</a></li>
-<li><a href="#org08f2fee">2.3. Derivatives</a></li>
-<li><a href="#org32af9f8">2.4. Computation Graph</a></li>
-<li><a href="#org9931dcf">2.5. Logistic Regression Gradient descent</a></li>
-<li><a href="#org12a81c5">2.6. Logistic Regression on m examples</a></li>
-<li><a href="#orgaef67a9">2.7. Vectorization</a></li>
-<li><a href="#org64b5634">2.8. Vectorizing Logistic Regression</a></li>
-<li><a href="#orgd4b2176">2.9. Python/numpy vectors</a></li>
+<li><a href="#org67c958a">2.1. Cost function</a></li>
+<li><a href="#org33ab50e">2.2. Gradient Descent</a></li>
+<li><a href="#org2e1136d">2.3. Derivatives</a></li>
+<li><a href="#org71717e4">2.4. Computation Graph</a></li>
+<li><a href="#org2e3de1a">2.5. Logistic Regression Gradient descent</a></li>
+<li><a href="#org0415a71">2.6. Logistic Regression on m examples</a></li>
+<li><a href="#org2e813ce">2.7. Vectorization</a></li>
+<li><a href="#org265b758">2.8. Vectorizing Logistic Regression</a></li>
+<li><a href="#orgaf46b46">2.9. Python/numpy vectors</a></li>
 </ul>
 </li>
-<li><a href="#org83122e9">3. Logistic regression cost function</a>
+<li><a href="#orgf61ab29">3. Logistic regression cost function</a>
 <ul>
-<li><a href="#org5598b70">3.1. cost on one single example</a></li>
-<li><a href="#orgb054426">3.2. Cost on m examples</a></li>
+<li><a href="#org01c936b">3.1. cost on one single example</a></li>
+<li><a href="#org74b5697">3.2. Cost on m examples</a></li>
 </ul>
 </li>
-<li><a href="#org2c3bbc8">4. Neural Network Reresentation</a>
+<li><a href="#org847efee">4. Neural Network Reresentation</a>
 <ul>
-<li><a href="#org70ac41a">4.1. For one example</a></li>
-<li><a href="#orgb435779">4.2. For m examples</a></li>
+<li><a href="#org3ce21d0">4.1. For one example</a></li>
+<li><a href="#org23808d8">4.2. For m examples</a></li>
 </ul>
 </li>
-<li><a href="#org4079b78">5. Activation function</a>
+<li><a href="#orgf665802">5. Activation function</a>
 <ul>
-<li><a href="#orgcf7fab0">5.1. g(Z)</a></li>
-<li><a href="#org1579006">5.2. Why non-linear activation functions?</a></li>
+<li><a href="#orga88e243">5.1. g(Z)</a></li>
+<li><a href="#orge853fcd">5.2. Why non-linear activation functions?</a></li>
 </ul>
 </li>
-<li><a href="#org3896686">6. Derivatives of activation functions</a></li>
-<li><a href="#org1177598">7. Gradient descent for neural networks</a>
+<li><a href="#orge25dc5d">6. Derivatives of activation functions</a></li>
+<li><a href="#orgb123225">7. Gradient descent for neural networks</a>
 <ul>
-<li><a href="#orgaa13e3d">7.1. Parameters:</a></li>
-<li><a href="#org5b5d75b">7.2. Cost fucntion:</a></li>
-<li><a href="#org3212c5f">7.3. Use gradient descent to train the parameters,</a></li>
-<li><a href="#orgfc310c7">7.4. Formulas for computing derivatives</a></li>
+<li><a href="#org6b8ef2d">7.1. Parameters:</a></li>
+<li><a href="#orgac9c9a7">7.2. Cost fucntion:</a></li>
+<li><a href="#org9d34eb3">7.3. Use gradient descent to train the parameters,</a></li>
+<li><a href="#org0988c39">7.4. Formulas for computing derivatives</a></li>
 </ul>
 </li>
-<li><a href="#orged8b644">8. Random Initialization</a>
+<li><a href="#org94f37a1">8. Random Initialization</a>
 <ul>
-<li><a href="#org9a734c4">8.1. what happens if you initialize weights to zero?</a></li>
-<li><a href="#org4e1d1f5">8.2. Solution</a></li>
+<li><a href="#orgf8ce19b">8.1. what happens if you initialize weights to zero?</a></li>
+<li><a href="#org96ffc98">8.2. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org67e0129">9. Deep neural network</a>
+<li><a href="#org24bab30">9. Deep neural network</a>
 <ul>
-<li><a href="#orga2b70f3">9.1. Deep neural network notation</a></li>
-<li><a href="#org0f5d312">9.2. Forward propagation</a></li>
-<li><a href="#org12b3100">9.3. Matrix dimensions</a></li>
+<li><a href="#org0715726">9.1. Deep neural network notation</a></li>
+<li><a href="#org398ad61">9.2. Forward propagation</a></li>
+<li><a href="#org107bf13">9.3. Matrix dimensions</a></li>
 </ul>
 </li>
-<li><a href="#org33fbe10">10. Building blocks of a Deep Neural Network</a>
+<li><a href="#org36f3f48">10. Building blocks of a Deep Neural Network</a>
 <ul>
-<li><a href="#org17a9f7a">10.1. Forward and backward propagation for layer l</a></li>
+<li><a href="#orgd587b2f">10.1. Forward and backward propagation for layer l</a></li>
 </ul>
 </li>
-<li><a href="#orgc8b2e39">11. Parameters and Hyperparameters</a>
+<li><a href="#org7813502">11. Parameters and Hyperparameters</a>
 <ul>
-<li><a href="#orgf1ff70d">11.1. Parameters</a></li>
-<li><a href="#org51e7302">11.2. Hyperparameters</a></li>
-<li><a href="#org43d8b48">11.3. Applied deep learning</a></li>
+<li><a href="#org7d9bb81">11.1. Parameters</a></li>
+<li><a href="#orgf442330">11.2. Hyperparameters</a></li>
+<li><a href="#org23c9d23">11.3. Applied deep learning</a></li>
 </ul>
 </li>
 </ul>
@@ -331,8 +331,8 @@ for the JavaScript code in this tag.
 ## #+STARTUP: indent<br />
 </p>
 
-<div id="outline-container-org6986d58" class="outline-2">
-<h2 id="org6986d58"><span class="section-number-2">1</span> NN and DL</h2>
+<div id="outline-container-org840c450" class="outline-2">
+<h2 id="org840c450"><span class="section-number-2">1</span> NN and DL</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>RELU function: Rectified Linear Unit<br /></li>
@@ -400,8 +400,8 @@ Y &isin; R<sup>1xm</sup>, Y.shape = (1, m)<br />
 </div>
 </div>
 
-<div id="outline-container-org2312cf1" class="outline-2">
-<h2 id="org2312cf1"><span class="section-number-2">2</span> Logistic Regression</h2>
+<div id="outline-container-orga51ff88" class="outline-2">
+<h2 id="orga51ff88"><span class="section-number-2">2</span> Logistic Regression</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Given x, want \(\hat{y}\) = P(y=1|x)<br />
@@ -429,8 +429,8 @@ Output:<br />
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-orgb80ce41" class="outline-3">
-<h3 id="orgb80ce41"><span class="section-number-3">2.1</span> Cost function</h3>
+<div id="outline-container-org67c958a" class="outline-3">
+<h3 id="org67c958a"><span class="section-number-3">2.1</span> Cost function</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>\(\hat{y^i}\) = &sigma;(w<sup>T</sup>x<sup>i</sup> + b), where &sigma;(z<sup>i</sup>) = \(\frac{1}{1+e^{(-z)^{i}}}\)<br /></li>
@@ -457,8 +457,8 @@ local optimum points.<br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4893de8" class="outline-3">
-<h3 id="org4893de8"><span class="section-number-3">2.2</span> Gradient Descent</h3>
+<div id="outline-container-org33ab50e" class="outline-3">
+<h3 id="org33ab50e"><span class="section-number-3">2.2</span> Gradient Descent</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 want to find w,b that minimize \(\mathcal{J}\)(w,b), \(\mathcal{J}\)(w,b) is a convex function.<br />
@@ -483,8 +483,8 @@ w := w - &alpha;\(\frac{\partial{J(w)}}{\partial{w}}\) = w - &alpha;*dw<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org08f2fee" class="outline-3">
-<h3 id="org08f2fee"><span class="section-number-3">2.3</span> Derivatives</h3>
+<div id="outline-container-org2e1136d" class="outline-3">
+<h3 id="org2e1136d"><span class="section-number-3">2.3</span> Derivatives</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li><p>
@@ -505,8 +505,8 @@ J = 3v, v = a + u<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org32af9f8" class="outline-3">
-<h3 id="org32af9f8"><span class="section-number-3">2.4</span> Computation Graph</h3>
+<div id="outline-container-org71717e4" class="outline-3">
+<h3 id="org71717e4"><span class="section-number-3">2.4</span> Computation Graph</h3>
 <div class="outline-text-3" id="text-2-4">
 <ul class="org-ul">
 <li>forward or left to right calculation to compute the cost function<br /></li>
@@ -515,8 +515,8 @@ J = 3v, v = a + u<br />
 </div>
 </div>
 
-<div id="outline-container-org9931dcf" class="outline-3">
-<h3 id="org9931dcf"><span class="section-number-3">2.5</span> Logistic Regression Gradient descent</h3>
+<div id="outline-container-org2e3de1a" class="outline-3">
+<h3 id="org2e3de1a"><span class="section-number-3">2.5</span> Logistic Regression Gradient descent</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 x<sub>1</sub>,w<sub>1</sub>,x<sub>2</sub>,w<sub>2</sub>,b  -&gt;  z = w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> + b  -&gt;  a = &sigma;(z)  -&gt; L(a,y)<br />
@@ -529,8 +529,8 @@ x<sub>1</sub>,w<sub>1</sub>,x<sub>2</sub>,w<sub>2</sub>,b  -&gt;  z = w<sub>1</s
 </ul>
 </div>
 </div>
-<div id="outline-container-org12a81c5" class="outline-3">
-<h3 id="org12a81c5"><span class="section-number-3">2.6</span> Logistic Regression on m examples</h3>
+<div id="outline-container-org0415a71" class="outline-3">
+<h3 id="org0415a71"><span class="section-number-3">2.6</span> Logistic Regression on m examples</h3>
 <div class="outline-text-3" id="text-2-6">
 <p class="verse">
 J=0, dw1=0, dw2=0, db=0<br />
@@ -557,8 +557,8 @@ Note:<br />
 </div>
 </div>
 
-<div id="outline-container-orgaef67a9" class="outline-3">
-<h3 id="orgaef67a9"><span class="section-number-3">2.7</span> Vectorization</h3>
+<div id="outline-container-org2e813ce" class="outline-3">
+<h3 id="org2e813ce"><span class="section-number-3">2.7</span> Vectorization</h3>
 <div class="outline-text-3" id="text-2-7">
 <p>
 avoid using explicit for-loops.<br />
@@ -594,8 +594,8 @@ w<sub>1</sub> := w1 -&alpha; dw<sub>1</sub>,  w<sub>2</sub> := w<sub>2</sub> - &
 </div>
 </div>
 
-<div id="outline-container-org64b5634" class="outline-3">
-<h3 id="org64b5634"><span class="section-number-3">2.8</span> Vectorizing Logistic Regression</h3>
+<div id="outline-container-org265b758" class="outline-3">
+<h3 id="org265b758"><span class="section-number-3">2.8</span> Vectorizing Logistic Regression</h3>
 <div class="outline-text-3" id="text-2-8">
 <p>
 Z = [z<sup>1</sup>, z<sup>2</sup>, &#x2026;, z<sup>m</sup>] = w<sup>T</sup> X + [b, b, &#x2026;, b] = [w<sup>T</sup>x<sup>1</sup> + b, w<sup>T</sup>x<sup>2</sup> + b, &#x2026;, w<sup>T</sup>x<sup>m</sup> + b]<br />
@@ -638,8 +638,8 @@ b := b - &alpha; db<br />
 </div>
 </div>
 
-<div id="outline-container-orgd4b2176" class="outline-3">
-<h3 id="orgd4b2176"><span class="section-number-3">2.9</span> Python/numpy vectors</h3>
+<div id="outline-container-orgaf46b46" class="outline-3">
+<h3 id="orgaf46b46"><span class="section-number-3">2.9</span> Python/numpy vectors</h3>
 <div class="outline-text-3" id="text-2-9">
 <ul class="org-ul">
 <li>a = np.random.randn(5)<br />
@@ -662,12 +662,12 @@ b := b - &alpha; db<br />
 </div>
 </div>
 
-<div id="outline-container-org83122e9" class="outline-2">
-<h2 id="org83122e9"><span class="section-number-2">3</span> Logistic regression cost function</h2>
+<div id="outline-container-orgf61ab29" class="outline-2">
+<h2 id="orgf61ab29"><span class="section-number-2">3</span> Logistic regression cost function</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org5598b70" class="outline-3">
-<h3 id="org5598b70"><span class="section-number-3">3.1</span> cost on one single example</h3>
+<div id="outline-container-org01c936b" class="outline-3">
+<h3 id="org01c936b"><span class="section-number-3">3.1</span> cost on one single example</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Interpre \(\hat{}\) = P(y=1|x)  The chance that y is equal to 1 for a given set of input features x.<br />
@@ -695,8 +695,8 @@ logP(y|x) = log(\(\hat{y}^{y}\) \((1-\hat{y})^(1-y)\)) = ylog\(\hat{y}\) + (1-y)
 </p>
 </div>
 </div>
-<div id="outline-container-orgb054426" class="outline-3">
-<h3 id="orgb054426"><span class="section-number-3">3.2</span> Cost on m examples</h3>
+<div id="outline-container-org74b5697" class="outline-3">
+<h3 id="org74b5697"><span class="section-number-3">3.2</span> Cost on m examples</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 P(lables in training set) = \(\prod_{i=1}^{m}\) P(y<sup>(i)</sup>|x<sup>(i)</sup>)<br />
@@ -718,12 +718,12 @@ regression model under the assumption that our training examples were on my ID o
 </div>
 </div>
 
-<div id="outline-container-org2c3bbc8" class="outline-2">
-<h2 id="org2c3bbc8"><span class="section-number-2">4</span> Neural Network Reresentation</h2>
+<div id="outline-container-org847efee" class="outline-2">
+<h2 id="org847efee"><span class="section-number-2">4</span> Neural Network Reresentation</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org70ac41a" class="outline-3">
-<h3 id="org70ac41a"><span class="section-number-3">4.1</span> For one example</h3>
+<div id="outline-container-org3ce21d0" class="outline-3">
+<h3 id="org3ce21d0"><span class="section-number-3">4.1</span> For one example</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Given input x:<br />
@@ -752,8 +752,8 @@ a<sup>[2]</sup> = &sigma;(z<sup>[2]</sup>)<br /></li>
 </div>
 </div>
 
-<div id="outline-container-orgb435779" class="outline-3">
-<h3 id="orgb435779"><span class="section-number-3">4.2</span> For m examples</h3>
+<div id="outline-container-org23808d8" class="outline-3">
+<h3 id="org23808d8"><span class="section-number-3">4.2</span> For m examples</h3>
 <div class="outline-text-3" id="text-4-2">
 
 <div class="figure">
@@ -784,12 +784,12 @@ Vertical index : different nodes in the nueural network,<br /></li>
 </div>
 </div>
 
-<div id="outline-container-org4079b78" class="outline-2">
-<h2 id="org4079b78"><span class="section-number-2">5</span> Activation function</h2>
+<div id="outline-container-orgf665802" class="outline-2">
+<h2 id="orgf665802"><span class="section-number-2">5</span> Activation function</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgcf7fab0" class="outline-3">
-<h3 id="orgcf7fab0"><span class="section-number-3">5.1</span> g(Z)</h3>
+<div id="outline-container-orga88e243" class="outline-3">
+<h3 id="orga88e243"><span class="section-number-3">5.1</span> g(Z)</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>g(Z) = sigmoid(Z) = \(\frac{1}{1+e^{-Z}}\), &isin; (0,1)<br /></li>
@@ -817,8 +817,8 @@ Usually works better than RELU although it's not used as much in practice. Eithe
 </div>
 </div>
 
-<div id="outline-container-org1579006" class="outline-3">
-<h3 id="org1579006"><span class="section-number-3">5.2</span> Why non-linear activation functions?</h3>
+<div id="outline-container-orge853fcd" class="outline-3">
+<h3 id="orge853fcd"><span class="section-number-3">5.2</span> Why non-linear activation functions?</h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
 <li>A linear activation function: the neural network is just outputting a linear function of the input no matter how many layers your neural network has.<br /></li>
@@ -829,8 +829,8 @@ Usually works better than RELU although it's not used as much in practice. Eithe
 </div>
 </div>
 
-<div id="outline-container-org3896686" class="outline-2">
-<h2 id="org3896686"><span class="section-number-2">6</span> Derivatives of activation functions</h2>
+<div id="outline-container-orge25dc5d" class="outline-2">
+<h2 id="orge25dc5d"><span class="section-number-2">6</span> Derivatives of activation functions</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 a = g(z)<br />
@@ -858,8 +858,8 @@ g'(z) =<br />
 </div>
 </div>
 
-<div id="outline-container-org1177598" class="outline-2">
-<h2 id="org1177598"><span class="section-number-2">7</span> Gradient descent for neural networks</h2>
+<div id="outline-container-orgb123225" class="outline-2">
+<h2 id="orgb123225"><span class="section-number-2">7</span> Gradient descent for neural networks</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 n<sup>[0]</sup> = n<sub>x</sub> : number of feature for input layer<br />
@@ -868,8 +868,8 @@ n<sup>[2]</sup> : number of nodes in output layer<br />
 </p>
 </div>
 
-<div id="outline-container-orgaa13e3d" class="outline-3">
-<h3 id="orgaa13e3d"><span class="section-number-3">7.1</span> Parameters:</h3>
+<div id="outline-container-org6b8ef2d" class="outline-3">
+<h3 id="org6b8ef2d"><span class="section-number-3">7.1</span> Parameters:</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 W<sup>[1]</sup> : (n<sup>[1]</sup>, n<sup>[0]</sup>) every row of W represents the weights of the input in previous layer<br />
@@ -880,8 +880,8 @@ b<sup>[2]</sup> : (n<sup>[2]</sup>, 1)<br />
 </div>
 </div>
 
-<div id="outline-container-org5b5d75b" class="outline-3">
-<h3 id="org5b5d75b"><span class="section-number-3">7.2</span> Cost fucntion:</h3>
+<div id="outline-container-orgac9c9a7" class="outline-3">
+<h3 id="orgac9c9a7"><span class="section-number-3">7.2</span> Cost fucntion:</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 J(W<sup>[1]</sup>, b<sup>[1]</sup>, W<sup>[2]</sup>, b<sup>[2]</sup>) = \(\frac{1}{m}\) \(\sum_{i=1}^{m}\) L(\(\hat{y}\), y)<br />
@@ -890,8 +890,8 @@ J(W<sup>[1]</sup>, b<sup>[1]</sup>, W<sup>[2]</sup>, b<sup>[2]</sup>) = \(\frac{
 </div>
 </div>
 
-<div id="outline-container-org3212c5f" class="outline-3">
-<h3 id="org3212c5f"><span class="section-number-3">7.3</span> Use gradient descent to train the parameters,</h3>
+<div id="outline-container-org9d34eb3" class="outline-3">
+<h3 id="org9d34eb3"><span class="section-number-3">7.3</span> Use gradient descent to train the parameters,</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 Repeat {<br />
@@ -911,8 +911,8 @@ b<sup>[2]</sup> := b<sup>[2]</sup> - &alpha; db<sup>[2]</sup>        <br /></li>
 </div>
 </div>
 
-<div id="outline-container-orgfc310c7" class="outline-3">
-<h3 id="orgfc310c7"><span class="section-number-3">7.4</span> Formulas for computing derivatives</h3>
+<div id="outline-container-org0988c39" class="outline-3">
+<h3 id="org0988c39"><span class="section-number-3">7.4</span> Formulas for computing derivatives</h3>
 <div class="outline-text-3" id="text-7-4">
 <ul class="org-ul">
 <li>Forward propagation:<br />
@@ -937,12 +937,12 @@ db<sup>[1]</sup> = \(\frac{1}{m}\) np.sum(dZ<sup>[1]</sup>, axis=1, keepdims=Tru
 </div>
 </div>
 
-<div id="outline-container-orged8b644" class="outline-2">
-<h2 id="orged8b644"><span class="section-number-2">8</span> Random Initialization</h2>
+<div id="outline-container-org94f37a1" class="outline-2">
+<h2 id="org94f37a1"><span class="section-number-2">8</span> Random Initialization</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org9a734c4" class="outline-3">
-<h3 id="org9a734c4"><span class="section-number-3">8.1</span> what happens if you initialize weights to zero?</h3>
+<div id="outline-container-orgf8ce19b" class="outline-3">
+<h3 id="orgf8ce19b"><span class="section-number-3">8.1</span> what happens if you initialize weights to zero?</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 a<sub>1</sub><sup>[1]</sup> = a<sub>2</sub><sup>[1]</sup>  dz<sub>1</sub><sup>[1]</sup> = dz<sub>2</sub><sup>[1]</sup><br />
@@ -981,8 +981,8 @@ they are all computing the same thing. This is still true for large scale neural
 </p>
 </div>
 </div>
-<div id="outline-container-org4e1d1f5" class="outline-3">
-<h3 id="org4e1d1f5"><span class="section-number-3">8.2</span> Solution</h3>
+<div id="outline-container-org96ffc98" class="outline-3">
+<h3 id="org96ffc98"><span class="section-number-3">8.2</span> Solution</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 The solution is to initialize your parameters randomly.<br />
@@ -1012,12 +1012,12 @@ You may pick 0.001 or something else for a deep neural network.<br />
 </div>
 </div>
 
-<div id="outline-container-org67e0129" class="outline-2">
-<h2 id="org67e0129"><span class="section-number-2">9</span> Deep neural network</h2>
+<div id="outline-container-org24bab30" class="outline-2">
+<h2 id="org24bab30"><span class="section-number-2">9</span> Deep neural network</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-orga2b70f3" class="outline-3">
-<h3 id="orga2b70f3"><span class="section-number-3">9.1</span> Deep neural network notation</h3>
+<div id="outline-container-org0715726" class="outline-3">
+<h3 id="org0715726"><span class="section-number-3">9.1</span> Deep neural network notation</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
 L = 4 : # of layers<br />
@@ -1029,8 +1029,8 @@ X = a<sup>[0]</sup>, \(\hat{y}\) = a<sup>[L]</sup><br />
 </p>
 </div>
 </div>
-<div id="outline-container-org0f5d312" class="outline-3">
-<h3 id="org0f5d312"><span class="section-number-3">9.2</span> Forward propagation</h3>
+<div id="outline-container-org398ad61" class="outline-3">
+<h3 id="org398ad61"><span class="section-number-3">9.2</span> Forward propagation</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 For a single training example, the equations are:<br />
@@ -1051,8 +1051,8 @@ for l=1,2,&#x2026;,L<br />
 </div>
 </div>
 
-<div id="outline-container-org12b3100" class="outline-3">
-<h3 id="org12b3100"><span class="section-number-3">9.3</span> Matrix dimensions</h3>
+<div id="outline-container-org107bf13" class="outline-3">
+<h3 id="org107bf13"><span class="section-number-3">9.3</span> Matrix dimensions</h3>
 <div class="outline-text-3" id="text-9-3">
 <p>
 For a single training example:<br />
@@ -1082,8 +1082,8 @@ For m examples:<br />
 </div>
 
 
-<div id="outline-container-org33fbe10" class="outline-2">
-<h2 id="org33fbe10"><span class="section-number-2">10</span> Building blocks of a Deep Neural Network</h2>
+<div id="outline-container-org36f3f48" class="outline-2">
+<h2 id="org36f3f48"><span class="section-number-2">10</span> Building blocks of a Deep Neural Network</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 Basic build blocks to build a neural network in each layer there's:<br />
@@ -1102,8 +1102,8 @@ Basic build blocks to build a neural network in each layer there's:<br />
 </div>
 </div>
 
-<div id="outline-container-org17a9f7a" class="outline-3">
-<h3 id="org17a9f7a"><span class="section-number-3">10.1</span> Forward and backward propagation for layer l</h3>
+<div id="outline-container-orgd587b2f" class="outline-3">
+<h3 id="orgd587b2f"><span class="section-number-3">10.1</span> Forward and backward propagation for layer l</h3>
 <div class="outline-text-3" id="text-10-1">
 
 <div class="figure">
@@ -1122,20 +1122,20 @@ Basic build blocks to build a neural network in each layer there's:<br />
 </div>
 </div>
 
-<div id="outline-container-orgc8b2e39" class="outline-2">
-<h2 id="orgc8b2e39"><span class="section-number-2">11</span> Parameters and Hyperparameters</h2>
+<div id="outline-container-org7813502" class="outline-2">
+<h2 id="org7813502"><span class="section-number-2">11</span> Parameters and Hyperparameters</h2>
 <div class="outline-text-2" id="text-11">
 </div>
-<div id="outline-container-orgf1ff70d" class="outline-3">
-<h3 id="orgf1ff70d"><span class="section-number-3">11.1</span> Parameters</h3>
+<div id="outline-container-org7d9bb81" class="outline-3">
+<h3 id="org7d9bb81"><span class="section-number-3">11.1</span> Parameters</h3>
 <div class="outline-text-3" id="text-11-1">
 <p>
 W and b<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org51e7302" class="outline-3">
-<h3 id="org51e7302"><span class="section-number-3">11.2</span> Hyperparameters</h3>
+<div id="outline-container-orgf442330" class="outline-3">
+<h3 id="orgf442330"><span class="section-number-3">11.2</span> Hyperparameters</h3>
 <div class="outline-text-3" id="text-11-2">
 <ul class="org-ul">
 <li>learning rate &alpha;<br /></li>
@@ -1149,8 +1149,8 @@ W and b<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org43d8b48" class="outline-3">
-<h3 id="org43d8b48"><span class="section-number-3">11.3</span> Applied deep learning</h3>
+<div id="outline-container-org23c9d23" class="outline-3">
+<h3 id="org23c9d23"><span class="section-number-3">11.3</span> Applied deep learning</h3>
 <div class="outline-text-3" id="text-11-3">
 <p>
 Applied deep learning is a very empirical process.<br />
@@ -1162,7 +1162,7 @@ Idea -&gt; Code -&gt; Experiment -&gt; Idea &#x2026;.<br />
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-05-07 Mon 09:08</p>
+<p class="date">Created: 2018-09-11 Tue 16:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

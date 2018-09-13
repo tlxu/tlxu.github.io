@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-06-13 Wed 21:19 -->
+<!-- 2018-09-11 Tue 18:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>My Ubuntu VM in VirtualBox</title>
+<title>Machine Learning</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Alex" />
 <style type="text/css">
@@ -231,72 +231,80 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">My Ubuntu VM in VirtualBox</h1>
+<h1 class="title">Machine Learning</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org37b45fe">1. Configure network</a></li>
-<li><a href="#org6ebf76d">2. Enable root user</a></li>
-<li><a href="#orgfeb3199">3. Tools</a></li>
+<li><a href="#orgb65c341">1. Courses</a>
+<ul>
+<li><a href="#orga804353">1.1. Machine Learning by Andrew Ng</a></li>
+<li><a href="#org7684488">1.2. Neural Networks and Deep Learning by Andrew Ng</a></li>
+<li><a href="#orgefb4b19">1.3. Neural Networks for Machine Learning by Geoffrey Hinton</a></li>
+<li><a href="#org14d45a9">1.4. Neural Networks and Deep Learning by Michael Nielsen</a></li>
+<li><a href="#org5e7e439">1.5. Machine Learning Crash Course by Google</a></li>
+<li><a href="#orgf8f5066">1.6. Learn with Google AI</a></li>
+<li><a href="#orgd2913bd">1.7. Deep Learning by Ian Goodfellow, Yoshua Bengio, and Aaron Courville</a></li>
+</ul>
+</li>
+<li><a href="#org416b4ec">2. Projects</a>
+<ul>
+<li><a href="#org624a92d">2.1. hand writing digits recognition</a></li>
+</ul>
+</li>
+<li><a href="#orgad16805">3. Tools</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org37b45fe" class="outline-2">
-<h2 id="org37b45fe"><span class="section-number-2">1</span> Configure network</h2>
+<div id="outline-container-orgb65c341" class="outline-2">
+<h2 id="orgb65c341"><span class="section-number-2">1</span> Courses</h2>
 <div class="outline-text-2" id="text-1">
-<ol class="org-ol">
-<li>Adapter 1(default) as NAT</li>
-<li>Add a new vboxnet via File -&gt; Host Network Manager -&gt; Create Host-only Network</li>
-<li>Enable Adaper 2 as Host-only Adapter, select name created in step 2: vboxnet0</li>
-</ol>
-
-<p>
-Use ifconfig to check the network interfaces, you'll see two intefaces like:
-enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
-        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
-</p>
-
-<p>
-enp0s8: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
-        inet 192.168.56.101  netmask 255.255.255.0  broadcast 192.168.56.255
-</p>
-
-<p>
-You can now access the Guest VM via IP 192.168.56.101.
-</p>
+</div>
+<div id="outline-container-orga804353" class="outline-3">
+<h3 id="orga804353"><span class="section-number-3">1.1</span> <a href="https://www.coursera.org/learn/machine-learning">Machine Learning by Andrew Ng</a></h3>
+</div>
+<div id="outline-container-org7684488" class="outline-3">
+<h3 id="org7684488"><span class="section-number-3">1.2</span> <a href="deep_learning_ang.html">Neural Networks and Deep Learning by Andrew Ng</a></h3>
+</div>
+<div id="outline-container-orgefb4b19" class="outline-3">
+<h3 id="orgefb4b19"><span class="section-number-3">1.3</span> <a href="https://www.coursera.org/learn/neural-networks">Neural Networks for Machine Learning by Geoffrey Hinton</a></h3>
+</div>
+<div id="outline-container-org14d45a9" class="outline-3">
+<h3 id="org14d45a9"><span class="section-number-3">1.4</span> <a href="http://neuralnetworksanddeeplearning.com">Neural Networks and Deep Learning by Michael Nielsen</a></h3>
+</div>
+<div id="outline-container-org5e7e439" class="outline-3">
+<h3 id="org5e7e439"><span class="section-number-3">1.5</span> <a href="https://developers.google.cn/machine-learning/crash-course">Machine Learning Crash Course by Google</a></h3>
+</div>
+<div id="outline-container-orgf8f5066" class="outline-3">
+<h3 id="orgf8f5066"><span class="section-number-3">1.6</span> <a href="https://ai.google/education">Learn with Google AI</a></h3>
+</div>
+<div id="outline-container-orgd2913bd" class="outline-3">
+<h3 id="orgd2913bd"><span class="section-number-3">1.7</span> <a href="http://www.deeplearningbook.org/">Deep Learning by Ian Goodfellow, Yoshua Bengio, and Aaron Courville</a></h3>
 </div>
 </div>
 
-<div id="outline-container-org6ebf76d" class="outline-2">
-<h2 id="org6ebf76d"><span class="section-number-2">2</span> Enable root user</h2>
+<div id="outline-container-org416b4ec" class="outline-2">
+<h2 id="org416b4ec"><span class="section-number-2">2</span> Projects</h2>
 <div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li>sudo passwd root</li>
-</ul>
-<p>
-To change the passwd, so that you can su to it directly.
-</p>
+</div>
+<div id="outline-container-org624a92d" class="outline-3">
+<h3 id="org624a92d"><span class="section-number-3">2.1</span> hand writing digits recognition</h3>
 </div>
 </div>
 
-<div id="outline-container-orgfeb3199" class="outline-2">
-<h2 id="orgfeb3199"><span class="section-number-2">3</span> Tools</h2>
+<div id="outline-container-orgad16805" class="outline-2">
+<h2 id="orgad16805"><span class="section-number-2">3</span> Tools</h2>
 <div class="outline-text-2" id="text-3">
-<ul class="org-ul">
-<li>sudo apt install net-tools</li>
-<li>sudo apt install ssh</li>
-<li>sudo apt install emacs25</li>
-<li>sudo apt install git</li>
-<li>sudo apt install screen</li>
-</ul>
+<p>
+<a href="pandas.html">Pandas</a> <a href="https://github.com/tianlixu/ai/blob/master/ml-ng/ex1-linear-regression/ex1/ex1-linear-regression.ipynb">Numpy</a>
+</p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-06-13 Wed 21:19</p>
+<p class="date">Created: 2018-09-11 Tue 18:02</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
