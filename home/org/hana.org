@@ -7,3 +7,80 @@
   Expose one table in HANA as a REST service.
 
 * SQL
+** How to check two select statemetns yields the same output?
+   1. verify A-B=0 and B-A=0
+      #+BEGIN_SRC sql
+   (
+   SELECT
+   "SOURCE",
+   "REP_TIMESTAMP",
+   "ID",
+   "METADATA" 
+   FROM "_SYS_BIC"."OPS/CA_CDC_ALL"('PLACEHOLDER' = ('$$P_FROM_TS$$',
+   '2018-09-29 11:31:16.8810000'))
+   WHERE
+   "SOURCE" = 'PFC'
+   )
+   MINUS
+   (
+   SELECT
+   "SOURCE",
+   "REP_TIMESTAMP",
+   "ID",
+   "METADATA" 
+   FROM "_SYS_BIC"."OPS/CA_CDC_PFC"('PLACEHOLDER' = ('$$P_FROM_TS$$',
+   '2018-09-29 11:31:16.8810000'))
+   )
+      #+END_SRC
+   2. verify 'A union all B' returns two times of records of 'A union B'
+   #+BEGIN_SRC sql
+   select count(*) from (
+   (
+   SELECT
+   "SOURCE",
+   "REP_TIMESTAMP",
+   "ID",
+   "METADATA" 
+   FROM "_SYS_BIC"."OPS/CA_CDC_TXN"('PLACEHOLDER' = ('$$P_FROM_TS$$',
+   '2018-09-29 11:31:16.8810000'))
+   )
+   union
+   (
+   SELECT
+   "SOURCE",
+   "REP_TIMESTAMP",
+   "ID",
+   "METADATA" 
+   FROM "_SYS_BIC"."OPS/CA_CDC_ALL"('PLACEHOLDER' = ('$$P_FROM_TS$$',
+   '2018-09-29 11:31:16.8810000'))
+   WHERE
+   "SOURCE" = 'TXN'
+   )
+   )
+
+   select count(*) from (
+   (
+   SELECT
+   "SOURCE",
+   "REP_TIMESTAMP",
+   "ID",
+   "METADATA" 
+   FROM "_SYS_BIC"."OPS/CA_CDC_TXN"('PLACEHOLDER' = ('$$P_FROM_TS$$',
+   '2018-09-29 11:31:16.8810000'))
+   )
+   union all
+   (
+   SELECT
+   "SOURCE",
+   "REP_TIMESTAMP",
+   "ID",
+   "METADATA" 
+   FROM "_SYS_BIC"."OPS/CA_CDC_ALL"('PLACEHOLDER' = ('$$P_FROM_TS$$',
+   '2018-09-29 11:31:16.8810000'))
+   WHERE
+   "SOURCE" = 'TXN'
+   )
+   )
+   #+END_SRC
+
+
