@@ -5,6 +5,14 @@
 
 * odata service
   Expose one table in HANA as a REST service.
+  #+BEGIN_SRC javascript
+  service {
+	//http://hanadev:8000/cv_services/core/utility/cdn.xsodata/ca_cdc_pfc(P_FROM_TS=datetime'2018-08-27%2014:02:31')/Results?$format=json
+	"OPS::CA_CDC_PFC"
+	key generate local "GENERATED_ID"
+	parameters via entity "ca_cdc_pfc";
+  }
+  #+END_SRC
 
 * SQL
 ** How to check two select statemetns yields the same output?
