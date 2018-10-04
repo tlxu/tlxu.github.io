@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-02 Tue 15:15 -->
+<!-- 2018-10-04 Thu 11:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SAP HANA cheetsheet</title>
@@ -228,28 +228,6 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -260,9 +238,14 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#org8892c81">1. SAP HANA Studio</a></li>
 <li><a href="#org8d9344a">2. odata service</a></li>
-<li><a href="#org49d7303">3. SQL</a>
+<li><a href="#org482ba49">3. Calculation View</a>
 <ul>
-<li><a href="#org44076ed">3.1. How to check two select statemetns yields the same output?</a></li>
+<li><a href="#orgc0adda2">3.1. Aggregation</a></li>
+</ul>
+</li>
+<li><a href="#org49d7303">4. SQL</a>
+<ul>
+<li><a href="#org44076ed">4.1. How to check two select statemetns yields the same output?</a></li>
 </ul>
 </li>
 </ul>
@@ -279,108 +262,127 @@ for the JavaScript code in this tag.
 <p>
 Expose one table in HANA as a REST service.
 </p>
+<div class="org-src-container">
+<pre class="src src-javascript">service {
+      <span style="color: #cd853f;">//</span><span style="color: #cd853f;">http://hanadev:8000/cv_services/core/utility/cdn.xsodata/ca_cdc_pfc(P_FROM_TS=datetime'2018-08-27%2014:02:31')/Results?$format=json</span>
+      <span style="color: #ffa07a;">"OPS::CA_CDC_PFC"</span>
+      key generate local <span style="color: #ffa07a;">"GENERATED_ID"</span>
+      parameters via entity <span style="color: #ffa07a;">"ca_cdc_pfc"</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org482ba49" class="outline-2">
+<h2 id="org482ba49"><span class="section-number-2">3</span> Calculation View</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgc0adda2" class="outline-3">
+<h3 id="orgc0adda2"><span class="section-number-3">3.1</span> Aggregation</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+SUM, COUNT, MIN, MAX, AVG, VAR, STDDEV. The default is SUM.
+Measures aren't the only fields capable of getting aggregated. The aggregation node also helps remove duplicates. 
+</p>
+</div>
 </div>
 </div>
 
 <div id="outline-container-org49d7303" class="outline-2">
-<h2 id="org49d7303"><span class="section-number-2">3</span> SQL</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="org49d7303"><span class="section-number-2">4</span> SQL</h2>
+<div class="outline-text-2" id="text-4">
 </div>
 <div id="outline-container-org44076ed" class="outline-3">
-<h3 id="org44076ed"><span class="section-number-3">3.1</span> How to check two select statemetns yields the same output?</h3>
-<div class="outline-text-3" id="text-3-1">
+<h3 id="org44076ed"><span class="section-number-3">4.1</span> How to check two select statemetns yields the same output?</h3>
+<div class="outline-text-3" id="text-4-1">
 <ol class="org-ol">
-<li>verify A-B=0 and B-A=0</li>
-</ol>
-
-<p>
-```sql
-(
-SELECT
-"SOURCE",
+<li><p>
+verify A-B=0 and B-A=0
+</p>
+<div class="org-src-container">
+<pre class="src src-sql">(
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span>
+"<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>",
 "REP_TIMESTAMP",
 "ID",
 "METADATA" 
-FROM "_SYS_BIC"."OPS/CA_CDC_ALL"('PLACEHOLDER' = ('\[P_FROM_TS\]',
-'2018-09-29 11:31:16.8810000'))
-WHERE
-"SOURCE" = 'PFC'
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> "_SYS_BIC"."OPS/CA_CDC_ALL"(<span style="color: #ffa07a;">'PLACEHOLDER'</span> = (<span style="color: #ffa07a;">'$$P_FROM_TS$$'</span>,
+<span style="color: #ffa07a;">'2018-09-29 11:31:16.8810000'</span>))
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span>
+"<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>" = <span style="color: #ffa07a;">'PFC'</span>
 )
 MINUS
 (
-SELECT
-"SOURCE",
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span>
+"<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>",
 "REP_TIMESTAMP",
 "ID",
 "METADATA" 
-FROM "_SYS_BIC"."OPS/CA_CDC_PFC"('PLACEHOLDER' = ('\[P_FROM_TS\]',
-'2018-09-29 11:31:16.8810000'))
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> "_SYS_BIC"."OPS/CA_CDC_PFC"(<span style="color: #ffa07a;">'PLACEHOLDER'</span> = (<span style="color: #ffa07a;">'$$P_FROM_TS$$'</span>,
+<span style="color: #ffa07a;">'2018-09-29 11:31:16.8810000'</span>))
 )
-```
-</p>
-<ol class="org-ol">
+</pre>
+</div></li>
 <li>verify 'A union all B' returns two times of records of 'A union B'</li>
 </ol>
-<p>
-```
-select count(*) from (
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">select</span> <span style="color: #76ee00;">count</span>(*) <span style="color: #20b2aa; font-weight: bold;">from</span> (
 (
-SELECT
-"SOURCE",
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span>
+"<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>",
 "REP_TIMESTAMP",
 "ID",
 "METADATA" 
-FROM "_SYS_BIC"."OPS/CA_CDC_TXN"('PLACEHOLDER' = ('\[P_FROM_TS\]',
-'2018-09-29 11:31:16.8810000'))
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> "_SYS_BIC"."OPS/CA_CDC_TXN"(<span style="color: #ffa07a;">'PLACEHOLDER'</span> = (<span style="color: #ffa07a;">'$$P_FROM_TS$$'</span>,
+<span style="color: #ffa07a;">'2018-09-29 11:31:16.8810000'</span>))
 )
-union
+<span style="color: #20b2aa; font-weight: bold;">union</span>
 (
-SELECT
-"SOURCE",
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span>
+"<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>",
 "REP_TIMESTAMP",
 "ID",
 "METADATA" 
-FROM "_SYS_BIC"."OPS/CA_CDC_ALL"('PLACEHOLDER' = ('\[P_FROM_TS\]',
-'2018-09-29 11:31:16.8810000'))
-WHERE
-"SOURCE" = 'TXN'
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> "_SYS_BIC"."OPS/CA_CDC_ALL"(<span style="color: #ffa07a;">'PLACEHOLDER'</span> = (<span style="color: #ffa07a;">'$$P_FROM_TS$$'</span>,
+<span style="color: #ffa07a;">'2018-09-29 11:31:16.8810000'</span>))
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span>
+"<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>" = <span style="color: #ffa07a;">'TXN'</span>
 )
 )
-</p>
 
-<p>
-select count(*) from (
+<span style="color: #20b2aa; font-weight: bold;">select</span> <span style="color: #76ee00;">count</span>(*) <span style="color: #20b2aa; font-weight: bold;">from</span> (
 (
-SELECT
-"SOURCE",
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span>
+"<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>",
 "REP_TIMESTAMP",
 "ID",
 "METADATA" 
-FROM "_SYS_BIC"."OPS/CA_CDC_TXN"('PLACEHOLDER' = ('\[P_FROM_TS\]',
-'2018-09-29 11:31:16.8810000'))
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> "_SYS_BIC"."OPS/CA_CDC_TXN"(<span style="color: #ffa07a;">'PLACEHOLDER'</span> = (<span style="color: #ffa07a;">'$$P_FROM_TS$$'</span>,
+<span style="color: #ffa07a;">'2018-09-29 11:31:16.8810000'</span>))
 )
-union all
+<span style="color: #20b2aa; font-weight: bold;">union</span> <span style="color: #20b2aa; font-weight: bold;">all</span>
 (
-SELECT
-"SOURCE",
+<span style="color: #20b2aa; font-weight: bold;">SELECT</span>
+"<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>",
 "REP_TIMESTAMP",
 "ID",
 "METADATA" 
-FROM "_SYS_BIC"."OPS/CA_CDC_ALL"('PLACEHOLDER' = ('\[P_FROM_TS\]',
-'2018-09-29 11:31:16.8810000'))
-WHERE
-"SOURCE" = 'TXN'
+<span style="color: #20b2aa; font-weight: bold;">FROM</span> "_SYS_BIC"."OPS/CA_CDC_ALL"(<span style="color: #ffa07a;">'PLACEHOLDER'</span> = (<span style="color: #ffa07a;">'$$P_FROM_TS$$'</span>,
+<span style="color: #ffa07a;">'2018-09-29 11:31:16.8810000'</span>))
+<span style="color: #20b2aa; font-weight: bold;">WHERE</span>
+"<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>" = <span style="color: #ffa07a;">'TXN'</span>
 )
 )
-```
-</p>
+</pre>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-10-02 Tue 15:15</p>
+<p class="date">Created: 2018-10-04 Thu 11:32</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
