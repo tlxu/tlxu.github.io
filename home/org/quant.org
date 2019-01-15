@@ -1,0 +1,8 @@
+#+STARTUP: showall
+#+TITLE: Quantitative Trading System
+
+* Basics
+  [[https://www.quantopian.com][Quantopian]]
+
+* Algorithms
+

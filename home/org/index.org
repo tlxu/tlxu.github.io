@@ -15,6 +15,9 @@ root@ubuntu:~/dev/github$ whoami
 * Algorithms
 [[https://github.com/tianlixu/algorithm/tree/master/sorting][sorting]] [[https://github.com/tianlixu/algorithm/tree/master/searching][searching]] [[https://github.com/tianlixu/algorithm/tree/master/recursion][recursion]]
 
+* Finance
+[[file:quant.org][Quantitative Trading]]
+
 * Database
 [[file:hana.org][HANA]] [[file:mysql.org][MySQL]] Oracle DB2
 
