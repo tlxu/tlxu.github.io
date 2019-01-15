@@ -5,5 +5,101 @@
 
 * odata service
   Expose one table in HANA as a REST service.
+  #+BEGIN_SRC javascript
+  service {
+	"OPS::CA_CDC_PFC"
+	key generate local "GENERATED_ID"
+	parameters via entity "ca_cdc_pfc";
+  }
+  #+END_SRC
+  Access the above servcie via URL:
+  http://hanadev:8000/cv_services/core/utility/cdn.xsodata/ca_cdc_pfc(P_FROM_TS=datetime'2018-08-27%2014:02:31')/Results?$format=json
+
+
+* Calculation View  
+** Aggregation
+   SUM, COUNT, MIN, MAX, AVG, VAR, STDDEV. The default is SUM.
+   Measures aren't the only fields capable of getting aggregated. The aggregation node also helps remove duplicates. 
 
 * SQL
+** How to check two select statemetns yields the same output?
+   1. verify A-B=0 and B-A=0
+   #+BEGIN_SRC sql
+   (
+       SELECT
+           "SOURCE",
+           "REP_TIMESTAMP",
+           "ID",
+           "METADATA" 
+       FROM "_SYS_BIC"."OPS/CA_CDC_ALL"('PLACEHOLDER' = ('$$P_FROM_TS$$','2018-09-29 11:31:16.8810000'))
+       WHERE
+           "SOURCE" = 'PFC'
+   )
+   MINUS
+   (
+       SELECT
+           "SOURCE",
+           "REP_TIMESTAMP",
+           "ID",
+           "METADATA" 
+       FROM
+           "_SYS_BIC"."OPS/CA_CDC_PFC"('PLACEHOLDER' = ('$$P_FROM_TS$$','2018-09-29 11:31:16.8810000'))
+   )
+   #+END_SRC
+   
+   2. verify 'A union all B' returns two times of records of 'A union B'
+   #+BEGIN_SRC sql
+   SELECT
+       COUNT(*)
+   FROM (
+       (
+           SELECT
+               "SOURCE",
+               "REP_TIMESTAMP",
+               "ID",
+               "METADATA" 
+           FROM
+               "_SYS_BIC"."OPS/CA_CDC_TXN"('PLACEHOLDER' = ('$$P_FROM_TS$$','2018-09-29 11:31:16.8810000'))
+       )
+       UNION
+       (
+           SELECT
+               "SOURCE",
+               "REP_TIMESTAMP",
+               "ID",
+               "METADATA" 
+           FROM
+               "_SYS_BIC"."OPS/CA_CDC_ALL"('PLACEHOLDER' = ('$$P_FROM_TS$$', '2018-09-29 11:31:16.8810000'))
+           WHERE
+               "SOURCE" = 'TXN'
+       )
+   )
+
+   SELECT
+       COUNT(*)
+   FROM (
+       (
+           SELECT
+               "SOURCE",
+               "REP_TIMESTAMP",
+               "ID",
+               "METADATA" 
+           FROM
+               "_SYS_BIC"."OPS/CA_CDC_TXN"('PLACEHOLDER' = ('$$P_FROM_TS$$','2018-09-29 11:31:16.8810000'))
+       )
+       UNION ALL
+       (
+           SELECT
+               "SOURCE",
+               "REP_TIMESTAMP",
+               "ID",
+               "METADATA" 
+           FROM
+               "_SYS_BIC"."OPS/CA_CDC_ALL"('PLACEHOLDER' = ('$$P_FROM_TS$$', '2018-09-29 11:31:16.8810000'))
+           WHERE
+               "SOURCE" = 'TXN'
+       )
+   )   
+   #+END_SRC
+
+
