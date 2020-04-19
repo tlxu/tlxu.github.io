@@ -5,7 +5,10 @@ date:   2020-04-19
 categories: Python, Data
 ---
 
-The code snippet below finds all outlook msg files in directory ./cibc_mello_ald/ recursively and retrieves the attached .csv file in each .msg file and saved them to directory ./cibc_mello_ald/csv/
+The code snippet below:
+1. Finds all outlook msg files in directory ./cibc_mello_ald/ recursively,
+2. Retrieves the attached .csv file in each .msg file,
+3. Then saves attachments to directory ./cibc_mello_ald/csv/
 
 **Note** that to make it work, you need to:
 - Run it in a Windows machine
@@ -55,4 +58,3 @@ for idx, file in enumerate(msg_files):
         csv_file_name = os.path.join(csv_file_dir, f'{csv_file_prefix}-{date_str}.csv')
         i.SaveAsFile(csv_file_name)
 ```
-
