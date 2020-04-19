@@ -6,7 +6,7 @@ categories: Python, Data
 ---
 Example:
 
-{% highlight python %}
+``` python
 import os
 import win32com.client
 import re
@@ -23,12 +23,9 @@ csv_file_relative_dir = '.\\csv'
 
 # use absolute path, or you'll get error later on
 msg_file_dir = os.path.abspath(msg_file_relative_dir)
-msg_files = [f for f in os.listdir(msg_file_dir) if msg_file_suffix in f]
-print(msg_files)
-
 csv_file_dir = os.path.abspath(csv_file_relative_dir)
 
-
+# msg_files = [f for f in os.listdir(msg_file_dir) if msg_file_suffix in f]
 msg_files = []
 print(msg_file_dir)
 for r, d, f in os.walk(msg_file_dir):
@@ -50,7 +47,7 @@ for idx, file in enumerate(msg_files):
     for i in att:
         csv_file_name = os.path.join(csv_file_dir, f'{csv_file_prefix}-{date_str}.csv')
         i.SaveAsFile(csv_file_name)
-{% endhighlight %}
+```
 
         
 
