@@ -4,7 +4,14 @@ title:  "Python to Retrieve attachment from saved outlook msg file"
 date:   2020-04-19
 categories: Python, Data
 ---
-Example:
+
+The code snippet below finds all outlook msg files in directory ./cibc_mello_ald/ recursively and retrieves the attached .csv file in each .msg file and saved them to directory ./cibc_mello_ald/csv/
+
+**Note** that to make it work, you need to:
+- Run it in a Windows machine
+- With Outlook installed
+- Use absolute path when accessing files
+- Close(or Open and then close) Outlook if you see an error complaining the msg file is already open or you don't have permision to open it.
 
 ``` python
 import os
@@ -48,6 +55,4 @@ for idx, file in enumerate(msg_files):
         csv_file_name = os.path.join(csv_file_dir, f'{csv_file_prefix}-{date_str}.csv')
         i.SaveAsFile(csv_file_name)
 ```
-
-        
 
