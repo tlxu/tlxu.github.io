@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2020-04-28 Tue 21:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SAP HANA cheetsheet</title>
@@ -186,7 +187,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -235,37 +236,37 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8892c81">1. SAP HANA Studio</a></li>
-<li><a href="#org8d9344a">2. odata service</a></li>
-<li><a href="#org482ba49">3. Calculation View</a>
+<li><a href="#orga79637c">1. SAP HANA Studio</a></li>
+<li><a href="#org9dace94">2. odata service</a></li>
+<li><a href="#org557db10">3. Calculation View</a>
 <ul>
-<li><a href="#orgc0adda2">3.1. Aggregation</a></li>
+<li><a href="#orgb090c1e">3.1. Aggregation</a></li>
 </ul>
 </li>
-<li><a href="#org49d7303">4. SQL</a>
+<li><a href="#org8f813e4">4. SQL</a>
 <ul>
-<li><a href="#org44076ed">4.1. How to check two select statemetns yields the same output?</a></li>
+<li><a href="#org0826084">4.1. How to check two select statemetns yields the same output?</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1222902" class="outline-2">
-<h2 id="org1222902"><span class="section-number-2">1</span> SAP HANA Studio</h2>
+<div id="outline-container-orga79637c" class="outline-2">
+<h2 id="orga79637c"><span class="section-number-2">1</span> SAP HANA Studio</h2>
 </div>
 
-<div id="outline-container-org529aff3" class="outline-2">
-<h2 id="org529aff3"><span class="section-number-2">2</span> odata service</h2>
+<div id="outline-container-org9dace94" class="outline-2">
+<h2 id="org9dace94"><span class="section-number-2">2</span> odata service</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Expose one table in HANA as a REST service.
 </p>
 <div class="org-src-container">
 <pre class="src src-javascript">service {
-      <span style="color: #ffa07a;">"OPS::CA_CDC_PFC"</span>
-      key generate local <span style="color: #ffa07a;">"GENERATED_ID"</span>
-      parameters via entity <span style="color: #ffa07a;">"ca_cdc_pfc"</span>;
+      <span style="color: #deb887;">"OPS::CA_CDC_PFC"</span>
+      key generate local <span style="color: #deb887;">"GENERATED_ID"</span>
+      parameters via entity <span style="color: #deb887;">"ca_cdc_pfc"</span>;
 }
 </pre>
 </div>
@@ -277,12 +278,12 @@ Access the above servcie via URL:
 </div>
 
 
-<div id="outline-container-org482ba49" class="outline-2">
-<h2 id="org482ba49"><span class="section-number-2">3</span> Calculation View</h2>
+<div id="outline-container-org557db10" class="outline-2">
+<h2 id="org557db10"><span class="section-number-2">3</span> Calculation View</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgc0adda2" class="outline-3">
-<h3 id="orgc0adda2"><span class="section-number-3">3.1</span> Aggregation</h3>
+<div id="outline-container-orgb090c1e" class="outline-3">
+<h3 id="orgb090c1e"><span class="section-number-3">3.1</span> Aggregation</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 SUM, COUNT, MIN, MAX, AVG, VAR, STDDEV. The default is SUM.
@@ -292,37 +293,36 @@ Measures aren't the only fields capable of getting aggregated. The aggregation n
 </div>
 </div>
 
-
-<div id="outline-container-org49d7303" class="outline-2">
-<h2 id="org49d7303"><span class="section-number-2">4</span> SQL</h2>
+<div id="outline-container-org8f813e4" class="outline-2">
+<h2 id="org8f813e4"><span class="section-number-2">4</span> SQL</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org44076ed" class="outline-3">
-<h3 id="org44076ed"><span class="section-number-3">4.1</span> How to check two select statemetns yields the same output?</h3>
+<div id="outline-container-org0826084" class="outline-3">
+<h3 id="org0826084"><span class="section-number-3">4.1</span> How to check two select statemetns yields the same output?</h3>
 <div class="outline-text-3" id="text-4-1">
 <ol class="org-ol">
 <li>verify A-B=0 and B-A=0</li>
 </ol>
 <div class="org-src-container">
 <pre class="src src-sql">(
-    <span style="color: #20b2aa; font-weight: bold;">SELECT</span>
-        "<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>",
+    <span style="color: #00bfff;">SELECT</span>
+        "<span style="color: #00bfff;">SOURCE</span>",
         "REP_TIMESTAMP",
         "ID",
         "METADATA" 
-    <span style="color: #20b2aa; font-weight: bold;">FROM</span> "_SYS_BIC"."OPS/CA_CDC_ALL"(<span style="color: #ffa07a;">'PLACEHOLDER'</span> = (<span style="color: #ffa07a;">'$$P_FROM_TS$$'</span>,<span style="color: #ffa07a;">'2018-09-29 11:31:16.8810000'</span>))
-    <span style="color: #20b2aa; font-weight: bold;">WHERE</span>
-        "<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>" = <span style="color: #ffa07a;">'PFC'</span>
+    <span style="color: #00bfff;">FROM</span> "_SYS_BIC"."OPS/CA_CDC_ALL"(<span style="color: #deb887;">'PLACEHOLDER'</span> = (<span style="color: #deb887;">'$$P_FROM_TS$$'</span>,<span style="color: #deb887;">'2018-09-29 11:31:16.8810000'</span>))
+    <span style="color: #00bfff;">WHERE</span>
+        "<span style="color: #00bfff;">SOURCE</span>" = <span style="color: #deb887;">'PFC'</span>
 )
 MINUS
 (
-    <span style="color: #20b2aa; font-weight: bold;">SELECT</span>
-        "<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>",
+    <span style="color: #00bfff;">SELECT</span>
+        "<span style="color: #00bfff;">SOURCE</span>",
         "REP_TIMESTAMP",
         "ID",
         "METADATA" 
-    <span style="color: #20b2aa; font-weight: bold;">FROM</span>
-        "_SYS_BIC"."OPS/CA_CDC_PFC"(<span style="color: #ffa07a;">'PLACEHOLDER'</span> = (<span style="color: #ffa07a;">'$$P_FROM_TS$$'</span>,<span style="color: #ffa07a;">'2018-09-29 11:31:16.8810000'</span>))
+    <span style="color: #00bfff;">FROM</span>
+        "_SYS_BIC"."OPS/CA_CDC_PFC"(<span style="color: #deb887;">'PLACEHOLDER'</span> = (<span style="color: #deb887;">'$$P_FROM_TS$$'</span>,<span style="color: #deb887;">'2018-09-29 11:31:16.8810000'</span>))
 )
 </pre>
 </div>
@@ -331,55 +331,55 @@ MINUS
 <li>verify 'A union all B' returns two times of records of 'A union B'</li>
 </ol>
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #20b2aa; font-weight: bold;">SELECT</span>
-    <span style="color: #76ee00;">COUNT</span>(*)
-<span style="color: #20b2aa; font-weight: bold;">FROM</span> (
+<pre class="src src-sql"><span style="color: #00bfff;">SELECT</span>
+    <span style="color: #f08080;">COUNT</span>(*)
+<span style="color: #00bfff;">FROM</span> (
     (
-        <span style="color: #20b2aa; font-weight: bold;">SELECT</span>
-            "<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>",
+        <span style="color: #00bfff;">SELECT</span>
+            "<span style="color: #00bfff;">SOURCE</span>",
             "REP_TIMESTAMP",
             "ID",
             "METADATA" 
-        <span style="color: #20b2aa; font-weight: bold;">FROM</span>
-            "_SYS_BIC"."OPS/CA_CDC_TXN"(<span style="color: #ffa07a;">'PLACEHOLDER'</span> = (<span style="color: #ffa07a;">'$$P_FROM_TS$$'</span>,<span style="color: #ffa07a;">'2018-09-29 11:31:16.8810000'</span>))
+        <span style="color: #00bfff;">FROM</span>
+            "_SYS_BIC"."OPS/CA_CDC_TXN"(<span style="color: #deb887;">'PLACEHOLDER'</span> = (<span style="color: #deb887;">'$$P_FROM_TS$$'</span>,<span style="color: #deb887;">'2018-09-29 11:31:16.8810000'</span>))
     )
-    <span style="color: #20b2aa; font-weight: bold;">UNION</span>
+    <span style="color: #00bfff;">UNION</span>
     (
-        <span style="color: #20b2aa; font-weight: bold;">SELECT</span>
-            "<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>",
+        <span style="color: #00bfff;">SELECT</span>
+            "<span style="color: #00bfff;">SOURCE</span>",
             "REP_TIMESTAMP",
             "ID",
             "METADATA" 
-        <span style="color: #20b2aa; font-weight: bold;">FROM</span>
-            "_SYS_BIC"."OPS/CA_CDC_ALL"(<span style="color: #ffa07a;">'PLACEHOLDER'</span> = (<span style="color: #ffa07a;">'$$P_FROM_TS$$'</span>, <span style="color: #ffa07a;">'2018-09-29 11:31:16.8810000'</span>))
-        <span style="color: #20b2aa; font-weight: bold;">WHERE</span>
-            "<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>" = <span style="color: #ffa07a;">'TXN'</span>
+        <span style="color: #00bfff;">FROM</span>
+            "_SYS_BIC"."OPS/CA_CDC_ALL"(<span style="color: #deb887;">'PLACEHOLDER'</span> = (<span style="color: #deb887;">'$$P_FROM_TS$$'</span>, <span style="color: #deb887;">'2018-09-29 11:31:16.8810000'</span>))
+        <span style="color: #00bfff;">WHERE</span>
+            "<span style="color: #00bfff;">SOURCE</span>" = <span style="color: #deb887;">'TXN'</span>
     )
 )
 
-<span style="color: #20b2aa; font-weight: bold;">SELECT</span>
-    <span style="color: #76ee00;">COUNT</span>(*)
-<span style="color: #20b2aa; font-weight: bold;">FROM</span> (
+<span style="color: #00bfff;">SELECT</span>
+    <span style="color: #f08080;">COUNT</span>(*)
+<span style="color: #00bfff;">FROM</span> (
     (
-        <span style="color: #20b2aa; font-weight: bold;">SELECT</span>
-            "<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>",
+        <span style="color: #00bfff;">SELECT</span>
+            "<span style="color: #00bfff;">SOURCE</span>",
             "REP_TIMESTAMP",
             "ID",
             "METADATA" 
-        <span style="color: #20b2aa; font-weight: bold;">FROM</span>
-            "_SYS_BIC"."OPS/CA_CDC_TXN"(<span style="color: #ffa07a;">'PLACEHOLDER'</span> = (<span style="color: #ffa07a;">'$$P_FROM_TS$$'</span>,<span style="color: #ffa07a;">'2018-09-29 11:31:16.8810000'</span>))
+        <span style="color: #00bfff;">FROM</span>
+            "_SYS_BIC"."OPS/CA_CDC_TXN"(<span style="color: #deb887;">'PLACEHOLDER'</span> = (<span style="color: #deb887;">'$$P_FROM_TS$$'</span>,<span style="color: #deb887;">'2018-09-29 11:31:16.8810000'</span>))
     )
-    <span style="color: #20b2aa; font-weight: bold;">UNION</span> <span style="color: #20b2aa; font-weight: bold;">ALL</span>
+    <span style="color: #00bfff;">UNION</span> <span style="color: #00bfff;">ALL</span>
     (
-        <span style="color: #20b2aa; font-weight: bold;">SELECT</span>
-            "<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>",
+        <span style="color: #00bfff;">SELECT</span>
+            "<span style="color: #00bfff;">SOURCE</span>",
             "REP_TIMESTAMP",
             "ID",
             "METADATA" 
-        <span style="color: #20b2aa; font-weight: bold;">FROM</span>
-            "_SYS_BIC"."OPS/CA_CDC_ALL"(<span style="color: #ffa07a;">'PLACEHOLDER'</span> = (<span style="color: #ffa07a;">'$$P_FROM_TS$$'</span>, <span style="color: #ffa07a;">'2018-09-29 11:31:16.8810000'</span>))
-        <span style="color: #20b2aa; font-weight: bold;">WHERE</span>
-            "<span style="color: #20b2aa; font-weight: bold;">SOURCE</span>" = <span style="color: #ffa07a;">'TXN'</span>
+        <span style="color: #00bfff;">FROM</span>
+            "_SYS_BIC"."OPS/CA_CDC_ALL"(<span style="color: #deb887;">'PLACEHOLDER'</span> = (<span style="color: #deb887;">'$$P_FROM_TS$$'</span>, <span style="color: #deb887;">'2018-09-29 11:31:16.8810000'</span>))
+        <span style="color: #00bfff;">WHERE</span>
+            "<span style="color: #00bfff;">SOURCE</span>" = <span style="color: #deb887;">'TXN'</span>
     )
 )   
 </pre>
@@ -390,7 +390,7 @@ MINUS
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2018-10-04 Thu 11:44</p>
+<p class="date">Created: 2020-04-28 Tue 21:53</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

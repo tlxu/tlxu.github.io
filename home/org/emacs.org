@@ -37,4 +37,8 @@ Replace some matches for regexp with newstring.
 [[file:org_mode.org][Notes for org-mode]]
 
 ** Python IDE
-With jedi and elpy, Emacs can be a powerful Python IDE.
+   - jedi and elpy, Emacs can be a powerful Python IDE.
+   - EIN, you can run Jupyter Notebooks within Emacs.
+     1. C-x C-o to open a .ipynb file, or
+     2. M-x ein:run launches a new Jupyter Process from Emacs, or
+     3. M-x ein:login to a running Jupyter Server.
