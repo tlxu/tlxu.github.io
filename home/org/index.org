@@ -7,7 +7,7 @@ root@ubuntu:~/dev/github$ whoami
 [[https://github.com/tianlixu][root]]
 
 * General
-[[file:emacs.org][Emacs]] [[file:vbox.org][Ubuntu VM]] 
+[[file:emacs.org][Emacs]] 
 
 * AI
 [[file:machine_learning.org][Machine Learning]]
