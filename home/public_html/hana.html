@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-28 Tue 21:53 -->
+<!-- 2024-08-21 Wed 13:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SAP HANA cheetsheet</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="Alex" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -31,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -40,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -161,6 +162,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -177,113 +191,66 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel="stylesheet"
              href="./css/fb.css" type="text/css"/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">SAP HANA cheetsheet</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga79637c">1. SAP HANA Studio</a></li>
-<li><a href="#org9dace94">2. odata service</a></li>
-<li><a href="#org557db10">3. Calculation View</a>
+<li><a href="#org15ef808">1. SAP HANA Studio</a></li>
+<li><a href="#org3224d0b">2. odata service</a></li>
+<li><a href="#org9013e5e">3. Calculation View</a>
 <ul>
-<li><a href="#orgb090c1e">3.1. Aggregation</a></li>
+<li><a href="#orgf12e9d7">3.1. Aggregation</a></li>
 </ul>
 </li>
-<li><a href="#org8f813e4">4. SQL</a>
+<li><a href="#org28b4c14">4. SQL</a>
 <ul>
-<li><a href="#org0826084">4.1. How to check two select statemetns yields the same output?</a></li>
+<li><a href="#orgd896ffe">4.1. How to check two select statemetns yields the same output?</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga79637c" class="outline-2">
-<h2 id="orga79637c"><span class="section-number-2">1</span> SAP HANA Studio</h2>
+<div id="outline-container-org15ef808" class="outline-2">
+<h2 id="org15ef808"><span class="section-number-2">1.</span> SAP HANA Studio</h2>
 </div>
 
-<div id="outline-container-org9dace94" class="outline-2">
-<h2 id="org9dace94"><span class="section-number-2">2</span> odata service</h2>
+<div id="outline-container-org3224d0b" class="outline-2">
+<h2 id="org3224d0b"><span class="section-number-2">2.</span> odata service</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Expose one table in HANA as a REST service.
 </p>
 <div class="org-src-container">
 <pre class="src src-javascript">service {
-      <span style="color: #deb887;">"OPS::CA_CDC_PFC"</span>
-      key generate local <span style="color: #deb887;">"GENERATED_ID"</span>
-      parameters via entity <span style="color: #deb887;">"ca_cdc_pfc"</span>;
+      "OPS::CA_CDC_PFC"
+      key generate local "GENERATED_ID"
+      parameters via entity "ca_cdc_pfc";
 }
 </pre>
 </div>
 <p>
 Access the above servcie via URL:
-<a href="http://hanadev:8000/cv_services/core/utility/cdn.xsodata/ca_cdc_pfc">http://hanadev:8000/cv_services/core/utility/cdn.xsodata/ca_cdc_pfc</a>(P_FROM_TS=datetime'2018-08-27%2014:02:31')/Results?$format=json
+<a href="http://hanadev:8000/cv_services/core/utility/cdn.xsodata/ca_cdc_pfc(P_FROM_TS=datetime'2018-08-27%2014:02:31')/Results?$format=json">http://hanadev:8000/cv_services/core/utility/cdn.xsodata/ca_cdc_pfc(P_FROM_TS=datetime'2018-08-27%2014:02:31')/Results?$format=json</a>
 </p>
 </div>
 </div>
 
 
-<div id="outline-container-org557db10" class="outline-2">
-<h2 id="org557db10"><span class="section-number-2">3</span> Calculation View</h2>
+<div id="outline-container-org9013e5e" class="outline-2">
+<h2 id="org9013e5e"><span class="section-number-2">3.</span> Calculation View</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgb090c1e" class="outline-3">
-<h3 id="orgb090c1e"><span class="section-number-3">3.1</span> Aggregation</h3>
+<div id="outline-container-orgf12e9d7" class="outline-3">
+<h3 id="orgf12e9d7"><span class="section-number-3">3.1.</span> Aggregation</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 SUM, COUNT, MIN, MAX, AVG, VAR, STDDEV. The default is SUM.
@@ -293,36 +260,36 @@ Measures aren't the only fields capable of getting aggregated. The aggregation n
 </div>
 </div>
 
-<div id="outline-container-org8f813e4" class="outline-2">
-<h2 id="org8f813e4"><span class="section-number-2">4</span> SQL</h2>
+<div id="outline-container-org28b4c14" class="outline-2">
+<h2 id="org28b4c14"><span class="section-number-2">4.</span> SQL</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org0826084" class="outline-3">
-<h3 id="org0826084"><span class="section-number-3">4.1</span> How to check two select statemetns yields the same output?</h3>
+<div id="outline-container-orgd896ffe" class="outline-3">
+<h3 id="orgd896ffe"><span class="section-number-3">4.1.</span> How to check two select statemetns yields the same output?</h3>
 <div class="outline-text-3" id="text-4-1">
 <ol class="org-ol">
 <li>verify A-B=0 and B-A=0</li>
 </ol>
 <div class="org-src-container">
 <pre class="src src-sql">(
-    <span style="color: #00bfff;">SELECT</span>
-        "<span style="color: #00bfff;">SOURCE</span>",
+    SELECT
+        "SOURCE",
         "REP_TIMESTAMP",
         "ID",
         "METADATA" 
-    <span style="color: #00bfff;">FROM</span> "_SYS_BIC"."OPS/CA_CDC_ALL"(<span style="color: #deb887;">'PLACEHOLDER'</span> = (<span style="color: #deb887;">'$$P_FROM_TS$$'</span>,<span style="color: #deb887;">'2018-09-29 11:31:16.8810000'</span>))
-    <span style="color: #00bfff;">WHERE</span>
-        "<span style="color: #00bfff;">SOURCE</span>" = <span style="color: #deb887;">'PFC'</span>
+    FROM "_SYS_BIC"."OPS/CA_CDC_ALL"('PLACEHOLDER' = ('$$P_FROM_TS$$','2018-09-29 11:31:16.8810000'))
+    WHERE
+        "SOURCE" = 'PFC'
 )
 MINUS
 (
-    <span style="color: #00bfff;">SELECT</span>
-        "<span style="color: #00bfff;">SOURCE</span>",
+    SELECT
+        "SOURCE",
         "REP_TIMESTAMP",
         "ID",
         "METADATA" 
-    <span style="color: #00bfff;">FROM</span>
-        "_SYS_BIC"."OPS/CA_CDC_PFC"(<span style="color: #deb887;">'PLACEHOLDER'</span> = (<span style="color: #deb887;">'$$P_FROM_TS$$'</span>,<span style="color: #deb887;">'2018-09-29 11:31:16.8810000'</span>))
+    FROM
+        "_SYS_BIC"."OPS/CA_CDC_PFC"('PLACEHOLDER' = ('$$P_FROM_TS$$','2018-09-29 11:31:16.8810000'))
 )
 </pre>
 </div>
@@ -331,55 +298,55 @@ MINUS
 <li>verify 'A union all B' returns two times of records of 'A union B'</li>
 </ol>
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #00bfff;">SELECT</span>
-    <span style="color: #f08080;">COUNT</span>(*)
-<span style="color: #00bfff;">FROM</span> (
+<pre class="src src-sql">SELECT
+    COUNT(*)
+FROM (
     (
-        <span style="color: #00bfff;">SELECT</span>
-            "<span style="color: #00bfff;">SOURCE</span>",
+        SELECT
+            "SOURCE",
             "REP_TIMESTAMP",
             "ID",
             "METADATA" 
-        <span style="color: #00bfff;">FROM</span>
-            "_SYS_BIC"."OPS/CA_CDC_TXN"(<span style="color: #deb887;">'PLACEHOLDER'</span> = (<span style="color: #deb887;">'$$P_FROM_TS$$'</span>,<span style="color: #deb887;">'2018-09-29 11:31:16.8810000'</span>))
+        FROM
+            "_SYS_BIC"."OPS/CA_CDC_TXN"('PLACEHOLDER' = ('$$P_FROM_TS$$','2018-09-29 11:31:16.8810000'))
     )
-    <span style="color: #00bfff;">UNION</span>
+    UNION
     (
-        <span style="color: #00bfff;">SELECT</span>
-            "<span style="color: #00bfff;">SOURCE</span>",
+        SELECT
+            "SOURCE",
             "REP_TIMESTAMP",
             "ID",
             "METADATA" 
-        <span style="color: #00bfff;">FROM</span>
-            "_SYS_BIC"."OPS/CA_CDC_ALL"(<span style="color: #deb887;">'PLACEHOLDER'</span> = (<span style="color: #deb887;">'$$P_FROM_TS$$'</span>, <span style="color: #deb887;">'2018-09-29 11:31:16.8810000'</span>))
-        <span style="color: #00bfff;">WHERE</span>
-            "<span style="color: #00bfff;">SOURCE</span>" = <span style="color: #deb887;">'TXN'</span>
+        FROM
+            "_SYS_BIC"."OPS/CA_CDC_ALL"('PLACEHOLDER' = ('$$P_FROM_TS$$', '2018-09-29 11:31:16.8810000'))
+        WHERE
+            "SOURCE" = 'TXN'
     )
 )
 
-<span style="color: #00bfff;">SELECT</span>
-    <span style="color: #f08080;">COUNT</span>(*)
-<span style="color: #00bfff;">FROM</span> (
+SELECT
+    COUNT(*)
+FROM (
     (
-        <span style="color: #00bfff;">SELECT</span>
-            "<span style="color: #00bfff;">SOURCE</span>",
+        SELECT
+            "SOURCE",
             "REP_TIMESTAMP",
             "ID",
             "METADATA" 
-        <span style="color: #00bfff;">FROM</span>
-            "_SYS_BIC"."OPS/CA_CDC_TXN"(<span style="color: #deb887;">'PLACEHOLDER'</span> = (<span style="color: #deb887;">'$$P_FROM_TS$$'</span>,<span style="color: #deb887;">'2018-09-29 11:31:16.8810000'</span>))
+        FROM
+            "_SYS_BIC"."OPS/CA_CDC_TXN"('PLACEHOLDER' = ('$$P_FROM_TS$$','2018-09-29 11:31:16.8810000'))
     )
-    <span style="color: #00bfff;">UNION</span> <span style="color: #00bfff;">ALL</span>
+    UNION ALL
     (
-        <span style="color: #00bfff;">SELECT</span>
-            "<span style="color: #00bfff;">SOURCE</span>",
+        SELECT
+            "SOURCE",
             "REP_TIMESTAMP",
             "ID",
             "METADATA" 
-        <span style="color: #00bfff;">FROM</span>
-            "_SYS_BIC"."OPS/CA_CDC_ALL"(<span style="color: #deb887;">'PLACEHOLDER'</span> = (<span style="color: #deb887;">'$$P_FROM_TS$$'</span>, <span style="color: #deb887;">'2018-09-29 11:31:16.8810000'</span>))
-        <span style="color: #00bfff;">WHERE</span>
-            "<span style="color: #00bfff;">SOURCE</span>" = <span style="color: #deb887;">'TXN'</span>
+        FROM
+            "_SYS_BIC"."OPS/CA_CDC_ALL"('PLACEHOLDER' = ('$$P_FROM_TS$$', '2018-09-29 11:31:16.8810000'))
+        WHERE
+            "SOURCE" = 'TXN'
     )
 )   
 </pre>
@@ -390,8 +357,8 @@ MINUS
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2020-04-28 Tue 21:53</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2024-08-21 Wed 13:12</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

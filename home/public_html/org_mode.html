@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-28 Tue 21:53 -->
+<!-- 2024-08-21 Wed 13:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes for org-mode</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="Alex" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -31,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -40,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -161,6 +162,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -177,102 +191,66 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel="stylesheet"
              href="./css/fb.css" type="text/css"/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
 
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Notes for org-mode</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3aa46e6">1. shortcuts</a></li>
-<li><a href="#orga40a278">2. Math/Latex</a>
+<li><a href="#org9cf511f">1. shortcuts</a></li>
+<li><a href="#orge755e57">2. Math/Latex</a>
 <ul>
-<li><a href="#org9a61216">2.1. superscript/subscript, square root</a></li>
-<li><a href="#org4fb5fed">2.2. Matix</a></li>
-<li><a href="#orgaa3dd03">2.3. '\|' for ||</a></li>
+<li><a href="#orgc5942d2">2.1. superscript/subscript, square root</a></li>
+<li><a href="#orged9c1c7">2.2. Matix</a></li>
+<li><a href="#orgfd0e27e">2.3. '\|' for ||</a></li>
 </ul>
 </li>
+<li><a href="#org9ae125a">3. work with images on Windows</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-org3aa46e6" class="outline-2">
-<h2 id="org3aa46e6"><span class="section-number-2">1</span> shortcuts</h2>
+<div id="outline-container-org9cf511f" class="outline-2">
+<h2 id="org9cf511f"><span class="section-number-2">1.</span> shortcuts</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>C-c C-x \ : runs the command org-toggle-pretty-entities</li>
@@ -280,12 +258,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orga40a278" class="outline-2">
-<h2 id="orga40a278"><span class="section-number-2">2</span> Math/Latex</h2>
+<div id="outline-container-orge755e57" class="outline-2">
+<h2 id="orge755e57"><span class="section-number-2">2.</span> Math/Latex</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org9a61216" class="outline-3">
-<h3 id="org9a61216"><span class="section-number-3">2.1</span> superscript/subscript, square root</h3>
+<div id="outline-container-orgc5942d2" class="outline-3">
+<h3 id="orgc5942d2"><span class="section-number-3">2.1.</span> superscript/subscript, square root</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 If \(a^2=b\) and \( b=2 \), then the solution must be
@@ -294,8 +272,8 @@ either \[ a=+\sqrt{2} \] or \[ a=-\sqrt{2} \].
 </div>
 </div>
 
-<div id="outline-container-org4fb5fed" class="outline-3">
-<h3 id="org4fb5fed"><span class="section-number-3">2.2</span> Matix</h3>
+<div id="outline-container-orged9c1c7" class="outline-3">
+<h3 id="orged9c1c7"><span class="section-number-3">2.2.</span> Matix</h3>
 <div class="outline-text-3" id="text-2-2">
 \begin{matrix}
  a & b \\
@@ -336,8 +314,8 @@ z & w \\
 </div>
 </div>
 
-<div id="outline-container-orgaa3dd03" class="outline-3">
-<h3 id="orgaa3dd03"><span class="section-number-3">2.3</span> '\|' for ||</h3>
+<div id="outline-container-orgfd0e27e" class="outline-3">
+<h3 id="orgfd0e27e"><span class="section-number-3">2.3.</span> '\|' for ||</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 \(\|a\|\)<sup>2</sup> = a * a
@@ -345,11 +323,62 @@ z & w \\
 </div>
 </div>
 </div>
+
+<div id="outline-container-org9ae125a" class="outline-2">
+<h2 id="org9ae125a"><span class="section-number-2">3.</span> work with images on Windows</h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example" id="org9b2e6c1">
+
+I'm glad to hear that it's working now! Besides adding the debugging messages, the main changes I made to the function were:
+
+1. **Escaping Backslashes**: Ensuring that backslashes in file paths are properly escaped. This is important for Windows file paths in Emacs Lisp. For example, I replaced `/` with `\\` in the `replace-regexp-in-string` function.
+
+2. **Concatenation of Strings**: Making sure that the `concat` function is used correctly to concatenate strings, especially when constructing the `filename` and the command string.
+
+Here is the revised function with the changes highlighted:
+
+```elisp
+(defun org-screenshot ()
+  "Take a screenshot into a time stamped unique-named file in the same 
+directory as the org-buffer and insert
+a link to this file."
+  (interactive)
+  (create-directory-if-not-exists org-download-image-dir)
+
+  (setq tilde-buffer-filename
+        (replace-regexp-in-string "/" "\\\\" (buffer-file-name) t t)) ;; Escaping backslashes
+  (setq filename
+        (concat
+         (make-temp-name
+          (concat org-download-image-dir
+                  "_"
+                  (format-time-string "%Y%m%d_%H%M%S_"))) ".jpg")) ;; Correct concatenation
+  ;; Debugging: Print the filename to the *Messages* buffer
+  (message "Saving screenshot to: %s" filename)
+
+  ;; Linux: ImageMagick: (call-process "import" nil nil nil filename)
+
+  ;; (shell-command "powershell.exe snippingtool /clip")
+  (my-org-download-set-dir)
+  (org-download-screenshot)
+  ;; Windows: Irfanview
+  (let ((command (concat "C:\\Users\\axu\\bin\\iview467_x64\\i_view64.exe /clippaste /convert=\"" filename "\""))) ;; Correct concatenation
+    ;; Debugging: Print the command to the *Messages* buffer
+    (message "Executing command: %s" command)
+    (call-process-shell-command command))
+  (insert (concat "[[file:" filename "]]"))
+  (org-display-inline-images))
+```
+
+These changes ensure that the file paths are correctly formatted and that the command to save the image is constructed properly. If you have any more questions or need further assistance, feel free to ask!
+</pre>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alex</p>
-<p class="date">Created: 2020-04-28 Tue 21:53</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2024-08-21 Wed 13:12</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
